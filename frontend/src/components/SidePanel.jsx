@@ -1,23 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
 function SidePanel() {
   return (
-    <div className="flex flex-col justify-between items-start w-2/5 text-white bg-emerald-700 h-screen">
+    <div className="flex flex-col justify-between items-start w-2/5 text-white bg-emerald-700 h-screen select-none">
       <Logo />
-      <h1 className="text-4xl text-left m-12 font-bold">
-        “The best way of learning about anything is by doing.”
-        <br />
-        <br /> Richard Branson
-      </h1>
+      <h2 className="text-4xl text-left m-12 font-bold">
+        “The best way of learning about anything is{" "}
+        <p className="text-yellow-300">by doing.”</p>
+        <h3 className="text-lg text-right font-semibold">Richard Branson</h3>
+      </h2>
       <div className="font-semibold m-10">
-        <Link to="/" className="px-6">
-          Acceuil
-        </Link>
-        <Link to="/" className="px-6">
+        <a
+          href="https://www.rookiesprojects.com/"
+          className="px-6 hover:text-yellow-300"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Accueil
+        </a>
+        <a
+          href="https://www.rookiesprojects.com/contact-fr"
+          className="px-6 hover:text-yellow-300"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Contact
-        </Link>
+        </a>
       </div>
     </div>
   );
