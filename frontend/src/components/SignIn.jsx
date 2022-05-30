@@ -10,7 +10,7 @@ function SignIn() {
 
   return (
     <div className="flex flex-col items-start">
-      <h1 className="text-2xl font-bold mt-10 mb-5">
+      <h1 className="text-2xl font-bold mt-8 mb-5">
         Let&apos;s get you started
       </h1>
       <h3 className="text-lg">Vous êtes ... *</h3>
@@ -98,8 +98,8 @@ function SignIn() {
           Numéro de téléphone
           <input
             className="ml-2 border rounded-md text-sm py-1 px-2"
-            type="mail"
-            name="mail"
+            type="tel"
+            name="phone"
             placeholder="+33 612345678"
           />
         </label>
