@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ExportContext from "./contexts/UserContext";
 
 import Connexion from "./pages/Connexion";
-import Profile from "./pages/Profile";
+import Profilepage from "./pages/Profilepage";
 import Dashboard from "./pages/Dashboard";
 import Submission from "./pages/Submission";
 import BackConnexion from "./pages/BackConnexion";
@@ -18,7 +18,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Connexion />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profilepage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/submission" element={<Submission />} />
 
