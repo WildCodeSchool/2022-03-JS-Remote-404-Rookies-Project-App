@@ -1,3 +1,4 @@
+/* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import "./Profile.css";
@@ -29,8 +30,8 @@ export default function ProfileEntreprise() {
               placeholder="Prénom"
               name="user_surname"
             />
+            {/* Faire un appel d'API pour uploader une photo/logo --> à revoir */}
             {/* <input type="file" id="photo">Photo</input> */}
-
             <label htmlFor="email">Email *</label>
             <input
               className="email"
@@ -90,6 +91,7 @@ export default function ProfileEntreprise() {
               placeholder="Le nom de votre entreprise"
               name="user_company"
             />
+            {/* Faire un appel d'API pour uploader une photo/logo --> à revoir */}
             {/* <input type="file" id="logo">Logo</input> */}
             <label htmlFor="description">Description de votre entreprise</label>
             <textarea
