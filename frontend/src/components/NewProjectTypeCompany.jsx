@@ -44,11 +44,11 @@ export default function NewProjectTypeCompany() {
         </div>
       </div>
       <div className="">
-        <h2 className="required text-lg font-semibold">
+        <h2 className="text-lg font-semibold">
           Quand peut s&apos;achever le projet au plus tard ? *
         </h2>
         <input
-          className="flex m-5 bg-white border border-black rounded-md"
+          className="required flex m-5 bg-white border border-black rounded-md"
           type="date"
         />
       </div>

@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import NewProjectTypeCompany from "../components/NewProjectTypeCompany";
 import NewProjectDescriptionCompany from "../components/NewProjectDescriptionCompany";
+import NewProjectDomainCompany from "../components/NewProjectDomainCompany";
+import NewProjectConsultingCompany from "../components/NewProjectConsultingCompany";
 
 function Project() {
   return (
@@ -9,6 +11,8 @@ function Project() {
       <Navbar />
       <NewProjectTypeCompany />
       <NewProjectDescriptionCompany />
+      <NewProjectDomainCompany />
+      <NewProjectConsultingCompany />
     </div>
   );
 }
