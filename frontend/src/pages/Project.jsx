@@ -1,18 +1,20 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import NewProjectTypeCompany from "../components/NewProjectTypeCompany";
-import NewProjectDescriptionCompany from "../components/NewProjectDescriptionCompany";
-import NewProjectDomainCompany from "../components/NewProjectDomainCompany";
-import NewProjectConsultingCompany from "../components/NewProjectConsultingCompany";
+// import NewProjectOrganisationSchool from "../components/NewProjectOrganisationSchool";
+// import NewProjectDescriptionSchool from "../components/NewProjectDescriptionSchool";
+// import NewProjectDomainSchool from "../components/NewProjectDomainSchool";
+// import NewProjectDatesClésSchool from "../components/NewProjectDatesClésSchool";
+import NewProjectProfileEcoleSchool from "../components/NewProjectProfileEcoleSchool";
 
 function Project() {
   return (
     <div className="flex">
       <Navbar />
-      <NewProjectTypeCompany />
-      <NewProjectDescriptionCompany />
-      <NewProjectDomainCompany />
-      <NewProjectConsultingCompany />
+      {/* <NewProjectOrganisationSchool /> */}
+      {/* <NewProjectDescriptionSchool /> */}
+      {/* <NewProjectDomainSchool /> */}
+      {/* <NewProjectDatesClésSchool /> */}
+      <NewProjectProfileEcoleSchool />
     </div>
   );
 }
