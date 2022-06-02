@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "level": "Tout niveau"
+    },
+    {
+        "id": 2,
+        "level": "Bac + 2"
+    },
+    {
+        "id": 3,
+        "level": "Bac + 3"
+    },
+    {
+        "id": 4,
+        "level": "Bac + 4"
+    },
+    {
+        "id": 5,
+        "level": "Bac + 5"
+    }
+]
