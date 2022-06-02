@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "field": "Marketing"
+    },
+    {
+        "id": 2,
+        "field": "Web Development"
+    },
+    {
+        "id": 3,
+        "field": "Business"
+    },
+    {
+        "id": 4,
+        "field": "Etude de marché"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "project_type": "Consulting : proposez une mission propre à votre entreprise et bénificier d’un renfort temporaire."
+    },
+    {
+        "id": 2,
+        "project_type": "Recruitement : proposez une mission pour trouvez les talents qu’il vous faut."
+    },
+    {
+        "id": 3,
+        "project_type": "Branding : proposez une mission pour promouvoir votre marque auprès des étudiants."
+    }
+]
