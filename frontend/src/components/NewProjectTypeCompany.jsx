@@ -7,9 +7,9 @@ export default function NewProjectTypeCompany() {
         <h2 className="text-lg font-semibold">
           Quel est le type de votre projet ? *
         </h2>
-        <div className="flex m-5 bg-white border-black rounded-md">
+        <div className="flex m-5 bg-white border border-black rounded-md">
           <input
-            className="m-5 flex-initial w-16"
+            className=" required m-5 flex-initial w-16"
             type="radio"
             name="consulting"
           />
@@ -18,9 +18,9 @@ export default function NewProjectTypeCompany() {
             bénificier d’un renfort temporaire.
           </h3>
         </div>
-        <div className="flex m-5 bg-white border-black rounded-md">
+        <div className="flex m-5 bg-white border border-black rounded-md">
           <input
-            className="m-5 flex-initial w-16"
+            className="required m-5 flex-initial w-16"
             type="radio"
             name="recruitment"
           />
@@ -31,9 +31,9 @@ export default function NewProjectTypeCompany() {
           </h3>
         </div>
 
-        <div className="flex m-5 bg-white border-black rounded-md">
+        <div className="flex m-5 bg-white border border-black rounded-md">
           <input
-            className="m-5 flex-initial w-16"
+            className="required m-5 flex-initial w-16"
             type="radio"
             name="branding"
           />
@@ -44,11 +44,11 @@ export default function NewProjectTypeCompany() {
         </div>
       </div>
       <div className="">
-        <h2 className="text-lg font-semibold">
+        <h2 className="required text-lg font-semibold">
           Quand peut s&apos;achever le projet au plus tard ? *
         </h2>
         <input
-          className="flex m-5 bg-white border-black rounded-md"
+          className="flex m-5 bg-white border border-black rounded-md"
           type="date"
         />
       </div>
