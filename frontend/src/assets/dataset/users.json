@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "firstname": "Jean-Jean",
+        "lastname": "Entrepreneur",
+        "email": "jean.jean@jeanmail.com",
+        "password":  "Motdepasse_1234",
+        "create-time": 20220601,
+        "phone": "+33612345678",
+        "role": "Founder",
+        "linkedin": "linkedin.com/jeanjean",
+        "photo": "./assets/random-user.jpg",
+        "entity_category_id": 1,
+        "company_id": 1,
+        "school_id": null,
+        "is_admin": 0
+    },
+    {       
+        "id": 2,
+        "firstname": "Margarett",
+        "lastname": "Teacher",
+        "email": "margarett.teacher@jeanmail.com",
+        "password":  "Motdepasse_1234",
+        "create-time": 20220528,
+        "phone": null,
+        "role": null,
+        "linkedin": null,
+        "photo": null,
+        "entity_category_id": 2,
+        "company_id": null,
+        "school_id": null,
+        "is_admin": 0
+    },
+    {
+        "id": 1,
+        "firstname": "Brigitte",
+        "lastname": "School",
+        "email": "brigitte.school@jeanmail.com",
+        "password":  "Motdepasse_1234",
+        "create-time": 20220412,
+        "phone": "+33612345689",
+        "role": "Teacher",
+        "linkedin": "linkedin.com/bridgetschool",
+        "photo": "./assets/random-user2.jpg",
+        "entity_category_id": 2,
+        "company_id": null,
+        "school_id": 1,
+        "is_admin": 0
+    }
+]
