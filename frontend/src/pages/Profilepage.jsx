@@ -1,7 +1,6 @@
-import Navbar from "@components/Navbar";
 import React from "react";
-import ProfileEcole from "../components/ProfileEcole";
-import ProfileEntreprise from "../components/ProfileEntreprise";
+import ProfileEcole from "../components/Profileécole";
+import ProfileEntreprise from "../components/Profileentreprise";
 
 function Profilepage() {
   return (

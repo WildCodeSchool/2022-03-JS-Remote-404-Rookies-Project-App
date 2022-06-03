@@ -17,14 +17,14 @@ function SignIn() {
       <div className="flex mb-3">
         <button
           className={`${
-            entity === "Entreprise"
+            entity === "entreprise"
               ? "bg-green-400 text-white font-semibold"
               : "text-gray-400 hover:bg-green-100"
           } p-2 w-32 border-2 rounded-md mr-4 text-semibold`}
           type="button"
-          onClick={() => setEntity("Entreprise")}
+          onClick={() => setEntity("entreprise")}
         >
-          Entreprise
+          entreprise
         </button>
         <button
           className={`${
