@@ -7,7 +7,7 @@
         "website": "https://dundermifflin-paper-company.com",
         "industry_id": 1,
         "workforce_id": 4,
-        "logo": "./assets/dunder-mifflin.jpg",
+        "logo": "./src/assets/dunder-mifflin.jpg",
         "company_project_id": null
     },
     {
