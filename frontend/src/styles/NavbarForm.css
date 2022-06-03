@@ -1,6 +1,7 @@
 /* COMPONENT WRAPPER */
 
 .company-NavBar-form {
+  width: 80vw;
   flex-direction: column;
   background-color: #f5f5f5;
   border-radius: 20px;
