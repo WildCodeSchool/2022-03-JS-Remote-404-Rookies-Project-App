@@ -1,24 +1,24 @@
 [
-    {
-        "id": 1,
-        "course": "Management international",
-        "training": "Master Commerce International",
-        "student_level_id": 3,
-        "campus": "Paris",
-        "student_workforce": 40,
-        "is_grouped": 1,
-        "group_size": 4,
-        "group_quantity": "2 groupes",
-        "weekly_time_dedicated": 8,
-        "objectives": "Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.",
-        "mission_examples": "Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem.Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.",
-        "submission_date": 20220715,
-        "start_date": 20220801,
-        "end_date": 20221101,
-        "industries_id": null,
-        "workforces_id": null,
-        "ideal_location": 1,
-        "commitment": "Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.",
-        "users_id": 2
-    }
+  {
+    "id": 1,
+    "course": "Management international",
+    "training": "Master Commerce International",
+    "student_level_id": 3,
+    "campus": "Paris",
+    "student_workforce": 40,
+    "is_grouped": 1,
+    "group_size": 4,
+    "group_quantity": "2 groupes",
+    "weekly_time_dedicated": 8,
+    "objectives": "Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.",
+    "mission_examples": "Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem.Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.",
+    "submission_date": 20220715,
+    "start_date": 20220801,
+    "end_date": 20221101,
+    "industries_id": null,
+    "workforces_id": null,
+    "ideal_location": 1,
+    "commitment": "Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.",
+    "users_id": 2
+  }
 ]

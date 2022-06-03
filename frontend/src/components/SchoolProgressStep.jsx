@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import SchoolNavigationForm from "./SchoolNavigationForm";
+import NewProjectOrganisationSchool from "./NewProjectOrganisationSchool";
+import NewProjectDescriptionSchool from "./NewProjectDescriptionSchool";
+import NewProjectDatesClésSchool from "./NewProjectDatesClésSchool";
+import NewProjectDomainSchool from "./NewProjectDomainSchool";
 
 import "../styles/NavbarForm.css";
 
 import types from "../assets/types.png";
-import description from "../assets/description.png";
-import domaine from "../assets/domaine.png";
+import description from "../assets/Description.png";
+import domaine from "../assets/Domaine.png";
 import keyDates from "../assets/keyDates.png";
-import entreprise from "../assets/entreprise.png";
-import apercu from "../assets/apercu.png";
+import entreprise from "../assets/Entreprise.png";
+import apercu from "../assets/Apercu.png";
 
-import vector from "../assets/vector.png";
-import vectorG from "../assets/vectorG.png";
+import vector from "../assets/Vector.png";
+import vectorG from "../assets/VectorG.png";
 
 function SchoolProgressStep() {
   const labelArray = [
@@ -44,10 +48,26 @@ function SchoolProgressStep() {
       />
 
       <div className="layout-wrapper">
-        {currentStep === 1 && <div className="form-wrapper">formulaire 1</div>}
-        {currentStep === 2 && <div className="form-wrapper">formulaire 2</div>}
-        {currentStep === 3 && <div className="form-wrapper">formulaire 3</div>}
-        {currentStep === 4 && <div className="form-wrapper">formulaire 4</div>}
+        {currentStep === 1 && (
+          <div className="form-wrapper">
+            <NewProjectOrganisationSchool />
+          </div>
+        )}
+        {currentStep === 2 && (
+          <div className="form-wrapper">
+            <NewProjectDescriptionSchool />
+          </div>
+        )}
+        {currentStep === 3 && (
+          <div className="form-wrapper">
+            <NewProjectDomainSchool />
+          </div>
+        )}
+        {currentStep === 4 && (
+          <div className="form-wrapper">
+            <NewProjectDatesClésSchool />
+          </div>
+        )}
         {currentStep === 5 && <div className="form-wrapper">formulaire 5</div>}
         <div className="button-wrapper">
           {currentStep > 1 && (

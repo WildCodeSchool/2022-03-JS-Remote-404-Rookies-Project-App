@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NewProjectConsultingCompany() {
   return (
-    <div className="bg-stone-200 m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="w-fit bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
       <h2 className="text-lg font-semibold">Le nom de votre entreprise *</h2>
       <div className="flex m-5 bg-white border border-black rounded-md">
         <input
