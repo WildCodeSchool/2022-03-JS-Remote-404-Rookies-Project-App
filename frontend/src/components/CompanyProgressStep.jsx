@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import CompanyStepNavigationForm from "./CompanyStepNavigationForm";
 import "../styles/NavbarForm.css";
 
-import apercu from "../assets/apercu.png";
-import description from "../assets/description.png";
-import domaine from "../assets/domaine.png";
-import entreprise from "../assets/entreprise.png";
+import apercu from "../assets/Apercu.png";
+import description from "../assets/Description.png";
+import domaine from "../assets/Domaine.png";
+import entreprise from "../assets/Entreprise.png";
 import types from "../assets/types.png";
-import vector from "../assets/vector.png";
-import vectorG from "../assets/vectorG.png";
+import vector from "../assets/Vector.png";
+import vectorG from "../assets/VectorG.png";
 
 function CompanyProgressStep() {
   const labelArray = ["Type", "Description", "Domaine", "Entreprise", "Aperçu"];

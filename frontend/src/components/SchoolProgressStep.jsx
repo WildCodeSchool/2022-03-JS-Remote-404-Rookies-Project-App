@@ -4,14 +4,13 @@ import SchoolNavigationForm from "./SchoolNavigationForm";
 import "../styles/NavbarForm.css";
 
 import types from "../assets/types.png";
-import description from "../assets/description.png";
-import domaine from "../assets/domaine.png";
+import description from "../assets/Description.png";
+import domaine from "../assets/Domaine.png";
 import keyDates from "../assets/keyDates.png";
-import entreprise from "../assets/entreprise.png";
-import apercu from "../assets/apercu.png";
-
-import vector from "../assets/vector.png";
-import vectorG from "../assets/vectorG.png";
+import entreprise from "../assets/Entreprise.png";
+import apercu from "../assets/Apercu.png";
+import vector from "../assets/Vector.png";
+import vectorG from "../assets/VectorG.png";
 
 function SchoolProgressStep() {
   const labelArray = [
