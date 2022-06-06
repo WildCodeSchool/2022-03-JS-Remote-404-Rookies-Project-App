@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "industry": "Marketing"
+    },
+    {
+        "id": 2,
+        "industry": "Santé"
+    },
+    {
+        "id": 3,
+        "industry": "Services"
+    },
+    {
+        "id": 4,
+        "industry": "Technologies"
+    },
+    {
+        "id": 5,
+        "industry": "Telecoms"
+    }
+]

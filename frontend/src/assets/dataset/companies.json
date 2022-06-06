@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Dunder Mifflin",
+        "description": "Nous vendons du papier. Notre boss Michael est pas ouf, mais on peu bosser à la cool chez nous. Pas de travail en remote.",
+        "address": "Scranton, Pennsylvania",
+        "website": "https://dundermifflin-paper-company.com",
+        "industry_id": 1,
+        "workforce_id": 4,
+        "logo": "./src/assets/dunder-mifflin.jpg",
+        "company_project_id": null
+    },
+    {
+        "id": 1,
+        "name": "The Boring Company",
+        "description": null,
+        "address": null,
+        "website": null,
+        "industry_id": null,
+        "workforce_id": null,
+        "logo": null,
+        "company_project_id": null
+    }
+]

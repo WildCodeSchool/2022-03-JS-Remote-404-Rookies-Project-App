@@ -1,0 +1,81 @@
+#profile-page {
+}
+#profile-form {
+  border-radius: 5px;
+}
+
+#informations-form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+/* .phone,
+.email,
+.social-media,
+.campus,
+.web,
+.name,
+.surname {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+} */
+
+#école-form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+#changement-mdp-form {
+  border-radius: 5px;
+}
+#suppr-mon-compte-form {
+  border-radius: 5px;
+}
+
+input {
+  border: solid 1px black;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px black;
+}
+
+textarea {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px black;
+}
+label {
+  padding: 5px;
+}
+form {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+button {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+placeholder {
+  padding: 5px;
+}
+.placeholder-delete {
+  color: red;
+}
