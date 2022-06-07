@@ -1,11 +1,11 @@
 import React from "react";
 
-import plusLogo from "../assets/add.png";
-import blankPic from "../assets/blank-profile-picture.png";
-import modify from "../assets/modify.png";
+import plusLogo from "../../assets/pictures/add.png";
+import blankPic from "../../assets/pictures/blank-profile-picture.png";
+import modify from "../../assets/pictures/modify.png";
 
-import schools from "../assets/dataset/schools.json";
-import companies from "../assets/dataset/companies.json";
+import schools from "../../assets/dataset/schools.json";
+import companies from "../../assets/dataset/companies.json";
 
 import DashboardButton from "./DashboardButton";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-function SchoolStepForm({ selected, label, labelImages }) {
+function StepForm({ selected, label, labelImages }) {
   return (
     <div className={`stepblock${selected ? " selected" : ""}`}>
       <div className="circlewrapper">
@@ -13,4 +13,4 @@ function SchoolStepForm({ selected, label, labelImages }) {
   );
 }
 
-export default SchoolStepForm;
+export default StepForm;

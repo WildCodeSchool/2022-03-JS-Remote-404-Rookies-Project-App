@@ -1,18 +1,18 @@
 [
-    {
-        "id": 1,
-        "name": "Poudlard",
-        "description": "Ecole tout à fait normale, pas d'étudiants en danger ou de créatures dangereuses sur lesquelles on peut tomber au travers d'un couloir.",
-        "website": "https://www.poudlard.com",
-        "logo": "./src/assets/poudlard.jpg",
-        "school_project_id": null
-    },
-    {
-        "id": 1,
-        "name": "Beauxbatons",
-        "description": null,
-        "website": null,
-        "logo": null,
-        "school_project_id": null
-    }
+  {
+    "id": 1,
+    "name": "Poudlard",
+    "description": "Ecole tout à fait normale, pas d'étudiants en danger ou de créatures dangereuses sur lesquelles on peut tomber au travers d'un couloir.",
+    "website": "https://www.poudlard.com",
+    "logo": "./src/assets/pictures/poudlard.jpg",
+    "school_project_id": null
+  },
+  {
+    "id": 1,
+    "name": "Beauxbatons",
+    "description": null,
+    "website": null,
+    "logo": null,
+    "school_project_id": null
+  }
 ]

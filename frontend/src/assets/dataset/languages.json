@@ -1,18 +1,18 @@
 [
-    {
-        "id": 1,
-        "language": "Français"
-    },
-    {
-        "id": 2,
-        "language": "Anglais"
-    },
-    {
-        "id": 3,
-        "language": "Espagnol"
-    },
-    {
-        "id": 4,
-        "language": "Allemand"
-    }
+  {
+    "id": 1,
+    "language": "Français"
+  },
+  {
+    "id": 2,
+    "language": "Anglais"
+  },
+  {
+    "id": 3,
+    "language": "Espagnol"
+  },
+  {
+    "id": 4,
+    "language": "Allemand"
+  }
 ]

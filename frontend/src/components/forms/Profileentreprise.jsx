@@ -1,9 +1,9 @@
 /* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
-import "./Profile.css";
+import "../../styles/Profile.css";
 
-export default function ProfileEcole() {
+export default function ProfileEntreprise() {
   return (
     <div className="text-left ..." id="profile-page">
       <div className="text-emerald-700 font-semibold  p-7" id="profile-title">
@@ -82,37 +82,43 @@ export default function ProfileEcole() {
           </form>
         </div>
         <div className="border-b-2 border-black p-2" id="école-form">
-          <h2 className="font-bold">Mon école</h2>
+          <h2 className="font-bold">Mon entreprise</h2>
           <form>
-            <label htmlFor="school">Le nom de votre école *</label>
+            <label htmlFor="company name">Le nom de votre école *</label>
             <input
               required
               type="text"
-              placeholder="Le nom de votre école"
-              name="user_school"
+              placeholder="Le nom de votre entreprise"
+              name="user_company"
             />
             {/* Faire un appel d'API pour uploader une photo/logo --> à revoir */}
             {/* <input type="file" id="logo">Logo</input> */}
-            <label htmlFor="descr">Description de votre école</label>
+            <label htmlFor="description">Description de votre entreprise</label>
             <textarea
               type="text"
               rows="5"
-              placeholder="Description de votre école"
-              name="user_school_descr"
+              placeholder="Description de votre entreprise"
+              name="user_company_descr"
             />
-            <label htmlFor="domain">Domaines d&apos;enseignement</label>
-            <select name="user_domain">
-              <option value="domaine 1">Domaine 1</option>
-              <option value="domaine 2">Domaine 2</option>
-              <option value="domaine 3">Domaine 3</option>
-            </select>
-            <label htmlFor="campus">Localisation des campus</label>
+            <label htmlFor="campus">Localisation de votre entreprise</label>
             <select className="campus" name="user_campus">
               <option value="lieu 1">Lieu 1</option>
               <option value="lieu 2">Lieu 2</option>
               <option value="lieu 3">Lieu 3</option>
             </select>
-            <label htmlFor="web">Site web</label>
+            <label htmlFor="effectif">Effectif de l&apos;entreprise</label>
+            <select name="user_domain">
+              <option value="effectif 1">Effectif 1</option>
+              <option value="effectif 2">Effectif 2</option>
+              <option value="effectif 3">Effectif 3</option>
+            </select>
+            <label htmlFor="industrie">Industrie</label>
+            <select className="industrie" name="user_industry">
+              <option value="industrie 1">Industrie 1</option>
+              <option value="industrie 2">Industrie 2</option>
+              <option value="industrie 3">Industrie 3</option>
+            </select>
+            <label>Site web</label>
             <input
               className="web"
               type="text"
