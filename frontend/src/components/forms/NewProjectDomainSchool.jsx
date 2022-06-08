@@ -2,11 +2,9 @@ import React from "react";
 
 export default function NewProjectDomainSchool() {
   return (
-    <div className="bg-gray-100 m-10 p-10  flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 p-10 flex flex-wrap justify-around flex-col">
       <div>
-        <h2 className="text-lg font-semibold">
-          Quel est le domaine de votre projet ? *
-        </h2>
+        <h2 className="text-base">Quel est le domaine de votre projet ? *</h2>
         <p className="p-5 font-extralight text-s">
           Choisissez 5 catégories maximum qui correspondent le mieux à votre
           projet
@@ -37,9 +35,7 @@ export default function NewProjectDomainSchool() {
       </div>
       {/* MANQUE DONNEES */}
       <div>
-        <h2 className="text-lg font-semibold">
-          Quelles sont les langues disponibles ? *
-        </h2>
+        <h2 className="text-base">Quelles sont les langues disponibles ? *</h2>
         <p className="p-5 font-extralight text-s">
           Quelles sera la/les langues utlisées lors du projet ?
         </p>
