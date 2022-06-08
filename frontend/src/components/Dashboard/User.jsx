@@ -1,10 +1,10 @@
 import React from "react";
 
-import modify from "../assets/modify.png";
-import userLogo from "../assets/user-logo.png";
-import mailLogo from "../assets/mail-logo.png";
+import modify from "../../assets/pictures/modify.png";
+import userLogo from "../../assets/pictures/user-logo.png";
+import mailLogo from "../../assets/pictures/mail-logo.png";
 
-import blankPic from "../assets/blank-profile-picture.png";
+import blankPic from "../../assets/pictures/blank-profile-picture.png";
 
 import DashboardButton from "./DashboardButton";
 

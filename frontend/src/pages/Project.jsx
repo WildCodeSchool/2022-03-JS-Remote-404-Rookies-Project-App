@@ -1,11 +1,9 @@
 import React from "react";
 
-import Navbar from "../components/Navbar";
-
 function Project() {
   return (
     <div className="flex h-full">
-      <Navbar />
+      <h1>Projets</h1>
     </div>
   );
 }

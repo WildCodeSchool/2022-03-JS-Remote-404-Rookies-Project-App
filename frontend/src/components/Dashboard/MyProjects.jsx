@@ -1,6 +1,6 @@
 import React from "react";
 
-import plusLogo from "../assets/add.png";
+import plusLogo from "../../assets/pictures/add.png";
 
 import DashboardButton from "./DashboardButton";
 

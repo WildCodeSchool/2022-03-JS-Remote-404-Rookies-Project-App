@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function NewProjectOrganisationSchool() {
+function NewProjectOrganisationSchool() {
   return (
     <div className="bg-stone-200 m-10 p-10 flex justify-around flex-col rounded-md w-full">
       <div className="flex flex-col">
@@ -272,3 +272,4 @@ export default function NewProjectOrganisationSchool() {
     </div>
   );
 }
+export default NewProjectOrganisationSchool;
