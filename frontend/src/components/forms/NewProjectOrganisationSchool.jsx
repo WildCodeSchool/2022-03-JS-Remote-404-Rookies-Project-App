@@ -2,7 +2,7 @@ import React from "react";
 
 function NewProjectOrganisationSchool() {
   return (
-    <div className="bg-stone-200 m-10 p-10 flex justify-around flex-col rounded-md w-full">
+    <div className="bg-gray-100 w-fit m-10 p-10 flex justify-around flex-col rounded-md">
       <div className="flex flex-col">
         <h2 className="text-lg font-semibold">Votre école *</h2>
         <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">

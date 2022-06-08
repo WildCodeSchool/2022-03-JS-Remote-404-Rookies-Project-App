@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NewProjectDescriptionCompany() {
   return (
-    <div className="bg-stone-200 m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 w-fit m-10 p-10 flex justify-around flex-col rounded-md">
       <div>
         <h2 className="text-lg font-semibold">Nom du projet ? *</h2>
         <div className="flex m-5 bg-white border border-black rounded-md">
