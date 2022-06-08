@@ -18,16 +18,15 @@
   padding: 1rem 0;
   justify-content: center;
   color: var(--color2);
-  font-weight: bold;
 }
 .menu-items li img {
   margin-right: 1rem;
 }
 
 .active {
-  margin-right: -90px;
+  margin-right: -80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -36,7 +35,6 @@
   border-bottom-left-radius: 30px;
   background-color: var(--color2);
   color: var(--color3);
-  font-weight: bold;
 }
 
 .inactive {
