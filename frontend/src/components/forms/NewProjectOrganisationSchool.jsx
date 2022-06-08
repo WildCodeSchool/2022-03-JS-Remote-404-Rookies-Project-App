@@ -2,9 +2,9 @@ import React from "react";
 
 function NewProjectOrganisationSchool() {
   return (
-    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 p-10 flex justify-around flex-col">
       <div className="flex flex-col">
-        <h2 className="text-lg font-semibold">Votre école *</h2>
+        <h2 className="text-base">Votre école *</h2>
         <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             <option>Ecole 1</option>
@@ -23,7 +23,7 @@ function NewProjectOrganisationSchool() {
         </div>
       </div>
       <div>
-        <h2 className="text-lg font-semibold">Nom de votre cours *</h2>
+        <h2 className="text-base">Nom de votre cours *</h2>
         <div className="flex m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
@@ -50,8 +50,8 @@ function NewProjectOrganisationSchool() {
 
       <div className="flex flex-row ">
         <div className="mr-10">
-          <h2 className="text-lg font-semibold">Formation ? *</h2>
-          <div className="flex m-5 w-96 bg-white border border-black rounded-md">
+          <h2 className="text-base">Formation ? *</h2>
+          <div className="flex m-5 bg-white border border-black rounded-md">
             <input
               className="required form-control
           block
@@ -76,8 +76,8 @@ function NewProjectOrganisationSchool() {
         </div>
         {/* MANQUE LES DONNEES */}
         <div className="flex flex-col ml-30">
-          <h2 className="text-lg font-semibold">Niveau des étudiants ? *</h2>
-          <div className="inline-block relative w-96 m-5 bg-white border border-black rounded-md">
+          <h2 className="text-base">Niveau des étudiants ? *</h2>
+          <div className="inline-block relative m-5 bg-white border border-black rounded-md">
             <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
               <option>Niveau 1</option>
               <option>Niveau 2</option>
@@ -96,8 +96,8 @@ function NewProjectOrganisationSchool() {
         </div>
       </div>
       {/* MANQUE LES DONNEES */}
-      <h2 className="text-lg font-semibold">Campus concerné ? *</h2>
-      <div className="inline-block relative w-96 m-5 bg-white border border-black rounded-md">
+      <h2 className="text-base">Campus concerné ? *</h2>
+      <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
         <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
           <option>Campus 1</option>
           <option>Campus 2</option>
@@ -115,18 +115,17 @@ function NewProjectOrganisationSchool() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-base">
           Combien d’étudiants seront disponibles dans votre cours ? *
         </h2>
         <p className="p-5 font-extralight text-xs">
           Donnez votre meilleure estimation du nombre total des étudiants
           participant au cours
         </p>
-        <div className="flex m-5 bg-white border border-black rounded-md">
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
           block
-          w-96
           px-3
           py-1.5
           text-base
@@ -146,10 +145,8 @@ function NewProjectOrganisationSchool() {
         </div>
       </div>
       <div>
-        <h2 className="text-lg font-semibold">
-          Comment travailleront les étudiants ? *
-        </h2>
-        <div className="flex flex-row justify-center">
+        <h2 className="text-base">Comment travailleront les étudiants ? *</h2>
+        <div className="flex flex-wrapflex-row justify-center">
           <button
             type="button"
             className="p-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -165,10 +162,8 @@ function NewProjectOrganisationSchool() {
         </div>
       </div>
       <div className="flex flex-col">
-        <h2 className="text-lg font-semibold">
-          Nombre de groupes par entreprise ? *
-        </h2>
-        <div className="flex m-5 bg-white border border-black rounded-md">
+        <h2 className="text-base">Nombre de groupes par entreprise ? *</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
           block
@@ -192,11 +187,9 @@ function NewProjectOrganisationSchool() {
         </div>
       </div>
 
-      <div className="flex flex-row justify-center m-5">
+      <div className="flex flex-wrap flex-row justify-center m-5">
         <div className="flex flex-row">
-          <h2 className="text-l font-semibold mr-10 ">
-            Nombre d’étudiants par entreprise{" "}
-          </h2>
+          <h2 className="text-base ">Nombre d’étudiants par entreprise</h2>
           <button
             type="button"
             className="text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
@@ -205,7 +198,7 @@ function NewProjectOrganisationSchool() {
           </button>
         </div>
         <div className="flex flex-row">
-          <h2 className="text-l font-semibold mr-10">Nombre d’entreprises</h2>
+          <h2 className="text-base">Nombre d’entreprises</h2>
           <button
             type="button"
             className="text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
@@ -216,7 +209,7 @@ function NewProjectOrganisationSchool() {
       </div>
 
       <div className="flex flex-col">
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-base">
           Combien d’heures par semaine approximativement vont être allouées par
           étudiant ? *
         </h2>

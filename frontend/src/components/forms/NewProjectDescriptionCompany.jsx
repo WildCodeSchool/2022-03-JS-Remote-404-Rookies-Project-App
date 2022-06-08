@@ -2,10 +2,10 @@ import React from "react";
 
 export default function NewProjectDescriptionCompany() {
   return (
-    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 p-10 flex flex-wrap justify-around flex-col">
       <div>
-        <h2 className="text-lg font-semibold">Nom du projet ? *</h2>
-        <div className="flex m-5 bg-white border border-black rounded-md">
+        <h2 className="text-base">Nom du projet ? *</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
           block
@@ -30,14 +30,12 @@ export default function NewProjectDescriptionCompany() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold">
-          Quel est votre objectif principal ? *
-        </h2>
+        <h2 className="text-base">Quel est votre objectif principal ? *</h2>
         <p className="p-5 font-extralight text-s">
           Décrivez le problème que les étudiants devront solutionner et le
           résultat attendu des étudiants.
         </p>
-        <div className="flex m-5 bg-white border border-black rounded-md">
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
           block
@@ -62,7 +60,7 @@ export default function NewProjectDescriptionCompany() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-base">
           Quelles seront les ressources disponibles pour les étudiants ? *
         </h2>
         <p className="p-5 font-extralight text-s">
@@ -70,7 +68,7 @@ export default function NewProjectDescriptionCompany() {
           disponible, accès aux outils internes, documents utiles, membre de
           l’équipe disponible).
         </p>
-        <div className="flex m-5 bg-white border border-black rounded-md">
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
           block
