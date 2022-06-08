@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NewProjectDescriptionCompany() {
   return (
-    <div className="bg-gray-100 w-fit m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
       <div>
         <h2 className="text-lg font-semibold">Nom du projet ? *</h2>
         <div className="flex m-5 bg-white border border-black rounded-md">
@@ -33,7 +33,7 @@ export default function NewProjectDescriptionCompany() {
         <h2 className="text-lg font-semibold">
           Quel est votre objectif principal ? *
         </h2>
-        <p className="p-5 font-extralight text-xs">
+        <p className="p-5 font-extralight text-s">
           Décrivez le problème que les étudiants devront solutionner et le
           résultat attendu des étudiants.
         </p>
@@ -65,7 +65,7 @@ export default function NewProjectDescriptionCompany() {
         <h2 className="text-lg font-semibold">
           Quelles seront les ressources disponibles pour les étudiants ? *
         </h2>
-        <p className="p-5 font-extralight text-xs">
+        <p className="p-5 font-extralight text-s">
           Décrivez les ressources que vous pourrait mettre à disposition (temps
           disponible, accès aux outils internes, documents utiles, membre de
           l’équipe disponible).

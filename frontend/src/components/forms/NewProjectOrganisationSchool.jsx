@@ -2,7 +2,7 @@ import React from "react";
 
 function NewProjectOrganisationSchool() {
   return (
-    <div className="bg-gray-100 w-fit m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
       <div className="flex flex-col">
         <h2 className="text-lg font-semibold">Votre école *</h2>
         <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
@@ -51,7 +51,7 @@ function NewProjectOrganisationSchool() {
       <div className="flex flex-row ">
         <div className="mr-10">
           <h2 className="text-lg font-semibold">Formation ? *</h2>
-          <div className="flex m-5 w-64 bg-white border border-black rounded-md">
+          <div className="flex m-5 w-96 bg-white border border-black rounded-md">
             <input
               className="required form-control
           block
@@ -74,10 +74,10 @@ function NewProjectOrganisationSchool() {
             />
           </div>
         </div>
-
-        <div className="flex flex-col mr-40">
+        {/* MANQUE LES DONNEES */}
+        <div className="flex flex-col ml-30">
           <h2 className="text-lg font-semibold">Niveau des étudiants ? *</h2>
-          <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
+          <div className="inline-block relative w-96 m-5 bg-white border border-black rounded-md">
             <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
               <option>Niveau 1</option>
               <option>Niveau 2</option>
@@ -95,8 +95,9 @@ function NewProjectOrganisationSchool() {
           </div>
         </div>
       </div>
+      {/* MANQUE LES DONNEES */}
       <h2 className="text-lg font-semibold">Campus concerné ? *</h2>
-      <div className="inline-block relative w-64 m-5 bg-white border border-black rounded-md">
+      <div className="inline-block relative w-96 m-5 bg-white border border-black rounded-md">
         <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
           <option>Campus 1</option>
           <option>Campus 2</option>
@@ -125,7 +126,7 @@ function NewProjectOrganisationSchool() {
           <input
             className="required form-control
           block
-          w-full
+          w-96
           px-3
           py-1.5
           text-base
@@ -148,7 +149,7 @@ function NewProjectOrganisationSchool() {
         <h2 className="text-lg font-semibold">
           Comment travailleront les étudiants ? *
         </h2>
-        <div className="flex flex-row m-5">
+        <div className="flex flex-row justify-center">
           <button
             type="button"
             className="p-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -161,32 +162,6 @@ function NewProjectOrganisationSchool() {
           >
             En groupe
           </button>
-        </div>
-        <div className="flex flex-col">
-          <h2 className="text-lg font-semibold">
-            Combien d’étudiants seront disponibles dans votre cours ? *
-          </h2>
-
-          <input
-            className="required form-control
-          flex
-          w-64
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-black
-          rounded
-          transition
-          ease-in-out
-          m-5
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
-            name="nb-students"
-            placeholder="40"
-          />
         </div>
       </div>
       <div className="flex flex-col">
@@ -217,7 +192,7 @@ function NewProjectOrganisationSchool() {
         </div>
       </div>
 
-      <div className="flex flex-row m-5">
+      <div className="flex flex-row justify-center m-5">
         <div className="flex flex-row">
           <h2 className="text-l font-semibold mr-10 ">
             Nombre d’étudiants par entreprise{" "}

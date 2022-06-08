@@ -2,9 +2,9 @@ import React from "react";
 
 export default function NewProjectProfileEcoleSchool() {
   return (
-    <div className="bg-gray-100 w-fit m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
       <div className="flex flex-row ">
-        <div className="flex flex-col mr-40">
+        <div className="flex flex-col mr-40 w-96">
           <h2 className="text-lg font-semibold">
             Taille de l’entreprise idéale
           </h2>
@@ -25,7 +25,7 @@ export default function NewProjectProfileEcoleSchool() {
             </div>
           </div>
         </div>
-        <div className="mr-10">
+        <div className="mr-10 ml-26 w-96">
           <h2 className="text-lg font-semibold">
             Industrie qui correspondrait au cours
           </h2>
