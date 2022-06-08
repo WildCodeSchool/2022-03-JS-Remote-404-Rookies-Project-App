@@ -10,7 +10,7 @@ export default function ProfileEntreprise() {
         <h1 className="text-lg font-semibold">Mon profil</h1>
       </div>
 
-      <div className="bg-stone-200 m-10 p-10" id="profile-form">
+      <div className="bg-gray-100 m-10 p-10" id="profile-form">
         <div className="border-b-2 border-black p-2" id="informations-form">
           <h2 className="font-bold">Mes informations</h2>
           <form>

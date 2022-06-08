@@ -2,10 +2,10 @@ import React from "react";
 
 export default function NewProjectDescriptionSchool() {
   return (
-    <div className="bg-stone-200 m-10 p-10 w-full flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
       <div>
         <h2 className="text-lg font-semibold">Décrivez votre projet *</h2>
-        <p className="p-5 font-extralight text-xs">
+        <p className="p-5 font-extralight text-s">
           Quels sont les objectifs pédagogiques du projet ? *
         </p>
         <div className="flex m-10 bg-white border border-black rounded-md">
@@ -32,7 +32,7 @@ export default function NewProjectDescriptionSchool() {
         </div>
       </div>
       <div>
-        <p className="p-5 font-extralight text-xs">
+        <p className="p-5 font-extralight text-s">
           Quels exemples de missions seraient compatibles avec vos enjeux
           universitaire ? *
         </p>
