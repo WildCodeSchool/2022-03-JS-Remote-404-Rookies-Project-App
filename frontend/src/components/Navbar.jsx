@@ -18,12 +18,12 @@ function Navbar() {
               isActive
                 ? {
                     background:
-                      "url('./src/assets/pictures/home_active.png') no-repeat 25% ",
+                      "url('./src/assets/pictures/home_active.png') no-repeat 20% ",
                     backgroundColor: "white",
                   }
                 : {
                     background:
-                      "url('./src/assets/pictures/homeform.png')no-repeat 25%",
+                      "url('./src/assets/pictures/homeform.png')no-repeat 20%",
                     backgroundColor: "#14705a",
                   }
             }
@@ -40,12 +40,12 @@ function Navbar() {
               isActive
                 ? {
                     background:
-                      "url('./src/assets/pictures/folder_fill_active.png') no-repeat 25% ",
+                      "url('./src/assets/pictures/folder_fill_active.png') no-repeat 20% ",
                     backgroundColor: "white",
                   }
                 : {
                     background:
-                      "url('./src/assets/pictures/folder_fill.png')no-repeat 25%",
+                      "url('./src/assets/pictures/folder_fill.png')no-repeat 20%",
                     backgroundColor: "#14705a",
                   }
             }
@@ -61,12 +61,12 @@ function Navbar() {
               isActive
                 ? {
                     background:
-                      "url('./src/assets/pictures/user_active.png') no-repeat 25% ",
+                      "url('./src/assets/pictures/user_active.png') no-repeat 20% ",
                     backgroundColor: "white",
                   }
                 : {
                     background:
-                      "url('./src/assets/pictures/user.png')no-repeat 25%",
+                      "url('./src/assets/pictures/user.png')no-repeat 20%",
                     backgroundColor: "#14705a",
                   }
             }
