@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ExportContext from "./contexts/UserContext";
+import ExportContext2 from "./contexts/ProjectContext";
 
 import Profilepage from "./pages/Profilepage";
 import Dashboard from "./pages/Dashboard";
@@ -18,24 +19,26 @@ function App() {
   return (
     <div className="App">
       <ExportContext.UserProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<ConnexionLayout />}>
-              <Route path="" element={<SignIn />} />
-              <Route path="login/" element={<LogIn />} />
-            </Route>
+        <ExportContext2.ProjectProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<ConnexionLayout />}>
+                <Route path="" element={<SignIn />} />
+                <Route path="login/" element={<LogIn />} />
+              </Route>
 
-            <Route path="/profile" element={<Profilepage />} />
-            <Route path="/dashboard" element={<DashboardLayout />}>
-              <Route path="" element={<Dashboard />} />
-              <Route path="submission/:type" element={<Submission />} />
-              <Route path="project/" element={<Project />} />
-            </Route>
+              <Route path="/profile" element={<Profilepage />} />
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route path="" element={<Dashboard />} />
+                <Route path="submission/:type" element={<Submission />} />
+                <Route path="project/" element={<Project />} />
+              </Route>
 
-            <Route path="/back" element={<BackConnexion />} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </Router>
+              <Route path="/back" element={<BackConnexion />} />
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </Router>
+        </ExportContext2.ProjectProvider>
       </ExportContext.UserProvider>
     </div>
   );
