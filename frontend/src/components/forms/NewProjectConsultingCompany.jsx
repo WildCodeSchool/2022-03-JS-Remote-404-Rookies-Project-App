@@ -5,9 +5,9 @@ import range from "../../assets/dataset/workforce.json";
 
 export default function NewProjectConsultingCompany() {
   return (
-    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
-      <h2 className="text-lg font-semibold">Le nom de votre entreprise *</h2>
-      <div className="flex m-5 bg-white border border-black rounded-md">
+    <div className="bg-gray-100 p-10 flex justify-around flex-col">
+      <h2 className="text-base">Le nom de votre entreprise *</h2>
+      <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
         <input
           className="required form-control
           block
@@ -33,10 +33,8 @@ export default function NewProjectConsultingCompany() {
       {/* Faire un appel d'API pour uploader une photo/logo --> à revoir */}
       {/* <input type="file" id="photo">Logo</input> */}
 
-      <h2 className="text-lg font-semibold">
-        Description de l&apos;entreprise*
-      </h2>
-      <div className="flex m-5 bg-white border border-black rounded-md">
+      <h2 className="text-base">Description de l&apos;entreprise*</h2>
+      <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
         <input
           className="required form-control
           block
@@ -59,16 +57,16 @@ export default function NewProjectConsultingCompany() {
         />
       </div>
 
-      <div className="flex">
-        <h2 className="text-lg font-semibold">Industrie</h2>
-
-        <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
+      <div className="flex flex-wrap">
+        <h2 className="text-base">Industrie</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             {industries.map((d) => (
               <option>{d.industry}</option>
             ))}
           </select>
         </div>
+
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg
             className="fill-current h-4 w-4"
@@ -81,8 +79,8 @@ export default function NewProjectConsultingCompany() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold">Site web</h2>
-        <div className="flex m-5 w-96 bg-white border border-black rounded-md">
+        <h2 className="text-base">Site web</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="form-control
           block
@@ -107,10 +105,7 @@ export default function NewProjectConsultingCompany() {
       </div>
 
       <div className="flex">
-        <h2 className="text-lg font-semibold">
-          Localisation de l&apos;entreprise
-        </h2>
-        <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
+        <h2 className="text-base">Localisation de l&apos;entreprise</h2>
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             {localisation.map((d) => (
               <option>{d.localisation}</option>
@@ -127,8 +122,8 @@ export default function NewProjectConsultingCompany() {
             </svg>
           </div>
         </div>
-        <h2 className="text-lg font-semibold">Effectif de l&apos;entreprise</h2>
-        <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
+<h2 className="text-base">Effectif de l&apos;entreprise</h2>
+<div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             {range.map((d) => (
               <option>{d.range}</option>

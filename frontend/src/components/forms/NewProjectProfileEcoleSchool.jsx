@@ -3,12 +3,10 @@ import range from "../../assets/dataset/workforce.json";
 
 export default function NewProjectProfileEcoleSchool() {
   return (
-    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
+    <div className="bg-gray-100 p-10 flex justify-around flex-col">
       <div className="flex flex-row ">
-        <div className="flex flex-col mr-40 w-96">
-          <h2 className="text-lg font-semibold">
-            Taille de l’entreprise idéale
-          </h2>
+        <div className="flex flex-wrap flex-col mr-40">
+          <h2 className="text-base">Taille de l’entreprise idéale</h2>
           <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
             <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
               {range.map((d) => (
@@ -26,10 +24,8 @@ export default function NewProjectProfileEcoleSchool() {
             </div>
           </div>
         </div>
-        <div className="mr-10 ml-26 w-96">
-          <h2 className="text-lg font-semibold">
-            Industrie qui correspondrait au cours
-          </h2>
+        <div className="mr-10 ml-26">
+          <h2 className="text-base">Industrie qui correspondrait au cours</h2>
           <div className="flex m-5 w-64 bg-white border border-black rounded-md">
             <input
               className="required form-control
@@ -55,10 +51,8 @@ export default function NewProjectProfileEcoleSchool() {
       </div>
       <div>
         <div className="mr-10">
-          <h2 className="text-lg font-semibold">
-            Localisation de l’entreprise idéale
-          </h2>
-          <div className="flex m-5 w-full bg-white border border-black rounded-md">
+          <h2 className="text-base">Localisation de l’entreprise idéale</h2>
+          <div className="flex flex-wrap m-5 w-full bg-white border border-black rounded-md">
             <input
               className="required form-control
           block
@@ -82,10 +76,8 @@ export default function NewProjectProfileEcoleSchool() {
         </div>
       </div>
       <div className="flex flex-col">
-        <h2 className="text-lg font-semibold">
-          Collaboration en distanciel possible ?
-        </h2>
-        <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
+        <h2 className="text-base">Collaboration en distanciel possible ?</h2>
+        <div className="flex flex-wrap w-full m-5 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             <option>Oui</option>
             <option>Non</option>
@@ -103,9 +95,7 @@ export default function NewProjectProfileEcoleSchool() {
         </div>
       </div>
       <div>
-        <h2 className="text-lg font-semibold">
-          Engagement de l’entreprise ? *
-        </h2>
+        <h2 className="text-base">Engagement de l’entreprise ? *</h2>
         <div className="flex m-5 bg-white border border-black rounded-md">
           <input
             className="required form-control
