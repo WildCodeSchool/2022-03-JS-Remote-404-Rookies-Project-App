@@ -2,9 +2,9 @@ import React from "react";
 
 export default function NewProjectConsultingCompany() {
   return (
-    <div className="bg-gray-100 m-10 p-10 flex justify-around flex-col rounded-md">
-      <h2 className="text-lg font-semibold">Le nom de votre entreprise *</h2>
-      <div className="flex m-5 bg-white border border-black rounded-md">
+    <div className="bg-gray-100 p-10 flex justify-around flex-col">
+      <h2 className="text-base">Le nom de votre entreprise *</h2>
+      <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
         <input
           className="required form-control
           block
@@ -30,10 +30,8 @@ export default function NewProjectConsultingCompany() {
       {/* Faire un appel d'API pour uploader une photo/logo --> à revoir */}
       {/* <input type="file" id="photo">Logo</input> */}
 
-      <h2 className="text-lg font-semibold">
-        Description de l&apos;entreprise*
-      </h2>
-      <div className="flex m-5 bg-white border border-black rounded-md">
+      <h2 className="text-base">Description de l&apos;entreprise*</h2>
+      <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
         <input
           className="required form-control
           block
@@ -56,9 +54,9 @@ export default function NewProjectConsultingCompany() {
         />
       </div>
 
-      <div className="flex">
-        <h2 className="text-lg font-semibold">Industrie</h2>
-        <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
+      <div className="flex flex-wrap">
+        <h2 className="text-base">Industrie</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             <option>Marketing</option>
             <option>Digital et développement</option>
@@ -81,8 +79,8 @@ export default function NewProjectConsultingCompany() {
             </svg>
           </div>
         </div>
-        <h2 className="text-lg font-semibold">Site web</h2>
-        <div className="flex m-5 w-96 bg-white border border-black rounded-md">
+        <h2 className="text-base">Site web</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
           <input
             className="form-control
           block
@@ -107,11 +105,9 @@ export default function NewProjectConsultingCompany() {
       </div>
 
       <div className="flex">
-        <h2 className="text-lg font-semibold">
-          Localisation de l&apos;entreprise
-        </h2>
-        <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
-          <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <h2 className="text-base">Localisation de l&apos;entreprise</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
+          <select className="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             <option>Auvergne-Rhône-Alpes</option>
             <option>Provence-Alpes-Côte d&apos;Azur</option>
             <option>Corse</option>
@@ -142,9 +138,9 @@ export default function NewProjectConsultingCompany() {
             </svg>
           </div>
         </div>
-        <h2 className="text-lg font-semibold">Effectif de l&apos;entreprise</h2>
-        <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
-          <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <h2 className="text-base">Effectif de l&apos;entreprise</h2>
+        <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
+          <select className="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             <option>0-1</option>
             <option>2-9</option>
             <option>10-49</option>
