@@ -1,6 +1,8 @@
 /* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
+import range from "../../assets/dataset/workforce.json";
+import industries from "../../assets/dataset/industries.json";
 
 export default function ProfileCompany() {
   return (
@@ -116,50 +118,15 @@ export default function ProfileCompany() {
             </select>
             <label htmlFor="effectif">Effectif de l&apos;entreprise</label>
             <select className="flex flex-col flex-wrap" name="user_domain">
-              {/* A MAPPER AVEC WORFORCE */}
-              <option value="effectif 1">0-1</option>
-              <option value="effectif 2">2-9</option>
-              <option value="effectif 3">10-49</option>
-              <option value="effectif 4">50-249</option>
-              <option value="effectif 5">250 et plus</option>
+              {range.map((d) => (
+                <option>{d.range}</option>
+              ))}
             </select>
             <label htmlFor="industrie">Industrie</label>
             <select className="flex flex-col flex-wrap" name="user_industry">
-              {/* A MAPPER AVEC SECTEURS ENTREPRISES */}
-              <option value="industrie 1">Agroalimentaire</option>
-              <option value="industrie 2">
-                {" "}
-                Bois / Papier / Carton / Imprimerie
-              </option>
-              <option value="industrie 3">Banque / Assurance</option>
-              <option value="industrie 4">
-                {" "}
-                BTP / Matériaux de construction
-              </option>
-              <option value="industrie 5">Chimie / Parachimie</option>
-              <option value="industrie 6">
-                Commerce / Négoce / Distribution
-              </option>
-              <option value="industrie 7">
-                Édition / Communication / Multimédia
-              </option>
-              <option value="industrie 8">Électronique / Électricité</option>
-              <option value="industrie 9">Études et conseils</option>
-              <option value="industrie 10">Industrie pharmaceutique</option>
-              <option value="industrie 11">Informatique / Télécoms</option>
-              <option value="industrie 12">
-                Machines et équipements / Automobile
-              </option>
-              <option value="industrie 13">
-                Métallurgie / Travail du métal
-              </option>
-              <option value="industrie 14">Plastique / Caoutchouc</option>
-              <option value="industrie 15">Services aux entreprises</option>
-              <option value="industrie 16">
-                Textile / Habillement / Chaussure
-              </option>
-              <option value="industrie 17">Transports / Logistique</option>
-              <option value="industrie 18">Autres</option>
+              {industries.map((d) => (
+                <option>{d.industry}</option>
+              ))}
             </select>
             <label>Site web</label>
             <input

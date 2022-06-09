@@ -1,6 +1,7 @@
 /* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
+import fields from "../../assets/dataset/teaching_fields.json";
 
 export default function ProfileSchool() {
   return (
@@ -110,15 +111,9 @@ export default function ProfileSchool() {
             <label htmlFor="domain">Domaines d&apos;enseignement</label>
             <select className="flex flex-col flex-wrap" name="user_domain">
               {/* A MAPPER AVEC DOMAINES ETUDES */}
-              <option value="domaine 1">Marketing</option>
-              <option value="domaine 2">Digtal et développement web</option>
-              <option value="domaine 3">Communication</option>
-              <option value="domaine 4">Graphisme et Design</option>
-              <option value="domaine 5">Ingénierie</option>
-              <option value="domaine 6">Finance</option>
-              <option value="domaine 7">RH</option>
-              <option value="domaine 8">Supply Chain</option>
-              <option value="domaine 9">DD & RSE</option>
+              {fields.map((d) => (
+                <option>{d.field}</option>
+              ))}
             </select>
             <label htmlFor="campus">Localisation des campus</label>
             <select className="flex flex-col flex-wrap" name="user_campus">
