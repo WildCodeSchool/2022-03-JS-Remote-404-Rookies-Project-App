@@ -1,22 +1,26 @@
 [
   {
     "id": 1,
-    "level": "Tout niveau"
+    "level": "Bac (CAP, BEP)"
   },
   {
     "id": 2,
-    "level": "Bac + 2"
+    "level": "Bac +2 (BTS, DUT, DEUST)"
   },
   {
     "id": 3,
-    "level": "Bac + 3"
+    "level": "Bac +3 (License, BUT)"
   },
   {
     "id": 4,
-    "level": "Bac + 4"
+    "level": "Bac +4 (Master 1, Maitrise)"
   },
   {
     "id": 5,
-    "level": "Bac + 5"
+    "level": "Bac +5 (Master 2, DEA, DESS, Diplôme ingénieur)"
+  },
+  {
+    "id": 6,
+    "level": "Bac +8 (Doctorat)"
   }
 ]
