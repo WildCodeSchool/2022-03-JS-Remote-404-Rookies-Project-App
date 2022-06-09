@@ -1,4 +1,6 @@
 import React from "react";
+import levels from "../../assets/dataset/student_levels.json";
+import schools from "../../assets/dataset/schools.json";
 
 function NewProjectOrganisationSchool() {
   return (
@@ -7,9 +9,9 @@ function NewProjectOrganisationSchool() {
         <h2 className="text-lg font-semibold">Votre école *</h2>
         <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Ecole 1</option>
-            <option>Ecole 2</option>
-            <option>Ecole 3</option>
+            {schools.map((d) => (
+              <option>{d.name}</option>
+            ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg
@@ -74,14 +76,14 @@ function NewProjectOrganisationSchool() {
             />
           </div>
         </div>
-        {/* MANQUE LES DONNEES */}
+
         <div className="flex flex-col ml-30">
           <h2 className="text-lg font-semibold">Niveau des étudiants ? *</h2>
           <div className="inline-block relative w-96 m-5 bg-white border border-black rounded-md">
             <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-              <option>Niveau 1</option>
-              <option>Niveau 2</option>
-              <option>Niveau 3</option>
+              {levels.map((d) => (
+                <option>{d.level}</option>
+              ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -95,7 +97,7 @@ function NewProjectOrganisationSchool() {
           </div>
         </div>
       </div>
-      {/* MANQUE LES DONNEES */}
+      {/* A MAPPER SUR VILLES DE FRANCE OU API */}
       <h2 className="text-lg font-semibold">Campus concerné ? *</h2>
       <div className="inline-block relative w-96 m-5 bg-white border border-black rounded-md">
         <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">

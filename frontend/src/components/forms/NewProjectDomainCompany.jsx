@@ -1,4 +1,5 @@
 import React from "react";
+import industries from "../../assets/dataset/industries.json";
 
 export default function NewProjectDomainCompany() {
   return (
@@ -12,23 +13,9 @@ export default function NewProjectDomainCompany() {
       </p>
       <div className="inline-block relative m-5 bg-white border border-black rounded-md">
         <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-          <option>Agroalimentaire</option>
-          <option>Bois | Papier | Carton | Imprimerie</option>
-          <option>Banque | Assurance</option>
-          <option>Chimie | Parachimie</option>
-          <option>Commerce | Négoce | Distribution</option>
-          <option>Edition | Communication | Multimédia</option>
-          <option>Electronique | Electricité</option>
-          <option>Etude et conseils</option>
-          <option>Industrie pharmaceutique</option>
-          <option>Informatique | Télécoms</option>
-          <option>Machine et équipements | Automobile</option>
-          <option>Métallurgie | Travail du métal</option>
-          <option>Plastique | Caoutchouc</option>
-          <option>Services aux entreprises</option>
-          <option>Textile | Habillement | Chaussures</option>
-          <option>Transport | Logistique</option>
-          <option>Autre</option>
+          {industries.map((d) => (
+            <option>{d.industry}</option>
+          ))}
         </select>
 
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

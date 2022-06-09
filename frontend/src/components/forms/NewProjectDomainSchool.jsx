@@ -1,4 +1,6 @@
 import React from "react";
+import fields from "../../assets/dataset/teaching_fields.json";
+import languages from "../../assets/dataset/languages.json";
 
 export default function NewProjectDomainSchool() {
   return (
@@ -13,15 +15,9 @@ export default function NewProjectDomainSchool() {
         </p>
         <div className="inline-block relative m-5 w-full bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Marketing</option>
-            <option>Digital et développement web</option>
-            <option>Communication</option>
-            <option>Graphisme et design</option>
-            <option>Ingénierie</option>
-            <option>Finance</option>
-            <option>RH</option>
-            <option>Supply Chain</option>
-            <option>DD & RSE</option>
+            {fields.map((d) => (
+              <option>{d.field}</option>
+            ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg
@@ -35,7 +31,7 @@ export default function NewProjectDomainSchool() {
         </div>
         <div />
       </div>
-      {/* MANQUE DONNEES */}
+
       <div>
         <h2 className="text-lg font-semibold">
           Quelles sont les langues disponibles ? *
@@ -45,9 +41,9 @@ export default function NewProjectDomainSchool() {
         </p>
         <div className="inline-block relative m-5 w-full bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Langue 1</option>
-            <option>Langue 2</option>
-            <option>Langue 3</option>
+            {languages.map((d) => (
+              <option>{d.language}</option>
+            ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg

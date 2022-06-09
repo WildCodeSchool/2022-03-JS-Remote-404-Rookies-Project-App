@@ -1,4 +1,7 @@
 import React from "react";
+import industries from "../../assets/dataset/industries.json";
+import localisation from "../../assets/dataset/localisation.json";
+import range from "../../assets/dataset/workforce.json";
 
 export default function NewProjectConsultingCompany() {
   return (
@@ -58,29 +61,26 @@ export default function NewProjectConsultingCompany() {
 
       <div className="flex">
         <h2 className="text-lg font-semibold">Industrie</h2>
+
         <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Marketing</option>
-            <option>Digital et développement</option>
-            <option>Communication</option>
-            <option>Graphisme et Design</option>
-            <option>Ingénierie</option>
-            <option>Finances</option>
-            <option>RH</option>
-            <option>Supply Chain</option>
-            <option>DD & RSE</option>
+            {industries.map((d) => (
+              <option>{d.industry}</option>
+            ))}
           </select>
-
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg
-              className="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-            </svg>
-          </div>
         </div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg
+            className="fill-current h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
+        </div>
+      </div>
+
+      <div>
         <h2 className="text-lg font-semibold">Site web</h2>
         <div className="flex m-5 w-96 bg-white border border-black rounded-md">
           <input
@@ -112,24 +112,9 @@ export default function NewProjectConsultingCompany() {
         </h2>
         <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Auvergne-Rhône-Alpes</option>
-            <option>Provence-Alpes-Côte d&apos;Azur</option>
-            <option>Corse</option>
-            <option>Occitanie</option>
-            <option>Nouvelle-Aquitaine</option>
-            <option>Bourgogne-Franche-Comté</option>
-            <option>Centre-Val de Loire</option>
-            <option>Pays de la Loire</option>
-            <option>Grand Est</option>
-            <option>Hauts-de-France</option>
-            <option>Ile-de-France</option>
-            <option>Bretagne</option>
-            <option>Normandie</option>
-            <option>Guadeloupe</option>
-            <option>Martinique</option>
-            <option>Guyane</option>
-            <option>La Réunion</option>
-            <option>Mayotte</option>
+            {localisation.map((d) => (
+              <option>{d.localisation}</option>
+            ))}
           </select>
 
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -145,11 +130,9 @@ export default function NewProjectConsultingCompany() {
         <h2 className="text-lg font-semibold">Effectif de l&apos;entreprise</h2>
         <div className="inline-block relative m-5 w-96 bg-white border border-black rounded-md">
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>0-1</option>
-            <option>2-9</option>
-            <option>10-49</option>
-            <option>50-249</option>
-            <option>250 et plus</option>
+            {range.map((d) => (
+              <option>{d.range}</option>
+            ))}
           </select>
 
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
