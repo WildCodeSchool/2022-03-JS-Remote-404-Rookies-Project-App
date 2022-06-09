@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/Project.css";
+import "../../styles/Project.css";
 
-import Line from "@assets/pictures/line.png"
-import Share from "@assets/pictures/share.png"
-import School from "@assets/pictures/school1.png"
+import Line from "../../assets/pictures/line.png"
+import Share from "../../assets/pictures/share.png"
+import School from "../../assets/pictures/school1.png"
 
 function ProjectDetails() {
     return (
@@ -68,5 +68,7 @@ function ProjectDetails() {
         </div>
     )
 }
+
+console.log(ProjectDetails)
 
 export default ProjectDetails;

@@ -1,6 +1,6 @@
 import React from "react";
-import settings1 from "../assets/pictures/settings1.png"
-import avatar1 from "../assets/pictures/avatar1.png"
+import settings1 from "../../assets/pictures/settings1.png"
+import avatar1 from "../../assets/pictures/avatar1.png"
 
 function UserSettings() {
   return (
