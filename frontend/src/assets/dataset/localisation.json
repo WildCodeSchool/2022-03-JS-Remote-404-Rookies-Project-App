@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "localisation": "Auvergne-Rhône-Alpes"
+  },
+  {
+    "id": 2,
+    "localisation": "Provence-Alpes-Côte d'Azur"
+  },
+  {
+    "id": 3,
+    "localisation": "Corse"
+  },
+  {
+    "id": 4,
+    "localisation": "Occitanie"
+  },
+  {
+    "id": 5,
+    "localisation": "Nouvelle-Aquitaine"
+  },
+  {
+    "id": 6,
+    "localisation": "Bourgogne-Franche-Comté"
+  },
+  {
+    "id": 7,
+    "localisation": "Centre-Val de Loire"
+  },
+  {
+    "id": 8,
+    "localisation": "Pays de la Loire"
+  },
+  {
+    "id": 9,
+    "localisation": "Grand Est"
+  },
+  {
+    "id": 10,
+    "localisation": "Hauts-de-France"
+  },
+  {
+    "id": 11,
+    "localisation": "Ile-de-France"
+  },
+  {
+    "id": 12,
+    "localisation": "Bretagne"
+  },
+  {
+    "id": 13,
+    "localisation": "Normandie"
+  },
+  {
+    "id": 14,
+    "localisation": "Guadeloupe"
+  },
+  {
+    "id": 15,
+    "localisation": "Martinique"
+  },
+  {
+    "id": 16,
+    "localisation": "Guyane"
+  },
+  {
+    "id": 17,
+    "localisation": "La Réunion"
+  },
+  {
+    "id": 18,
+    "localisation": "Mayotte"
+  }
+]

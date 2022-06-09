@@ -1,6 +1,6 @@
 .navbar-layout {
-  width: 345px;
-  padding-top: 2rem;
+  width: 300px;
+  padding-top: 1.5rem;
   background-color: var(--MainColor);
   display: flex;
   flex-direction: column;
@@ -18,28 +18,27 @@
   padding: 1rem 0;
   justify-content: center;
   color: var(--color2);
-  font-weight: bold;
 }
 .menu-items li img {
   margin-right: 1rem;
 }
 
 .active {
+  margin-right: -80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  width: 345px;
+  width: 300px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   background-color: var(--color2);
   color: var(--color3);
-  font-weight: bold;
 }
 
 .inactive {
-  width: 345px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
