@@ -1,17 +1,5 @@
-#profile-page {
-}
-#profile-form {
-  border-radius: 5px;
-}
-
-#informations-form {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 5px;
-}
-/* .phone,
+/* 
+.phone,
 .email,
 .social-media,
 .campus,
@@ -21,7 +9,7 @@
   display: flex;
   flex-direction: row;
   width: 50%;
-} */
+}
 
 #école-form {
   display: flex;
@@ -37,9 +25,9 @@
   border-radius: 5px;
 }
 
-input {
+.input-profile {
   border: solid 1px black;
-  width: 100%;
+
   padding: 5px;
   border-radius: 5px;
 }
@@ -78,4 +66,4 @@ placeholder {
 }
 .placeholder-delete {
   color: red;
-}
+} */
