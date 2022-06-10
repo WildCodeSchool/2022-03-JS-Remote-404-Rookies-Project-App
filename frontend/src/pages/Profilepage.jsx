@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import users from "../assets/dataset/users.json";
 
 function Profilepage() {
-  const user = users[2]; // users 1 =   ecole dans la  bdd test  users 2 =   entreprise dans la  bdd test
+  const user = users[1]; // users 2 =   ecole dans la  bdd test  users 1 =   entreprise dans la  bdd test
 
   return (
     <div className="flex ">

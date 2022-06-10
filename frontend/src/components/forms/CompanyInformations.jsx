@@ -36,7 +36,7 @@ function CompanyInformations() {
   };
 
   return (
-    <div className=" flex-col border-b-2 bg-gray-100  ">
+    <div className="border-b-2 flex flex-col flex-wrap w-full">
       <h2 className="text-base p-2">Mes informations</h2>
       <div className="flex justify-end">
         <label htmlFor="image">image:</label>

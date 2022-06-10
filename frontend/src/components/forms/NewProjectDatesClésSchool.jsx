@@ -2,42 +2,17 @@ import React from "react";
 
 export default function NewProjectDatesClésSchool() {
   return (
-    <div className="bg-gray-100 p-10 flex justify-around flex-col flex-wrap">
-      <div>
-        <h2 className="text-base">Organisez les dates clés *</h2>
-        <p className="p-5 font-extralight text-s">
-          Date limite de soumission du projet par l’entreprise *
-        </p>
-        <div className="flex m-10 bg-white border border-black rounded-md">
-          <input
-            className="required form-control
-          block
-          w-full
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="date"
-            placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
-          />
-        </div>
+    <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
+      <form>
         <div>
+          <h2 className="text-base p-2">Organisez les dates clés *</h2>
           <p className="p-5 font-extralight text-s">
-            Date du lancement du projet *
+            Date limite de soumission du projet par l’entreprise *
           </p>
-          <div className="flex flex-wrap m-10 bg-white border border-black rounded-md">
+          <div className="flex">
             <input
               className="required form-control
-          block
-          w-full
+
           px-3
           py-1.5
           text-base
@@ -54,12 +29,36 @@ export default function NewProjectDatesClésSchool() {
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
             />
           </div>
-        </div>
+          <div>
+            <p className="p-5 font-extralight text-s">
+              Date du lancement du projet *
+            </p>
+            <div className="flex flex-wrap">
+              <input
+                className="required form-control
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
+                type="date"
+                placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
+              />
+            </div>
+          </div>
 
-        <div className="flex flex-wrap flex-col m-10 bg-stone-100 border border-black rounded-md">
+          {/* POUR AJOUTER UNE TAPE A UN PROJET  */}
+          {/* <div className="flex flex-wrap flex-col m-5 bg-stone-100 border border-black rounded-md">
           <p className="p-5 font-extralight text-s">Ajouter une étape</p>
           <div className="flex flex-row">
-            <div className="flex m-10 bg-white border border-black rounded-md">
+            <div className="flex m-5 ">
               <input
                 className="required form-control
           block
@@ -80,7 +79,7 @@ export default function NewProjectDatesClésSchool() {
                 placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
               />
             </div>
-            <div className="flex flex-wrap m-10 bg-white border border-black rounded-md">
+            <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
               <input
                 className="required form-control
           block
@@ -120,17 +119,15 @@ export default function NewProjectDatesClésSchool() {
           >
             Ajouter
           </button>
-        </div>
+        </div> */}
 
-        <div>
-          <p className="p-5 font-extralight text-s">
-            Date du clôture du projet *
-          </p>
-          <div className="flex flex-wrap m-10 bg-white border border-black rounded-md">
-            <input
-              className="required form-control
-          block
-          w-full
+          <div>
+            <p className="p-5 font-extralight text-s">
+              Date du clôture du projet *
+            </p>
+            <div className="flex flex-wrap">
+              <input
+                className="required form-control
           px-3
           py-1.5
           text-base
@@ -143,12 +140,13 @@ export default function NewProjectDatesClésSchool() {
           ease-in-out
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-              type="date"
-              placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
-            />
+                type="date"
+                placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
