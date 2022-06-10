@@ -9,10 +9,22 @@
   },
   {
     "id": 3,
-    "language": "Espagnol"
+    "language": "Allemand"
   },
   {
     "id": 4,
-    "language": "Allemand"
+    "language": "Espagnol"
+  },
+  {
+    "id": 5,
+    "language": "Arabe"
+  },
+  {
+    "id": 6,
+    "language": "Russe"
+  },
+  {
+    "id": 7,
+    "language": "Portuguais"
   }
 ]

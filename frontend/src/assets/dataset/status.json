@@ -1,17 +1,20 @@
 [
   {
-    "stage": "Brouillon"
+    "stage": "Projet en Brouillon"
   },
   {
-    "stage": "Projet soumis"
+    "stage": "Projet Soumis"
   },
   {
-    "stage": "En matching"
+    "stage": "Projet en Matching"
+  },
+  {
+    "stage": "Projet Matché"
   },
   {
     "stage": "Projet en cours"
   },
   {
-    "stage": "Projet terminé"
+    "stage": "Projet fini"
   }
 ]
