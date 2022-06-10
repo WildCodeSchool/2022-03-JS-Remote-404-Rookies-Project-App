@@ -41,7 +41,7 @@
     "phone": "+33612345689",
     "role": "Teacher",
     "linkedin": "linkedin.com/bridgetschool",
-    "photo": "./src/assets/pictures/random-user2.jpg",
+    "photo": "/src/assets/pictures/random-user2.jpg",
     "entity_category_id": 2,
     "company_id": null,
     "school_id": 1,

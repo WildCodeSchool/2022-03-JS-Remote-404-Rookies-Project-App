@@ -220,3 +220,8 @@ select.menu1{
 img.share {
     display: none;
 }
+
+.img2 {
+    width: 4rem;
+    border-radius: 100px;
+}
