@@ -13,7 +13,7 @@ function Dashboard() {
     <div className="flex flex-col w-full">
       <User user={user} />
       <Entity user={user} />
-      <MyProjects />
+      <MyProjects user={user} />
     </div>
   );
 }
