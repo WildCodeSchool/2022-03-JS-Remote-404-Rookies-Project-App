@@ -26,7 +26,6 @@ export default function NewProjectDatesClésSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="date"
-            name="project_missions"
             placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
           />
         </div>
@@ -52,7 +51,6 @@ export default function NewProjectDatesClésSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="date"
-              name="date_lancement"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
             />
           </div>
@@ -79,7 +77,6 @@ export default function NewProjectDatesClésSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
                 type="date"
-                name="date"
                 placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
               />
             </div>
@@ -101,7 +98,6 @@ export default function NewProjectDatesClésSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
                 type="text"
-                name="note_cadrage"
                 placeholder="Établir une note de cadrage du projet avec l’entreprise"
               />
             </div>
@@ -146,7 +142,6 @@ export default function NewProjectDatesClésSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="date"
-              name="date_fin"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
             />
           </div>

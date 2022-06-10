@@ -44,7 +44,6 @@ export default function NewProjectProfileEcoleSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="text"
-              name="industry"
             />
           </div>
         </div>
@@ -70,7 +69,6 @@ export default function NewProjectProfileEcoleSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="text"
-              name="industry"
             />
           </div>
         </div>
@@ -115,7 +113,6 @@ export default function NewProjectProfileEcoleSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="engagements"
             placeholder="Compléter le cahier des charges,
             Orienter le travail des étudiants, en exigeant d’eux le comportement
             de professionnels,

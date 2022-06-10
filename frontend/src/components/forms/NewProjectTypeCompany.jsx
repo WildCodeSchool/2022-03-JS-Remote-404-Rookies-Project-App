@@ -6,22 +6,14 @@ export default function NewProjectTypeCompany() {
       <div className="">
         <h2 className="text-base">Quel est le type de votre projet ? *</h2>
         <div className="flex flex-wrap m-5 bg-white border border-black rounded-md">
-          <input
-            className=" required m-5 flex-initial w-16"
-            type="radio"
-            name="consulting"
-          />
+          <input className=" required m-5 flex-initial w-16" type="radio" />
           <h3 className="font-normal text-gray-400">
             Consulting : proposez une mission propre à votre entreprise et
             bénificier d’un renfort temporaire.
           </h3>
         </div>
         <div className="flex m-5 bg-white border border-black rounded-md">
-          <input
-            className="required m-5 flex-initial w-16"
-            type="radio"
-            name="recruitment"
-          />
+          <input className="required m-5 flex-initial w-16" type="radio" />
           <h3 className="font-normal text-gray-400">
             {" "}
             Recruitement : proposez une mission pour trouvez les talents qu’il

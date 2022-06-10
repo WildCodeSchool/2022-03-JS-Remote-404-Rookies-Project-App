@@ -25,7 +25,6 @@ export default function NewProjectConsultingCompany() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
           type="text"
-          name="project_name"
           placeholder="Entreprise SAS"
         />
       </div>
@@ -52,7 +51,6 @@ export default function NewProjectConsultingCompany() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
           type="text"
-          name="project_name"
           placeholder="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
         />
       </div>
@@ -98,7 +96,6 @@ export default function NewProjectConsultingCompany() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="project_name"
             placeholder="www.entreprise.com"
           />
         </div>

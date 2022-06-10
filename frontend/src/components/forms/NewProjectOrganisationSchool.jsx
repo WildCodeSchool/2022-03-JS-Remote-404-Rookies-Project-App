@@ -71,7 +71,6 @@ function NewProjectOrganisationSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="text"
-              name="course_name"
               placeholder="Master Commerce International"
             />
           </div>
@@ -142,7 +141,6 @@ function NewProjectOrganisationSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="nb-students"
             placeholder="40"
           />
         </div>
@@ -184,7 +182,6 @@ function NewProjectOrganisationSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="course_name"
             placeholder="2 groupes"
           />
         </div>
@@ -235,7 +232,6 @@ function NewProjectOrganisationSchool() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="course_name"
             placeholder="8h par semaine"
           />
         </div>

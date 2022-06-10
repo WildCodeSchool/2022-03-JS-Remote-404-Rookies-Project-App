@@ -23,7 +23,6 @@ export default function NewProjectDescriptionCompany() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="project_name"
             placeholder="Projet étude de marché (Allemagne)"
           />
         </div>
@@ -53,7 +52,6 @@ export default function NewProjectDescriptionCompany() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="project_name"
             placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
           />
         </div>
@@ -86,7 +84,6 @@ export default function NewProjectDescriptionCompany() {
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
-            name="project_name"
             placeholder="Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.
 
           Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat."

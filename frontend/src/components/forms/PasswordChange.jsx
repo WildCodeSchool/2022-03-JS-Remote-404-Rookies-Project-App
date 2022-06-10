@@ -13,7 +13,6 @@ function PasswordChange() {
           required
           type="text"
           placeholder="Mot de passe actuel"
-          name="user_mdp_upload"
         />
         <label htmlFor="new">Nouveau mot de passe *</label>
         <input
@@ -21,7 +20,6 @@ function PasswordChange() {
           required
           type="text"
           placeholder="Nouveau mot de passe"
-          name="user_mdp_new"
         />
         <label htmlFor="confirm">Confirmer le mot de passe *</label>
         <input
@@ -29,7 +27,6 @@ function PasswordChange() {
           required
           type="text"
           placeholder="Confirmer le mot de passe"
-          name="user_confirm"
         />
       </form>
       <div className=" flex items-center justify-center m-1">
