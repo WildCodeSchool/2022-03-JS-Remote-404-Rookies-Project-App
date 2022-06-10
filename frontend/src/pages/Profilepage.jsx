@@ -9,7 +9,7 @@ function Profilepage() {
   const user = users[1]; // users 1 =   ecole dans la  bdd test  users 2 =   entreprise dans la  bdd test
 
   return (
-    <div className="flex w-full">
+    <div className="flex ">
       <Navbar />
       {user.entity_category_id === 1 && <ProfileSchool />}
       {user.entity_category_id === 2 && <ProfileCompany />}
