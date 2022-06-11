@@ -51,7 +51,7 @@ function CompanyInformations() {
         <input
           className=" p-2 w-auto"
           required
-          type="text"
+          type="fname"
           placeholder="Nom"
           {...register("firstname")}
         />{" "}
@@ -60,7 +60,7 @@ function CompanyInformations() {
         <input
           className=" p-2"
           required
-          type="text"
+          type="lname"
           placeholder="Prénom"
           {...register("lastname")}
         />
@@ -77,7 +77,8 @@ function CompanyInformations() {
         <label htmlFor="phone">Téléphone</label>
         <input
           className="p-2 m-3"
-          type="text"
+          type="tel"
+          minLength="10"
           placeholder="Téléphone"
           {...register("phone")}
         />
@@ -93,7 +94,7 @@ function CompanyInformations() {
         <label htmlFor="linkedin">Profil LinkedIn</label>
         <input
           className="p-2 m-3"
-          type="text"
+          type="url"
           placeholder="Profil LinkedIn"
           {...register("linkedin")}
         />

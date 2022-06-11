@@ -36,20 +36,9 @@ export default function NewProjectConsultingCompany() {
         <div className="flex flex-wrap m-2">
           <textarea
             className="required form-control
-            w-full
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
+            w-1/2 "
             type="text"
+            rows="2"
             placeholder="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
           />
         </div>
@@ -81,7 +70,7 @@ export default function NewProjectConsultingCompany() {
           ease-in-out
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
+            type="url"
             placeholder="www.entreprise.com"
           />
         </div>

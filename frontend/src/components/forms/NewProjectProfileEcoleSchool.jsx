@@ -55,20 +55,9 @@ export default function NewProjectProfileEcoleSchool() {
           <div className="flex m-5 ">
             <textarea
               className="required form-control
-w-full
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
+              w-1/2 "
               type="text"
+              rows="2"
               placeholder="Compléter le cahier des charges,
             Orienter le travail des étudiants, en exigeant d’eux le comportement
             de professionnels,

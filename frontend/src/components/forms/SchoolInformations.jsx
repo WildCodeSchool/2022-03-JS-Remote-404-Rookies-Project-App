@@ -46,7 +46,7 @@ function SchoolInformations() {
         <label htmlFor="name">Nom *</label>
         <input
           className="flex flex-row flex-wrap p-2"
-          type="text"
+          type="fname"
           placeholder="Nom"
           {...register("firstname")}
         />
@@ -54,7 +54,7 @@ function SchoolInformations() {
         <label htmlFor="surname">Prénom *</label>
         <input
           className="flex flex-row flex-wrap p-2"
-          type="text"
+          type="lname"
           placeholder="Prénom"
           {...register("lastname")}
         />
@@ -69,8 +69,8 @@ function SchoolInformations() {
         <label htmlFor="phone">Téléphone</label>
         <input
           className="flex flex-row flex-wrap p-2"
-          type="text"
-          minLength="8"
+          type="tel"
+          minLength="10"
           placeholder="Téléphone"
           {...register("telephone")}
         />
@@ -84,7 +84,7 @@ function SchoolInformations() {
         <label htmlFor="linkedin">Profil LinkedIn</label>
         <input
           className="flex flex-row flex-wrap p-2"
-          type="text"
+          type="url"
           placeholder="Profil LinkedIn"
           {...register("linkedin")}
         />

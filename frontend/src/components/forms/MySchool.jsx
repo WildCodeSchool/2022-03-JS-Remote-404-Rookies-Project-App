@@ -55,7 +55,6 @@ function MySchool() {
           required
           type="text"
           placeholder="Le nom de votre école"
-          name="user_school"
         />
         <p>{errors.firstname?.message}</p>
         <label className="m-2" htmlFor="description">
@@ -66,7 +65,6 @@ function MySchool() {
           type="text"
           rows="2"
           placeholder="Description de votre entreprise"
-          name="user_company_descr"
         />
         <label htmlFor="domain">Domaines d&apos;enseignement</label>
         <select className="flex flex-col flex-wrap" name="user_domain">
@@ -86,7 +84,7 @@ function MySchool() {
         <label htmlFor="web">Site web</label>
         <input
           className="flex flex-row flex-wrap p-2"
-          type="text"
+          type="url"
           placeholder="Site web"
         />
         <button

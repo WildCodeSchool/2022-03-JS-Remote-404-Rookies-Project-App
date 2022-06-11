@@ -11,21 +11,21 @@ function PasswordChange() {
         <input
           className=" p-2"
           required
-          type="text"
+          type="password"
           placeholder="Mot de passe actuel"
         />
         <label htmlFor="new">Nouveau mot de passe *</label>
         <input
           className=" p-2"
           required
-          type="text"
+          type="password"
           placeholder="Nouveau mot de passe"
         />
         <label htmlFor="confirm">Confirmer le mot de passe *</label>
         <input
           className=" p-2"
           required
-          type="text"
+          type="password"
           placeholder="Confirmer le mot de passe"
         />
       </form>

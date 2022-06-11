@@ -103,7 +103,7 @@ function NewProjectOrganisationSchool() {
           ease-in-out
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
+            type="number"
             placeholder="40"
           />
         </div>
@@ -133,7 +133,6 @@ function NewProjectOrganisationSchool() {
           <h2 className="text-base p-2">
             Nombre de groupes par entreprise ? *
           </h2>
-
           <input
             className="required form-control
           px-3
@@ -148,7 +147,7 @@ function NewProjectOrganisationSchool() {
           ease-in-out
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
+            type="number"
             placeholder="2 groupes"
           />
         </div>
@@ -195,7 +194,7 @@ function NewProjectOrganisationSchool() {
           ease-in-out
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
+            type="number"
             placeholder="8h par semaine"
           />
         </div>

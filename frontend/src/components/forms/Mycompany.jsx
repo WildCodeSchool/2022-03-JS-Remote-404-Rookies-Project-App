@@ -75,19 +75,19 @@ function Mycompany() {
         </div>
 
         <label htmlFor="effectif">Effectif:</label>
-        <select className=" " name="user_domain">
+        <select>
           {range.map((d) => (
             <option>{d.range}</option>
           ))}
         </select>
         <label htmlFor="industrie">Industrie</label>
-        <select className="" name="user_industry">
+        <select>
           {industries.map((d) => (
             <option>{d.industry}</option>
           ))}
         </select>
         <label>Site web</label>
-        <input className="  p-2 m-3" type="text" placeholder="Site web" />
+        <input className="  p-2 m-3" type="url" placeholder="Site web" />
       </form>
       <div className=" flex items-center justify-center">
         <button
