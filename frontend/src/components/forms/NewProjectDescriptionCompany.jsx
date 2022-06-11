@@ -6,10 +6,11 @@ export default function NewProjectDescriptionCompany() {
       <form>
         <div>
           <h2 className="text-base p-2">Nom du projet ? *</h2>
-          <div className="flex flex-wrap m-2">
+          <div className="flex flex-wrap p-2 m-2">
             <input
               className="required form-control
-          px-3
+              w-96
+              px-3
           py-1.5
           text-base
           font-normal
@@ -35,10 +36,10 @@ export default function NewProjectDescriptionCompany() {
             Décrivez le problème que les étudiants devront solutionner et le
             résultat attendu des étudiants.
           </p>
-          <div className="flex flex-wrap m-2">
+          <div className="flex flex-wrap m-2 p-2">
             <textarea
               className="required form-control
-              w-1/2 "
+              w-full "
               type="text"
               rows="2"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
@@ -55,10 +56,10 @@ export default function NewProjectDescriptionCompany() {
             (temps disponible, accès aux outils internes, documents utiles,
             membre de l’équipe disponible).
           </p>
-          <div className="flex flex-wrap m-2">
+          <div className="flex flex-wrap m-2 p-2">
             <textarea
               className="required form-control
-              w-1/2 "
+              w-full "
               type="text"
               rows="2"
               placeholder="Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.

@@ -9,12 +9,12 @@ export default function NewProjectDescriptionSchool() {
           <p className="p-2 font-extralight text-s">
             Quels sont les objectifs pédagogiques du projet ? *
           </p>
-          <div className="flex flex-wrap m-2">
+          <div className="flex flex-wrap m-2 p-2">
             <textarea
               className="required form-control
-              w-1/2 "
+              w-full "
               type="text"
-              rows="2"
+              rows="3"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
             />
           </div>
@@ -24,12 +24,12 @@ export default function NewProjectDescriptionSchool() {
             Quels exemples de missions seraient compatibles avec vos enjeux
             universitaire ? *
           </p>
-          <div className="flex flex-wrap m-2">
+          <div className="flex flex-wrap m-2 p-2">
             <textarea
               className="required form-control
-              w-1/2 "
+              w-full "
               type="text"
-              rows="2"
+              rows="3"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
             />
           </div>

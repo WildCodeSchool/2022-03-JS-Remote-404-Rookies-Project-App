@@ -9,7 +9,11 @@ export default function NewProjectTypeCompany() {
             Quel est le type de votre projet ? *
           </h2>
           <div className="flex m-5">
-            <input className=" required m-5 flex-initial w-16" type="radio" />
+            <input
+              className=" 
+            required m-5 flex-initial w-16"
+              type="radio"
+            />
             <h3 className="font-normal text-black p-2">
               Consulting : proposez une mission propre à votre entreprise et
               bénificier d’un renfort temporaire.

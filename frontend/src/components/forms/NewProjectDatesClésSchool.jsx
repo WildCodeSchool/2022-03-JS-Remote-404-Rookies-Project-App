@@ -9,7 +9,7 @@ export default function NewProjectDatesClésSchool() {
           <p className="p-5 font-extralight text-s">
             Date limite de soumission du projet par l’entreprise *
           </p>
-          <div className="flex">
+          <div className="flex p-2">
             <input
               className="required form-control
 
@@ -33,7 +33,7 @@ export default function NewProjectDatesClésSchool() {
             <p className="p-5 font-extralight text-s">
               Date du lancement du projet *
             </p>
-            <div className="flex flex-wrap">
+            <div className="flex p-2">
               <input
                 className="required form-control
           px-3
@@ -125,7 +125,7 @@ export default function NewProjectDatesClésSchool() {
             <p className="p-5 font-extralight text-s">
               Date du clôture du projet *
             </p>
-            <div className="flex flex-wrap">
+            <div className="flex p-2">
               <input
                 className="required form-control
           px-3
