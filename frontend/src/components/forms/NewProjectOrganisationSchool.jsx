@@ -1,6 +1,10 @@
+// eslint-disable-next-line jsx-a11y/label-has-associated-control
+
 import React from "react";
 import levels from "../../assets/dataset/student_levels.json";
 import schools from "../../assets/dataset/schools.json";
+import SelectDepartment from "../SelectDepartment";
+import SelectCity from "../SelectCity";
 
 function NewProjectOrganisationSchool() {
   return (
@@ -70,14 +74,10 @@ function NewProjectOrganisationSchool() {
           </select>
         </div>
 
-        {/* A MAPPER SUR VILLES DE FRANCE OU API */}
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">Campus concerné ? *</h2>
-          <select className=" bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Campus 1</option>
-            <option>Campus 2</option>
-            <option>Campus 3</option>
-          </select>
+        <div className="flex flex-row justify-evenly">
+          <h2 className="text-base p-2"> Localisation des campus </h2>
+          <SelectDepartment />
+          <SelectCity />
         </div>
 
         <div className="flex flex-wrap p-2">

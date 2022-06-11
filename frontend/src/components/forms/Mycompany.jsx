@@ -7,6 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import range from "../../assets/dataset/workforce.json";
 import industries from "../../assets/dataset/industries.json";
+import SelectDepartment from "../SelectDepartment";
+import SelectCity from "../SelectCity";
 
 const schema = yup
   .object({
@@ -64,13 +66,14 @@ function Mycompany() {
           rows="2"
           placeholder="Description de votre entreprise"
         />
-        <label htmlFor="campus">Localisation</label>
-        <select className="" name="user_campus">
-          {/* A MAPPER AVEC VILLES DE FRANCE */}
-          <option value="lieu 1">Lieu 1</option>
-          <option value="lieu 2">Lieu 2</option>
-          <option value="lieu 3">Lieu 3</option>
-        </select>
+        <div className="flex flex-row justify-evenly">
+          <label htmlFor="campus">
+            Localisation des campus
+            <SelectDepartment />
+            <SelectCity />
+          </label>
+        </div>
+
         <label htmlFor="effectif">Effectif:</label>
         <select className=" " name="user_domain">
           {range.map((d) => (

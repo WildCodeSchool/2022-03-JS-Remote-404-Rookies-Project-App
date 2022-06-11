@@ -8,6 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import fields from "../../assets/dataset/teaching_fields.json";
+import SelectDepartment from "../SelectDepartment";
+import SelectCity from "../SelectCity";
 
 const schema = yup
   .object({
@@ -72,13 +74,15 @@ function MySchool() {
             <option>{d.field}</option>
           ))}
         </select>
-        <label htmlFor="campus">Localisation des campus</label>
-        <select className="flex flex-col flex-wrap" name="user_campus">
-          {/* A MAPPER AVEC DONNEES VILLES DE FRANCE */}
-          <option value="lieu 1">Lieu 1</option>
-          <option value="lieu 2">Lieu 2</option>
-          <option value="lieu 3">Lieu 3</option>
-        </select>
+
+        <div className="flex flex-row justify-evenly">
+          <label htmlFor="campus">
+            Localisation des campus
+            <SelectDepartment />
+            <SelectCity />
+          </label>
+        </div>
+
         <label htmlFor="web">Site web</label>
         <input
           className="flex flex-row flex-wrap p-2"
