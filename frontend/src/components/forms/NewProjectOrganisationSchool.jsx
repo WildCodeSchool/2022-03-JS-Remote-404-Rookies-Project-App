@@ -1,17 +1,63 @@
+/* eslint-disable react/jsx-props-no-spreading */
 // eslint-disable-next-line jsx-a11y/label-has-associated-control
 
 import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import levels from "../../assets/dataset/student_levels.json";
 import schools from "../../assets/dataset/schools.json";
 import SelectDepartment from "../SelectDepartment";
 import SelectCity from "../SelectCity";
 
+const schema = yup
+  .object({
+    coursename: yup.string().lowercase().required("Veuillez remplir ce champ"),
+    formationname: yup
+      .string()
+      .lowercase()
+      .required("Veuillez remplir ce champ"),
+    studentnumber: yup
+      .number("Ce champ doit contenir un numéro")
+      .required("Veuillez remplir ce champ")
+      .min(1, "Veuillez entrer 1 caractère"),
+    studentgroups: yup
+      .number("Ce champ doit contenir un numéro")
+      .required("Veuillez remplir ce champ")
+      .min(1, "Veuillez entrer 1 caractère"),
+    weeklyhours: yup
+      .number("Ce champ doit contenir un numéro")
+      .required("Veuillez remplir ce champ")
+      .min(1, "Veuillez entrer 1 caractère"),
+  })
+  .required();
+
 function NewProjectOrganisationSchool() {
+  const {
+    handleSubmit,
+    register,
+
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
+
+  const onSubmit = async (data) => {
+    await 2000;
+    // eslint-disable-next-line no-restricted-syntax
+    console.log(data);
+  };
+
   return (
     <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
-      <form className="flex flex-row flex-wrap">
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">Votre école *</h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-row flex-wrap p-2"
+      >
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">Votre école *</h2>
 
           <select className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             {schools.map((d) => (
@@ -20,8 +66,8 @@ function NewProjectOrganisationSchool() {
           </select>
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">Nom de votre cours *</h2>
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">Nom de votre cours *</h2>
 
           <input
             className="required form-control
@@ -40,11 +86,13 @@ function NewProjectOrganisationSchool() {
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
             placeholder="Management International"
+            {...register("coursename")}
           />
+          <p>{errors.coursename?.message}</p>
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">Formation ? *</h2>
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">Formation ? *</h2>
           <input
             className="required form-control
                 flex
@@ -62,11 +110,13 @@ function NewProjectOrganisationSchool() {
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="text"
             placeholder="Master Commerce International"
+            {...register("formationname")}
           />
+          <p>{errors.formationname?.message}</p>
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">Niveau des étudiants ? *</h2>
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">Niveau des étudiants ? *</h2>
           <select className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             {levels.map((d) => (
               <option>{d.level}</option>
@@ -75,16 +125,16 @@ function NewProjectOrganisationSchool() {
         </div>
 
         <div className="flex flex-row justify-evenly">
-          <h2 className="text-base p-2"> Localisation des campus </h2>
+          <h2 className="text-base p-1"> Localisation des campus </h2>
           <SelectDepartment />
           <SelectCity />
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">
             Combien d’étudiants seront disponibles dans votre cours ? *
           </h2>
-          <p className="p-2 font-extralight text-xs">
+          <p className="p-1 font-extralight text-xs">
             Donnez votre meilleure estimation du nombre total des étudiants
             participant au cours
           </p>
@@ -105,11 +155,13 @@ function NewProjectOrganisationSchool() {
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="number"
             placeholder="40"
+            {...register("studentnumber")}
           />
+          <p>{errors.studentnumber?.message}</p>
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">
             Comment travailleront les étudiants ? *
           </h2>
 
@@ -129,8 +181,8 @@ function NewProjectOrganisationSchool() {
           </button>
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">
             Nombre de groupes par entreprise ? *
           </h2>
           <input
@@ -149,12 +201,14 @@ function NewProjectOrganisationSchool() {
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="number"
             placeholder="2 groupes"
+            {...register("studentgroups")}
           />
+          <p>{errors.studentgroups?.message}</p>
         </div>
 
         <div className="flex flex-row justify-evenly m-2">
           <div className="flex-flex-row ">
-            <h2 className="text-base p-2">Nombre d’étudiants par entreprise</h2>
+            <h2 className="text-base p-1">Nombre d’étudiants par entreprise</h2>
             <button
               type="submit"
               formMethod="PUT"
@@ -164,7 +218,7 @@ function NewProjectOrganisationSchool() {
             </button>
           </div>
           <div className="flex-flex-row ">
-            <h2 className="text-base p-2">Nombre d’entreprises</h2>
+            <h2 className="text-base p-1">Nombre d’entreprises</h2>
             <button
               type="submit"
               formMethod="PUT"
@@ -175,8 +229,8 @@ function NewProjectOrganisationSchool() {
           </div>
         </div>
 
-        <div className="flex flex-wrap p-2">
-          <h2 className="text-base p-2">
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">
             Combien d’heures par semaine approximativement vont être allouées
             par étudiant ? *
           </h2>
@@ -196,7 +250,19 @@ function NewProjectOrganisationSchool() {
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
             type="number"
             placeholder="8h par semaine"
+            {...register("weeklyhours")}
           />
+          <p>{errors.weeklyhours?.message}</p>
+        </div>
+        <div className=" flex flex-end justify-center items-center">
+          <button
+            type="submit"
+            formMethod="PUT"
+            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Sauvegarder
+          </button>
+          {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
       </form>
     </div>

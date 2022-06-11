@@ -9,12 +9,15 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    firstname: yup.string().required().min(8, "doit avoir 8 caractères"),
-    lastname: yup.string().required(),
-    email: yup.string().email().required(),
-    telephone: yup.string().required(),
-    profession: yup.string().required(),
-    linkedin: yup.string().url().required(),
+    firstname: yup.string().lowercase().required("Veuillez remplir ce champ"),
+    lastname: yup.string().lowercase().required("Veuillez remplir ce champ"),
+    email: yup
+      .string()
+      .email("veuillez rentrer un email valide (ex : michel@email.com")
+      .required("Veuillez remplir ce champ"),
+    telephone: yup.number().min(10, "Veuillez entrer 10 caractères"),
+    profession: yup.string().lowercase(),
+    linkedin: yup.string().url("Veuillez rentrer une url valide"),
   })
   .required();
 
@@ -37,7 +40,7 @@ function CompanyInformations() {
 
   return (
     <div className="border-b-2 flex flex-col flex-wrap w-full">
-      <h2 className="text-base p-2">Mes informations</h2>
+      <h2 className="text-base p-1">Mes informations</h2>
       <div className="flex justify-end">
         <label htmlFor="image">image:</label>
         <input type="file" {...register("image")} />
@@ -49,7 +52,7 @@ function CompanyInformations() {
       >
         <label htmlFor="name">Nom *</label>
         <input
-          className=" p-2 w-auto"
+          className=" p-1 w-auto"
           required
           type="fname"
           placeholder="Nom"
@@ -58,7 +61,7 @@ function CompanyInformations() {
         <p>{errors.firstname?.message}</p>
         <label htmlFor="lastname">Prénom *</label>
         <input
-          className=" p-2"
+          className=" p-1"
           required
           type="lname"
           placeholder="Prénom"
@@ -67,7 +70,7 @@ function CompanyInformations() {
         <p>{errors.lastname?.message}</p>
         <label htmlFor="email">Email *</label>
         <input
-          className="p-2 m-3"
+          className="p-1"
           required
           type="email"
           placeholder="Email"
@@ -76,7 +79,7 @@ function CompanyInformations() {
         <p>{errors.email?.message}</p>
         <label htmlFor="phone">Téléphone</label>
         <input
-          className="p-2 m-3"
+          className="p-1"
           type="tel"
           minLength="10"
           placeholder="Téléphone"
@@ -85,7 +88,7 @@ function CompanyInformations() {
         <p>{errors.phone?.message}</p>
         <label htmlFor="prof">Profession</label>
         <input
-          className="p-2 m-3"
+          className="p-1"
           type="text"
           placeholder="Profession"
           {...register("profession")}
@@ -93,7 +96,7 @@ function CompanyInformations() {
         <p>{errors.profession?.message}</p>
         <label htmlFor="linkedin">Profil LinkedIn</label>
         <input
-          className="p-2 m-3"
+          className="p-1"
           type="url"
           placeholder="Profil LinkedIn"
           {...register("linkedin")}
@@ -103,9 +106,9 @@ function CompanyInformations() {
       <div className=" flex justify-center items-center">
         <form>
           <label htmlFor="auth">Authentification</label>
-          <input className="p-2 m-3" type="radio" value="Google" />
+          <input className="p-1 m-3" type="radio" value="Google" />
           Lier à Google
-          <input className="p-2 m-3" type="radio" value="LinkedIn" />
+          <input className="p-1 m-3" type="radio" value="LinkedIn" />
           Lier à LinkedIn
         </form>
       </div>
@@ -117,8 +120,8 @@ function CompanyInformations() {
         >
           Sauvegarder
         </button>
+        {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
       </div>
-      {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
     </div>
   );
 }

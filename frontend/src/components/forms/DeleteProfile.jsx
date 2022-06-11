@@ -5,9 +5,9 @@ import React from "react";
 function DeleteProfile() {
   return (
     <div className=" flex-col p-2 bg-gray-100 ">
-      <h2 className="text-base p-2">Supprimer mon compte</h2>
+      <h2 className="text-base p-1">Supprimer mon compte</h2>
       <form className="flex  items-center justify-center">
-        <h3 className="text-xs p-2 text-red-600">
+        <h3 className="text-xs p-1 text-red-600">
           Attention, une fois votre compte supprimé, vous ne pourrez plus
           retourner en arrière
         </h3>

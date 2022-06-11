@@ -1,13 +1,14 @@
 import React from "react";
+
 import fields from "../../assets/dataset/teaching_fields.json";
 import languages from "../../assets/dataset/languages.json";
 
 export default function NewProjectDomainSchool() {
   return (
     <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
-      <form>
+      <form className="p-2">
         <div>
-          <h2 className="text-base p-2">
+          <h2 className="text-base p-1">
             Quel est le domaine de votre projet ? *
           </h2>
           <p className="p-5 font-extralight text-s">
@@ -25,7 +26,7 @@ export default function NewProjectDomainSchool() {
         </div>
 
         <div>
-          <h2 className="text-base p-2">
+          <h2 className="text-base p-1">
             Quelles sont les langues disponibles ? *
           </h2>
           <p className="p-5 font-extralight text-s">
@@ -39,6 +40,15 @@ export default function NewProjectDomainSchool() {
             </select>
           </div>
           <div />
+        </div>
+        <div className=" flex items-center justify-center">
+          <button
+            type="submit"
+            formMethod="PUT"
+            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Sauvegarder
+          </button>
         </div>
       </form>
     </div>
