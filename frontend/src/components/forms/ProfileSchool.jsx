@@ -7,7 +7,7 @@ import MySchool from "./MySchool";
 
 export default function ProfileSchool() {
   return (
-    <div className="flex flex-wrap flex-col w-full m-5 p-5">
+    <div className=" flex-col  p-5  bg-gray-100 m-5 rounded-md ">
       <div className="text-emerald-700 text-base p-5">
         <h1 className="text-base">Mon profil</h1>
       </div>
