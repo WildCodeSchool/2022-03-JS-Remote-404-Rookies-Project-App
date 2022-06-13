@@ -5,7 +5,7 @@ import Navbar from "../Navbar";
 
 function DashboardLayout() {
   return (
-    <div className="flex w-full  ">
+    <div className="flex w-screen  ">
       <Navbar />
       <Outlet />
     </div>

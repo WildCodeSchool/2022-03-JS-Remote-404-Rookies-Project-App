@@ -20,6 +20,7 @@ function UserSettings() {
     <p className="mr-5 text-blue-900 font-semibold">{user.firstname} {user.lastname}</p>
     <img className="img2" src={user.photo ? user.photo : randompic} />
   </div>
+  
   )
 }
 
