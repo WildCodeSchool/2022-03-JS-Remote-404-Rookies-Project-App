@@ -12,6 +12,7 @@ import DashboardLayout from "./components/Layouts/DashboardLayout";
 import ConnexionLayout from "./components/Layouts/ConnexionLayout";
 import SignIn from "./components/connexion/SignIn";
 import LogIn from "./components/connexion/LogIn";
+import Teampage from "./pages/Teampage";
 
 import "./App.css";
 
@@ -28,10 +29,12 @@ function App() {
               </Route>
 
               <Route path="/profile" element={<Profilepage />} />
+
               <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route path="" element={<Dashboard />} />
                 <Route path="submission/:type" element={<Submission />} />
                 <Route path="project/" element={<Project />} />
+                <Route path="team/" element={<Teampage />} />
               </Route>
 
               <Route path="/back" element={<BackConnexion />} />
