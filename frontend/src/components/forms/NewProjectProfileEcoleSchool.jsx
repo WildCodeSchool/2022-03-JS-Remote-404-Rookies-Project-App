@@ -1,121 +1,105 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable prettier/prettier */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import range from "../../assets/dataset/workforce.json";
+import industries from "../../assets/dataset/industries.json";
+import SelectDepartment from "../SelectDepartment";
+import SelectCity from "../SelectCity";
+
+const schema = yup
+  .object({
+    companycommitments: yup
+      .string()
+      .lowercase()
+      .required("Veuillez remplir ce champ")
+      .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
+  })
+  .required();
 
 export default function NewProjectProfileEcoleSchool() {
+  const {
+    handleSubmit,
+    register,
+
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
+
+  const onSubmit = async (data) => {
+    await 2000;
+    // eslint-disable-next-line no-restricted-syntax
+    console.log(data);
+  };
+
   return (
-    <div className="bg-gray-100 p-10 flex justify-around flex-col">
-      <div className="flex flex-row ">
-        <div className="flex flex-wrap flex-col mr-40">
-          <h2 className="text-base">Taille de l’entreprise idéale</h2>
-          <div className="inline-block relative w-full m-5 bg-white border border-black rounded-md">
-            <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-              <option>Taille 1</option>
-              <option>Taille 2</option>
-              <option>Taille 3</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg
-                className="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
+    <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="p-2">
+        <div className="flex flex-row flex-wrap">
+          <div className="flex flex-wrap flex-col p-1">
+            <h2 className="text-base p-1">Taille de l’entreprise idéale</h2>
+            <div className="p-1 flex flex-col">
+              <select className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                {range.map((d) => (
+                  <option>{d.range}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-base p-1">
+              Industrie qui correspondrait au cours
+            </h2>
+            <div className="p-1 flex flex-col">
+              <select className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                {industries.map((d) => (
+                  <option>{d.industry}</option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
-        <div className="mr-10 ml-26">
-          <h2 className="text-base">Industrie qui correspondrait au cours</h2>
-          <div className="flex m-5 w-64 bg-white border border-black rounded-md">
-            <input
+
+        <div>
+          <div className="flex mb-5 p-1">
+            <div className="p-1 flex flex-row justify-evenly">
+              <label htmlFor="campus">
+                <h2 className="text-base p-1">
+                  Localisation de l&apos;entreprise
+                </h2>
+                <SelectDepartment />
+                <SelectCity />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-base p-1">
+            Collaboration en distanciel possible ?
+          </h2>
+          <div className="p-1 flex flex-col">
+            <select className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+              <option>Oui</option>
+              <option>Non</option>
+              <option>Partiellement</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-base p-1">Engagement de l’entreprise ? *</h2>
+          <div className="flex m-5 ">
+            <textarea
               className="required form-control
-          block
-          w-full
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
+              w-full "
               type="text"
-              name="industry"
-            />
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="mr-10">
-          <h2 className="text-base">Localisation de l’entreprise idéale</h2>
-          <div className="flex flex-wrap m-5 w-full bg-white border border-black rounded-md">
-            <input
-              className="required form-control
-          block
-          w-full
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-              type="text"
-              name="industry"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col">
-        <h2 className="text-base">Collaboration en distanciel possible ?</h2>
-        <div className="flex flex-wrap w-full m-5 bg-white border border-black rounded-md">
-          <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            <option>Réponse 1</option>
-            <option>Réponse 2</option>
-            <option>Réponse 3 3</option>
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg
-              className="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 className="text-base">Engagement de l’entreprise ? *</h2>
-        <div className="flex m-5 bg-white border border-black rounded-md">
-          <input
-            className="required form-control
-          block
-          w-full
-          h-28
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
-            name="engagements"
-            placeholder="Compléter le cahier des charges,
+              rows="2"
+              placeholder="Compléter le cahier des charges,
             Orienter le travail des étudiants, en exigeant d’eux le comportement
             de professionnels,
             Mettre à disposition de l’équipe les informations nécessaires à la
@@ -125,9 +109,22 @@ export default function NewProjectProfileEcoleSchool() {
             Évaluer l’implication, le comportement et le travail de chaque
             étudiant de l’équipe,
             Participer au lancement et au jury final de la mission."
-          />
+              {...register("companycommitments")}
+            />
+          </div>
+          <p>{errors.companycommitments?.message}</p>
         </div>
-      </div>
+        <div className=" flex items-center justify-center">
+          <button
+            type="submit"
+            formMethod="PUT"
+            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Sauvegarder
+          </button>
+          {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
+        </div>
+      </form>
     </div>
   );
 }
