@@ -74,6 +74,27 @@ function Navbar() {
             Mon profil
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/dashboard/team"
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    background:
+                      "url('./src/assets/pictures/user_active.png') no-repeat 20% ",
+                    backgroundColor: "white",
+                  }
+                : {
+                    background:
+                      "url('./src/assets/pictures/user.png')no-repeat 20%",
+                    backgroundColor: "#14705a",
+                  }
+            }
+          >
+            Mon équipe
+          </NavLink>
+        </li>
       </div>
     </div>
   );
