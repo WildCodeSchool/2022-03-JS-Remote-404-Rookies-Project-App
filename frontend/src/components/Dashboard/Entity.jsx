@@ -24,24 +24,27 @@ function Entity({ user }) {
       </div>
       <div className="flex -mt-12 items-center">
         <img
-          src={entity.logo ? entity.logo : blankPic}
+          src={entity && entity.logo ? entity.logo : blankPic}
           alt="entity-logo"
           className="w-24 rounded-3xl border-8 border-gray-400 ml-10"
         />
         <div className="flex mt-10">
           <p className="pl-5 font-bold text-emerald-700 text-xl">
-            {entity.name ? entity.name : "Structure non enregistrée"}
+            {entity && entity.name ? entity.name : "Structure non enregistrée"}
           </p>
           <div className="flex ml-5 px-2 items-center bg-gray-400 rounded-md">
             <img src={websiteLogo} alt="user-logo" className="max-h-5" />
             <p className="m-1 text-white text-xs bg-gray-400">
-              {entity.website ? entity.website : "Website not defined"}
+              {entity && entity.website
+                ? entity.website
+                : "Website not defined"}
             </p>
           </div>
         </div>
       </div>
       <div className="flex p-6">
-        {user.entity_category_id === 2 &&
+        {entity &&
+          user.entity_category_id === 2 &&
           users.map((e) =>
             e.school_id === entity.id ? (
               <div className="flex justify-between w-full">
@@ -56,7 +59,8 @@ function Entity({ user }) {
               </div>
             ) : null
           )}
-        {user.entity_category_id === 1 &&
+        {entity &&
+          user.entity_category_id === 1 &&
           users.map((e) =>
             e.company_id === entity.id ? (
               <div className="flex justify-between w-full">

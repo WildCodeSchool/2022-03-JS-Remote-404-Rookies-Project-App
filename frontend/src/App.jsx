@@ -28,13 +28,12 @@ function App() {
                 <Route path="login/" element={<LogIn />} />
               </Route>
 
-              <Route path="/profile" element={<Profilepage />} />
-
-              <Route path="/dashboard" element={<DashboardLayout />}>
-                <Route path="" element={<Dashboard />} />
-                <Route path="submission/:type" element={<Submission />} />
-                <Route path="project/" element={<Project />} />
-                <Route path="team/" element={<Teampage />} />
+              <Route path="" element={<DashboardLayout />}>
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="project" element={<Project />} />
+                <Route path="submission:type" element={<Submission />} />
+                <Route path="profile" element={<Profilepage />} />
+                <Route path="team" element={<Teampage />} />
               </Route>
 
               <Route path="/back" element={<BackConnexion />} />
