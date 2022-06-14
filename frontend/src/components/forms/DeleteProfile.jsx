@@ -4,10 +4,10 @@ import React from "react";
 
 function DeleteProfile() {
   return (
-    <div className=" border-b-2  bg-gray-100 flex flex-col  flex-wrap w-11/12">
+    <div className=" border-b-2  bg-gray-100 flex flex-col  flex-wrap w-11/12 mb-5">
       <h2 className="text-base p-5">Supprimer mon compte</h2>
       <form className="flex items-center justify-around m-5">
-        <h3 className="text-xs p-1 text-red-600">
+        <h3 className="text-m p-1 text-red-600">
           Attention, une fois votre compte supprimé, vous ne pourrez plus
           retourner en arrière
         </h3>
