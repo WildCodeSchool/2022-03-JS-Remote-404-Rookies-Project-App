@@ -4,10 +4,9 @@ import plusLogo from "../assets/pictures/add.png";
 
 import "../styles/Project.css";
 
-import UserSettings from "@components/Dashboard/UserSettings";
-import DashboardButton from "@components/Dashboard/DashboardButton";
-import ProjectSelection from "@components/Dashboard/ProjectSelection";
-
+import UserSettings from "../components/Dashboard/UserSettings";
+import DashboardButton from "../components/Dashboard/DashboardButton";
+import ProjectSelection from "../components/Dashboard/ProjectSelection";
 
 function Project() {
   return (

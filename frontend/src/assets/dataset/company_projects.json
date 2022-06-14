@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "project_types_id": 1,
     "end_date": "12 décembre 2022",
     "project_name": "Projet étude de marché (Allemagne)",
@@ -10,7 +10,7 @@
   },
 
   {
-    "id": 2,
+    "id": "2",
     "project_types_id": 2,
     "end_date": "7 mars 2023",
     "project_name": "Projet étude de marché (France)",
@@ -20,7 +20,7 @@
   },
 
   {
-    "id": 3,
+    "id": "3",
     "project_types_id": 3,
     "end_date": "19 septembre 2022",
     "project_name": "Projet étude de marché (USA)",

@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import settings1 from "../../assets/pictures/settings1.png"
+import settings1 from "../../assets/pictures/settings1.png";
 import randompic from "../../assets/pictures/blank-profile-picture.png";
 
 import users from "../../assets/dataset/users.json";
-
 
 function UserSettings() {
   const user = users[2];
@@ -14,14 +13,19 @@ function UserSettings() {
 
   return (
     <div className="flex items-center">
-    <button onClick={() => navigate("/dashboard")}>
-      <img className="mr-5" src={settings1} />
-    </button>
-    <p className="mr-5 text-blue-900 font-semibold">{user.firstname} {user.lastname}</p>
-    <img className="img2" src={user.photo ? user.photo : randompic} />
-  </div>
-  
-  )
+      <button type="submit" onClick={() => navigate("/dashboard")}>
+        <img className="mr-5" src={settings1} alt={settings1} />
+      </button>
+      <p className="mr-5 text-blue-900 font-semibold">
+        {user.firstname} {user.lastname}
+      </p>
+      <img
+        className="img2"
+        src={user.photo ? user.photo : randompic}
+        alt={settings1}
+      />
+    </div>
+  );
 }
 
 export default UserSettings;

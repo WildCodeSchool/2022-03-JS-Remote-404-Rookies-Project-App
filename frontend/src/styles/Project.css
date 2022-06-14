@@ -1,227 +1,225 @@
 .menu1 {
-    margin: 35px;
-    width: 90%;
-    background-color: rgb(255, 255, 255);
-    color: #303972;
-    font-family: "Poppins", sans-serif;
-    font-size: 1.2rem;
+  margin: 35px;
+  width: 90%;
+  background-color: rgb(255, 255, 255);
+  color: #303972;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
 }
 
 .title1 {
-    color: #303972;
+  color: #303972;
 }
 
 .title2 {
-    color: #02E494;
-    font-size: 20px;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
+  color: #02e494;
+  font-size: 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .blocproject {
-    border-width: 2px;
-    background-color: #ffffff;
-    padding: auto;
-    color: #dedede;
-    display: flex;
-    margin: 10px;
-    margin-top: -20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
+  border-width: 2px;
+  background-color: #ffffff;
+  padding: auto;
+  color: #dedede;
+  display: flex;
+  margin: 10px;
+  margin-top: -20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .blocproject2 {
-    height: 350px;
-    width: 80%;
-    margin: 30px;
-    border-width: 2px;
-    background-color: #ffffff;
-    padding: auto;
-    color: #dedede;
-    display: flex;
-    border-radius: 5px;
-    flex-direction: column;
+  height: 350px;
+  width: 80%;
+  margin: 30px;
+  border-width: 2px;
+  background-color: #ffffff;
+  padding: auto;
+  color: #dedede;
+  display: flex;
+  border-radius: 5px;
+  flex-direction: column;
 }
 
 .blocproject3 {
-    height: 400px;
-    width: 300%;
-    margin: 30px;
-    border-width: 2px;
-    background-color: #ffffff;
-    padding: auto;
-    color: #dedede;
-    display: flex;
-    border-radius: 5px;
-    flex-direction: column;
-    overflow-y: scroll;
+  height: 400px;
+  width: 300%;
+  margin: 30px;
+  border-width: 2px;
+  background-color: #ffffff;
+  padding: auto;
+  color: #dedede;
+  display: flex;
+  border-radius: 5px;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
 .blocproject4 {
-    border-width: 2px;
-    background-color: #ffffff;
-    padding: auto;
-    color: #dedede;
-    display: flex;
-    margin: 10px;
-    margin-top: -20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
+  border-width: 2px;
+  background-color: #ffffff;
+  padding: auto;
+  color: #dedede;
+  display: flex;
+  margin: 10px;
+  margin-top: -20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title3 {
-    color: #14705A;
-    font-size: 24px;
-    margin: 10px
+  color: #14705a;
+  font-size: 24px;
+  margin: 10px;
 }
 
 .titleh2 {
-    color: #14705A;
-    font-size: 15px;
-    margin: 10px;
+  color: #14705a;
+  font-size: 15px;
+  margin: 10px;
 }
 
-
 .linebloc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .line {
-    width: 50%;
-    display: flex;
-    margin: 10px;
+  width: 50%;
+  display: flex;
+  margin: 10px;
 }
 
 .bloc {
-    display: flex;
+  display: flex;
 }
 
-
 .blocproject3bis {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .shareedit {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 
 .share {
-    margin: 5px;
-    margin-right: 20px;
-    height: 50px;
-    width: 100px;
-    color:#02E494;
-    border-radius: 15px;
-    border-width: 2px;
-    border-color: #02E494;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 5px;
+  margin-right: 20px;
+  height: 50px;
+  width: 100px;
+  color: #02e494;
+  border-radius: 15px;
+  border-width: 2px;
+  border-color: #02e494;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .edit {
-    margin: 5px;
-    margin-right: 20px;
-    height: 50px;
-    width: 100px;
-    color:#02E494;
-    border-radius: 15px;
-    border-width: 2px;
-    border-color: #02E494;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 5px;
+  margin-right: 20px;
+  height: 50px;
+  width: 100px;
+  color: #02e494;
+  border-radius: 15px;
+  border-width: 2px;
+  border-color: #02e494;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ph2 {
-    margin: 10px;
-    color: #8B8B8B;
+  margin: 10px;
+  color: #8b8b8b;
 }
 
 .domaineproject {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .circlegrey {
-    display: flex;
-    justify-content: center;
-    color: #E5E5E5;
-    border-radius: 15px;
-    width: 15%;
-    background-color: #8B8B8B;
+  display: flex;
+  justify-content: center;
+  color: #e5e5e5;
+  border-radius: 15px;
+  width: 15%;
+  background-color: #8b8b8b;
 }
 
 .matches {
-    color: #14705A;
-    margin: 15px;
-    font-size: 24px;
+  color: #14705a;
+  margin: 15px;
+  font-size: 24px;
 }
 
 .school {
-    color: #8B8B8B;
+  color: #8b8b8b;
 }
 
 .schoolbis {
-    color: #8B8B8B;
-    font-weight: 800;
+  color: #8b8b8b;
+  font-weight: 800;
 }
 
 .bloc5 {
-    display: flex;
-    margin: 10px;
-    padding: 10px;
-    justify-content: space-evenly;
-    align-items: center;
-    overflow-y: scroll;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-y: scroll;
 }
 
 .schoolid {
-    color: #303972;
-    font-size: 22px;
+  color: #303972;
+  font-size: 22px;
 }
 
 .seemore {
-    margin: 5px;
-    height: 40px;
-    width: 100px;
-    color:#02E494;
-    border-radius: 20px;
-    border-width: 2px;
-    border-color: #02E494;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 5px;
+  height: 40px;
+  width: 100px;
+  color: #02e494;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: #02e494;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bloc6 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .ph3 {
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    color: #8B8B8B;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  color: #8b8b8b;
 }
 
-select.menu1{
-    border: none;
+select.menu1 {
+  border: none;
 }
 
 img.share {
-    display: none;
+  display: none;
 }
 
 .img2 {
-    width: 4rem;
-    border-radius: 100px;
+  width: 4rem;
+  border-radius: 100px;
 }
