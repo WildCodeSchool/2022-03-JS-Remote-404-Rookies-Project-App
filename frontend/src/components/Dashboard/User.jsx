@@ -23,16 +23,16 @@ function User({ user }) {
           className="w-24 rounded-full border-8 border-white ml-10"
         />
         <div>
-          <p className="pl-5 pb-2 font-bold text-emerald-700">
+          <p className="pl-5 pb-2 font-bold text-emerald-700 text-xl">
             {user.firstname} {user.lastname}
           </p>
           <div className="flex">
-            {user.role && (
-              <div className="flex pl-5 items-center">
-                <img src={userLogo} alt="user-logo" className="max-h-5" />
-                <p className="pl-2 text-gray-400">{user.role}</p>
-              </div>
-            )}
+            <div className="flex pl-5 items-center">
+              <img src={userLogo} alt="user-logo" className="max-h-5" />
+              <p className="pl-2 text-gray-400">
+                {user.role ? user.role : "Role non définit"}
+              </p>
+            </div>
             <div className="flex pl-5 items-center">
               <img src={mailLogo} alt="mail-logo" className="max-h-4" />
               <p className="pl-2 text-gray-400">{user.email}</p>

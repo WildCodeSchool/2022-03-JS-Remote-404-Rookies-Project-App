@@ -11,7 +11,7 @@ function SignIn() {
   const [entity, setEntity] = useState("");
 
   return (
-    <div className="flex flex-col m-10 w-3/5 items-center">
+    <div className="flex flex-col p-10 w-3/5 items-center h-screen">
       <ConnexionSwitch isMember align="self-start" linkto="/login" />
       <div className="flex flex-col items-start">
         <h1 className="text-2xl font-bold mt-8 mb-5">
@@ -28,7 +28,7 @@ function SignIn() {
             type="button"
             onClick={() => setEntity("entreprise")}
           >
-            entreprise
+            Entreprise
           </button>
           <button
             className={`${

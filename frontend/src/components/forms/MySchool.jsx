@@ -39,7 +39,10 @@ function MySchool() {
     console.log(data);
   };
   return (
-    <div className="border-b-2 flex flex-col flex-wrap p-2 w-full">
+    <div
+      className="border-b-2 bg-gray-100 flex flex-col flex-wrap p-2 w-full mt-20 ml-5 mr-5"
+      mr-5
+    >
       <h2 className="text-base p-21">Mon école</h2>
       <div className="flex justify-end">
         <label htmlFor="image">image:</label>
