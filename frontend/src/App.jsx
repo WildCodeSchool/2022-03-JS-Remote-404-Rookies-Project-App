@@ -28,10 +28,10 @@ function App() {
                 <Route path="login/" element={<LogIn />} />
               </Route>
 
-              <Route path="" element={<DashboardLayout />}>
+              <Route path="/" element={<DashboardLayout />}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="project" element={<Project />} />
-                <Route path="submission:type" element={<Submission />} />
+                <Route path="submission" element={<Submission />} />
                 <Route path="profile" element={<Profilepage />} />
                 <Route path="team" element={<Teampage />} />
               </Route>

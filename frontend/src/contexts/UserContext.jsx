@@ -4,7 +4,7 @@ import users from "../assets/dataset/users.json";
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState(users[2]);
+  const [user, setUser] = useState(users[1]);
 
   return (
     <UserContext.Provider

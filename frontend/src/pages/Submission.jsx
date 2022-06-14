@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useState } from "react";
+
+import ExportContext from "../contexts/UserContext";
 import NavigationForm from "../components/forms/NavigationForm";
 
 import "../styles/NavbarForm.css";
@@ -23,23 +24,24 @@ import NewProjectDomainCompany from "../components/forms/NewProjectDomainCompany
 import NewProjectConsultingCompany from "../components/forms/NewProjectConsultingCompany";
 
 const steptypes = [
-  { label: "Organisation", image: types, type: "school" },
-  { label: "Description", image: descriptionform, type: "school" },
-  { label: "Domaine", image: domaineform, type: "school" },
-  { label: "Dates clés", image: keyDates, type: "school" },
-  { label: "Profil entreprise", image: entreprise, type: "school" },
-  { label: "Aperçu", image: apercuform, type: "school" },
+  { label: "Organisation", image: types, type: 2 },
+  { label: "Description", image: descriptionform, type: 2 },
+  { label: "Domaine", image: domaineform, type: 2 },
+  { label: "Dates clés", image: keyDates, type: 2 },
+  { label: "Profil entreprise", image: entreprise, type: 2 },
+  { label: "Aperçu", image: apercuform, type: 2 },
 
-  { label: "Type", image: types, type: "company" },
-  { label: "Description", image: descriptionform, type: "company" },
-  { label: "Domaine", image: domaineform, type: "company" },
-  { label: "Entreprise", image: keyDates, type: "company" },
-  { label: "Aperçu", image: apercuform, type: "company" },
+  { label: "Type", image: types, type: 1 },
+  { label: "Description", image: descriptionform, type: 1 },
+  { label: "Domaine", image: domaineform, type: 1 },
+  { label: "Entreprise", image: keyDates, type: 1 },
+  { label: "Aperçu", image: apercuform, type: 1 },
 ];
 
 function Submission() {
-  const { type } = useParams();
-  const navData = steptypes.filter((el) => el.type === type);
+  const { user } = useContext(ExportContext.UserContext);
+
+  const navData = steptypes.filter((el) => el.type === user.entity_category_id);
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -58,7 +60,7 @@ function Submission() {
       Domaine: <NewProjectDomainCompany />,
       Entreprise: <NewProjectConsultingCompany />,
     };
-    return type === "school"
+    return user.entity_category_id === 2
       ? school[navData[currentStep].label]
       : company[navData[currentStep].label];
   };
