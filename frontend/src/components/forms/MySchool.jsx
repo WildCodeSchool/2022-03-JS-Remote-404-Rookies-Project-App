@@ -44,28 +44,30 @@ function MySchool() {
       mr-5
     >
       <h2 className="text-base p-21">Mon école</h2>
-      <div className="flex justify-end">
-        <label htmlFor="image">image:</label>
-        <input type="file" {...register("image")} />
+      <div className="p-2 flex justify-end">
+        <label htmlFor="image">Image:</label>
+        <input
+          type="file"
+          {...register("image")}
+          className="flex flex-wrap flex-col p-2"
+        />
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-wrap  items-baseline m-2 p-2 "
+        className="flex flex-wrap flex-col items-baseline m-2 p-2"
       >
         <label htmlFor="school">Le nom de votre école *</label>
         <input
-          className="flex flex-row flex-wrap p-1"
+          className="w-1/2 flex flex-row flex-wrap p-2 m-1"
           required
           type="text"
           placeholder="Le nom de votre école"
           {...register("schoolname")}
         />
         <p>{errors.schoolname?.message}</p>
-        <label className="m-2" htmlFor="description">
-          Description
-        </label>
+        <label htmlFor="description">Description</label>
         <textarea
-          className="w-1/2 "
+          className="w-full p-2 m-1"
           type="text"
           rows="2"
           placeholder="Description de votre entreprise"
@@ -73,13 +75,16 @@ function MySchool() {
         />
         <p>{errors.schooldescription?.message}</p>
         <label htmlFor="domain">Domaines d&apos;enseignement</label>
-        <select className="flex flex-col flex-wrap" name="user_domain">
+        <select
+          className="w-1/2 p-2 m-1 flex flex-col flex-wrap"
+          name="user_domain"
+        >
           {fields.map((d) => (
             <option>{d.field}</option>
           ))}
         </select>
 
-        <div className="flex flex-row justify-evenly">
+        <div className="w-1/2 p-2 flex flex-row">
           <label htmlFor="campus">
             Localisation des campus
             <SelectDepartment />
@@ -89,17 +94,17 @@ function MySchool() {
 
         <label htmlFor="web">Site web</label>
         <input
-          className="flex flex-row flex-wrap p-1"
+          className="w-1/2 m-1 flex flex-row flex-wrap p-1"
           type="url"
           placeholder="Site web"
           {...register("website")}
         />
         <p>{errors.website?.message}</p>
-        <div className=" flex items-center justify-center">
+        <div className="p-2 m-1 flex items-center justify-center">
           <button
             type="submit"
             formMethod="PUT"
-            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            className="ml-96 flex justify-center items-center text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
           >
             Sauvegarder
           </button>
