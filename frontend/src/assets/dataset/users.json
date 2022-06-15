@@ -39,7 +39,7 @@
     "password": "Motdepasse_1234",
     "create-time": 20220412,
     "phone": "+33612345689",
-    "role": "Teacher",
+    "role": "allo",
     "linkedin": "linkedin.com/bridgetschool",
     "photo": "./src/assets/pictures/random-user2.jpg",
     "entity_category_id": 2,

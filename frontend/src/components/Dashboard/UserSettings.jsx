@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ExportContext from "../../contexts/UserContext";
+import ExportContextUser from "../../contexts/UserContext";
 
 import settings1 from "../../assets/pictures/settings1.png";
 import randompic from "../../assets/pictures/blank-profile-picture.png";
 
 function UserSettings() {
-  const { user } = useContext(ExportContext.UserContext);
+  const { user } = useContext(ExportContextUser.UserContext);
 
   const navigate = useNavigate();
 

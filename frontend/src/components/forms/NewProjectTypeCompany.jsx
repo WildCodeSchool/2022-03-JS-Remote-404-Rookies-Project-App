@@ -24,8 +24,7 @@ export default function NewProjectTypeCompany() {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {
-    await 2000;
+  const onSubmit = (data) => {
     // eslint-disable-next-line no-restricted-syntax
     console.log(data);
   };
@@ -79,13 +78,6 @@ export default function NewProjectTypeCompany() {
           <p>{errors.date?.message}</p>
         </div>
         <div className=" flex items-center justify-center">
-          <button
-            type="submit"
-            formMethod="PUT"
-            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Sauvegarder
-          </button>
           {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
       </form>

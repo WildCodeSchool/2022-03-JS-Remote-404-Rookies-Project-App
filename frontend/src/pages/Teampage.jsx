@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 
-import ExportContext from "../contexts/UserContext";
+import ExportContextUser from "../contexts/UserContext";
 
 import Mycompany from "../components/forms/Mycompany";
 import MySchool from "../components/forms/MySchool";
 
 function Teampage() {
-  const { user } = useContext(ExportContext.UserContext);
+  const { user } = useContext(ExportContextUser.UserContext);
 
   return user.entity_category_id === 2 ? <MySchool /> : <Mycompany />;
 }

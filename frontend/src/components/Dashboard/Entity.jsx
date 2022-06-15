@@ -19,7 +19,7 @@ function Entity({ user }) {
     <div className="flex flex-col mx-10 my-5 rounded-2xl shadow-md border">
       <div className="bg-gray-300 h-14 rounded-t-2xl flex justify-end">
         <DashboardButton
-          action={{ logo: modify, text: "Modifier", link: "/profile" }}
+          action={{ logo: modify, text: "Modifier", link: "/team" }}
         />
       </div>
       <div className="flex -mt-12 items-center">
