@@ -12,7 +12,7 @@ function Navbar() {
       <div className="menu-items">
         <li>
           <NavLink
-            to="/dashboard"
+            to="dashboard"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive
@@ -34,7 +34,7 @@ function Navbar() {
 
         <li>
           <NavLink
-            to="/project/"
+            to="project"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive
@@ -55,7 +55,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            to="/profile"
+            to="profile"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive
@@ -72,6 +72,27 @@ function Navbar() {
             }
           >
             Mon profil
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="team"
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    background:
+                      "url('./src/assets/pictures/user_active.png') no-repeat 20% ",
+                    backgroundColor: "white",
+                  }
+                : {
+                    background:
+                      "url('./src/assets/pictures/user.png')no-repeat 20%",
+                    backgroundColor: "#14705a",
+                  }
+            }
+          >
+            Mon équipe
           </NavLink>
         </li>
       </div>
