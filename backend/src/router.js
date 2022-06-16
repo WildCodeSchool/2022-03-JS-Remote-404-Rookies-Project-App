@@ -10,6 +10,7 @@ const {
   LanguageController,
   ImageController,
   CompanyController,
+  SchoolController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -39,5 +40,11 @@ router.get("/images/:id", ImageController.read);
 
 router.get("/companies", CompanyController.browse);
 router.get("/companies/:id", CompanyController.read);
+
+router.get("/schools", SchoolController.browse);
+router.get("/schools/:id", SchoolController.read);
+router.get("/schools/:id", SchoolController.edit);
+router.get("/schools", SchoolController.add);
+router.get("/schools/:id", SchoolController.delete);
 
 module.exports = router;
