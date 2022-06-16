@@ -34,7 +34,7 @@ function Navbar() {
 
         <li>
           <NavLink
-            to="project"
+            to="projets"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive

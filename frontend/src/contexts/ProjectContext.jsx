@@ -3,21 +3,24 @@ import { createContext, useState } from "react";
 const ProjectContext = createContext();
 
 function ProjectProvider({ children }) {
-  const [project, setProject] = useState([1]);
+  const [project, setProject] = useState([]);
 
+  const handleProject = (data) => {
+    setProject({ ...project, ...data });
+  };
   return (
     <ProjectContext.Provider
       value={{
         project,
-        setProject,
+        handleProject,
       }}
     >
       {children}
     </ProjectContext.Provider>
   );
 }
-const ExportContext = {
+const ExportContextProjet = {
   ProjectContext,
   ProjectProvider,
 };
-export default ExportContext;
+export default ExportContextProjet;

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ExportContext from "./contexts/UserContext";
-import ExportContext2 from "./contexts/ProjectContext";
+import ExportContextUser from "./contexts/UserContext";
+import ExportContextProject from "./contexts/ProjectContext";
 
 import Profilepage from "./pages/Profilepage";
 import Dashboard from "./pages/Dashboard";
@@ -19,8 +19,8 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <ExportContext.UserProvider>
-        <ExportContext2.ProjectProvider>
+      <ExportContextUser.UserProvider>
+        <ExportContextProject.ProjectProvider>
           <Router>
             <Routes>
               <Route path="/" element={<ConnexionLayout />}>
@@ -30,7 +30,8 @@ function App() {
 
               <Route path="/" element={<DashboardLayout />}>
                 <Route path="dashboard" element={<Dashboard />} />
-                <Route path="project" element={<Project />} />
+                <Route path="projets/*" element={<Project />} />
+
                 <Route path="submission" element={<Submission />} />
                 <Route path="profile" element={<Profilepage />} />
                 <Route path="team" element={<Teampage />} />
@@ -40,8 +41,8 @@ function App() {
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </Router>
-        </ExportContext2.ProjectProvider>
-      </ExportContext.UserProvider>
+        </ExportContextProject.ProjectProvider>
+      </ExportContextUser.UserProvider>
     </div>
   );
 }

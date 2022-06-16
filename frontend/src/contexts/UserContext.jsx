@@ -4,7 +4,7 @@ import users from "../assets/dataset/users.json";
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState(users[1]);
+  const [user, setUser] = useState(users[2]);
 
   return (
     <UserContext.Provider
@@ -17,8 +17,8 @@ function UserProvider({ children }) {
     </UserContext.Provider>
   );
 }
-const ExportContext = {
+const ExportContextUser = {
   UserContext,
   UserProvider,
 };
-export default ExportContext;
+export default ExportContextUser;

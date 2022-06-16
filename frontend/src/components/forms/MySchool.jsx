@@ -33,8 +33,7 @@ function MySchool() {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {
-    await 2000;
+  const onSubmit = (data) => {
     // eslint-disable-next-line no-restricted-syntax
     console.log(data);
   };
