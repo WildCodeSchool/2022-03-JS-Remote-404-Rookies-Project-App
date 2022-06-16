@@ -16,7 +16,7 @@ function UserSettings() {
       <button type="submit" onClick={() => navigate("/dashboard")}>
         <img className="mr-5" src={settings1} alt={settings1} />
       </button>
-      <p className="mr-5 text-blue-900 font-semibold">
+      <p className="mr-5 text-emerald-700 font-semibold">
         {user.firstname} {user.lastname}
       </p>
       <img
