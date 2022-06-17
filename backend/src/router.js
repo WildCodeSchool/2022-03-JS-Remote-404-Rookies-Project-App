@@ -11,6 +11,8 @@ const {
   ImageController,
   CompanyController,
   SchoolController,
+  UserController,
+  CompanyProjectController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -40,11 +42,36 @@ router.get("/images/:id", ImageController.read);
 
 router.get("/companies", CompanyController.browse);
 router.get("/companies/:id", CompanyController.read);
+// créer / modifier / supprimer une entreprise
 
 router.get("/schools", SchoolController.browse);
 router.get("/schools/:id", SchoolController.read);
-router.get("/schools/:id", SchoolController.edit);
-router.get("/schools", SchoolController.add);
-router.get("/schools/:id", SchoolController.delete);
+router.put("/schools/:id", SchoolController.edit);
+router.post("/schools", SchoolController.add);
+router.delete("/schools/:id", SchoolController.delete);
+// créer / modifier / supprimer une école
+
+router.get("/users/", UserController.browse);
+router.get("/users/:id", UserController.read);
+
+//
+// ******* Companies *************
+
+// récupèrer globalement tous les projets de toutes les entreprises ou un projet spécifique
+router.get("/company-projects/", CompanyProjectController.browse);
+router.get("/company-projects/:id", CompanyProjectController.read);
+
+// récupérer les projects de companies en fonction de l'user connecté
+
+// créer un projet d'entreprise + le modifier
+
+//
+// ******* Schools **************
+
+//  récupère globalement tous les projets de toutes les schools ou un projet spécifique
+
+// récupérer les projects de schools en fonction de l'user connecté
+
+// créer un projet/ressources d'école + le modifier
 
 module.exports = router;
