@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import blankPic from "../../assets/pictures/blank-profile-picture.png";
 import modify from "../../assets/pictures/modify.png";
 import websiteLogo from "../../assets/pictures/mouse-logo.png";
 
-import schools from "../../assets/dataset/schools.json";
-import companies from "../../assets/dataset/companies.json";
 import users from "../../assets/dataset/users.json";
 
 import DashboardButton from "./DashboardButton";
 import UserList from "./UserList";
 
 function Entity({ user }) {
-  const entity = user.school_id
-    ? schools[user.school_id - 1]
-    : companies[user.company_id - 1];
+  const [entity, setEntity] = useState();
+
+  useEffect(() => {
+    if (user.school_id) {
+      axios
+        .get(`http://localhost:5000/schools/${user.school_id}`)
+        .then((res) => setEntity(res.data))
+        .catch((err) => console.warn(err));
+    } else {
+      axios
+        .get(`http://localhost:5000/companies/${user.company_id}`)
+        .then((res) => setEntity(res.data))
+        .catch((err) => console.warn(err));
+    }
+  }, []);
 
   return (
     <div className="flex flex-col mx-10 my-5 rounded-2xl shadow-md border">
@@ -25,7 +36,7 @@ function Entity({ user }) {
       </div>
       <div className="flex -mt-12 items-center">
         <img
-          src={entity && entity.logo ? entity.logo : blankPic}
+          src={entity && entity.image_url ? entity.image_url : blankPic}
           alt="entity-logo"
           className="w-24 rounded-3xl border-8 border-gray-400 ml-10"
         />

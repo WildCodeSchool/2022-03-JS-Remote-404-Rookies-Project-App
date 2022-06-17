@@ -4,13 +4,8 @@ class SchoolManager extends AbstractManager {
   static table = "schools";
 
   find(id) {
-    if (this.table.images_id)
-      return this.connection.query(
-        `select * from ${this.table} INNER JOIN images ON images.id = ${this.table}.images_id WHERE ${this.table}.id = ?`,
-        [id]
-      );
     return this.connection.query(
-      `select * from ${this.table} WHERE ${this.table}.id = ?`,
+      `select * from ${this.table} INNER JOIN images ON images.id = ${this.table}.images_id WHERE ${this.table}.id = ?`,
       [id]
     );
   }
