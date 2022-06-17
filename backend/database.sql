@@ -66,11 +66,11 @@ DROP TABLE IF EXISTS `rookies_app_db`.`images` ;
 
 CREATE TABLE IF NOT EXISTS `rookies_app_db`.`images` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `image-url` VARCHAR(255) NOT NULL,
-  `image-alt` VARCHAR(255) NULL,
+  `image_url` VARCHAR(255) NOT NULL,
+  `image_alt` VARCHAR(255) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `images` (`id`, `image-url`, `image-alt`) VALUES
+INSERT INTO `images` (`id`, `image_url`, `image_alt`) VALUES
 (1, '/src/assets/pictures/random-user.jpg', 'profile-john-doe'),
 (2, '/src/assets/pictures/random-user.jpg', 'profile-brigitte-school'),
 (3, '/src/assets/pictures/poudlard.jpg', 'school-poudlard'),
@@ -166,7 +166,7 @@ CREATE INDEX `fk_schools_images1_idx` ON `rookies_app_db`.`schools` (`images_id`
 CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`schools` (`images_id` ASC) VISIBLE;
 
 INSERT INTO `schools` (`id`, `name`, `description`, `website`, `images_id`, `campuses`) VALUES
-('1', 'Poudlard', 'Ecole tout à fait normale, aucun étudiant en danger ou de créatures dangereuses sur lesquelles on peut tomber au contour du couloir.', 'https://www.poudlard.com', 4, "Edimburg"),
+('1', 'Poudlard', 'Ecole tout à fait normale, aucun étudiant en danger ou de créatures dangereuses sur lesquelles on peut tomber au contour du couloir.', 'https://www.poudlard.com', 3, "Edimburg"),
 ('2', 'Beauxbatons', null, null, null, null);
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`users`
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`profiles` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
-  `create-time` VARCHAR(45) NULL DEFAULT 'CURRENT_TIMESTAMP',
+  `create_time` VARCHAR(45) NULL DEFAULT 'CURRENT_TIMESTAMP',
   `phone` INT NULL,
   `role` VARCHAR(45) NULL,
   `linkedin` VARCHAR(45) NULL,
@@ -249,7 +249,7 @@ CREATE UNIQUE INDEX `school_id_UNIQUE` ON `rookies_app_db`.`profiles` (`school_i
 
 CREATE UNIQUE INDEX `company_id_UNIQUE` ON `rookies_app_db`.`profiles` (`company_id` ASC) VISIBLE;
 
-INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create-time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
+INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
 (1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, '1', 1),
 (2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, '2', null),
 (3, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '3', 2);
