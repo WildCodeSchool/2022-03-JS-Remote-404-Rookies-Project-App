@@ -9,6 +9,7 @@ import companies from "../../assets/dataset/companies.json";
 import users from "../../assets/dataset/users.json";
 
 import DashboardButton from "./DashboardButton";
+import UserList from "./UserList";
 
 function Entity({ user }) {
   const entity = user.school_id
@@ -17,7 +18,7 @@ function Entity({ user }) {
 
   return (
     <div className="flex flex-col mx-10 my-5 rounded-2xl shadow-md border">
-      <div className="bg-gray-300 h-14 rounded-t-2xl flex justify-end">
+      <div className="bg-gray-300 h-28 rounded-t-2xl flex justify-end">
         <DashboardButton
           action={{ logo: modify, text: "Modifier", link: "/team" }}
         />
@@ -44,37 +45,9 @@ function Entity({ user }) {
       </div>
       <div className="flex p-6">
         {entity &&
-          user.entity_category_id === 2 &&
-          users.map((e) =>
-            e.school_id === entity.id ? (
-              <div className="flex justify-between w-full">
-                <p className="text-gray-400">
-                  {e.firstname} {e.lastname}
-                </p>
-                <p className="text-gray-400">{e.email}</p>
-                <p className="text-gray-400">
-                  {e.is_admin === 0 ? "Admin" : "Not admin"}
-                </p>
-                <p className="text-gray-400">&bull;&bull;&bull;</p>
-              </div>
-            ) : null
-          )}
-        {entity &&
-          user.entity_category_id === 1 &&
-          users.map((e) =>
-            e.company_id === entity.id ? (
-              <div className="flex justify-between w-full">
-                <p className="text-gray-400">
-                  {e.firstname} {e.lastname}
-                </p>
-                <p className="text-gray-400">{e.email}</p>
-                <p className="text-gray-400">
-                  {e.is_admin === 0 ? "Admin" : "Not admin"}
-                </p>
-                <p className="text-gray-400">&bull;&bull;&bull;</p>
-              </div>
-            ) : null
-          )}
+          users
+            .filter((u) => u.company_id === entity.id)
+            .map((u) => <UserList user={u} />)}
       </div>
     </div>
   );

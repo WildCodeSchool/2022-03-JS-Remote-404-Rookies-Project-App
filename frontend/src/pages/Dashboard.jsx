@@ -1,16 +1,18 @@
 import React, { useContext } from "react";
 import ExportContextUser from "../contexts/UserContext";
 
-import User from "../components/Dashboard/User";
 import Entity from "../components/Dashboard/Entity";
 import MyProjects from "../components/Dashboard/MyProjects";
+import UserSettings from "../components/Dashboard/UserSettings";
 
 function Dashboard() {
   const { user } = useContext(ExportContextUser.UserContext);
 
   return (
     <div className="flex flex-col w-full">
-      <User user={user} />
+      <div className="self-end mt-5 mr-10">
+        <UserSettings />
+      </div>
       <Entity user={user} />
       <MyProjects user={user} />
     </div>
