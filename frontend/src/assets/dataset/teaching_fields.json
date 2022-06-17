@@ -1,18 +1,38 @@
 [
-    {
-        "id": 1,
-        "field": "Marketing"
-    },
-    {
-        "id": 2,
-        "field": "Web Development"
-    },
-    {
-        "id": 3,
-        "field": "Business"
-    },
-    {
-        "id": 4,
-        "field": "Etude de marché"
-    }
+  {
+    "id": 1,
+    "field": "Marketing"
+  },
+  {
+    "id": 2,
+    "field": "Digital et développement web"
+  },
+  {
+    "id": 3,
+    "field": "Communication"
+  },
+  {
+    "id": 4,
+    "field": "Graphisme et Design"
+  },
+  {
+    "id": 5,
+    "field": "Ingénierie"
+  },
+  {
+    "id": 6,
+    "field": "Finance"
+  },
+  {
+    "id": 7,
+    "field": "RH"
+  },
+  {
+    "id": 8,
+    "field": "Supply Chain"
+  },
+  {
+    "id": 9,
+    "field": "DD & RSE"
+  }
 ]

@@ -12,17 +12,18 @@ function Navbar() {
       <div className="menu-items">
         <li>
           <NavLink
-            to="/dashboard"
+            to="dashboard"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive
                 ? {
                     background:
-                      "url('./src/assets/home_active.png') no-repeat 25% ",
+                      "url('./src/assets/pictures/home_active.png') no-repeat 20% ",
                     backgroundColor: "white",
                   }
                 : {
-                    background: "url('./src/assets/Home.png')no-repeat 25%",
+                    background:
+                      "url('./src/assets/pictures/homeform.png')no-repeat 20%",
                     backgroundColor: "#14705a",
                   }
             }
@@ -30,20 +31,21 @@ function Navbar() {
             Dashboard
           </NavLink>
         </li>
+
         <li>
           <NavLink
-            to="/project"
+            to="projets"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive
                 ? {
                     background:
-                      "url('./src/assets/Folder_fill_active.png') no-repeat 25% ",
+                      "url('./src/assets/pictures/folder_fill_active.png') no-repeat 20% ",
                     backgroundColor: "white",
                   }
                 : {
                     background:
-                      "url('./src/assets/Folder_fill.png')no-repeat 25%",
+                      "url('./src/assets/pictures/folder_fill.png')no-repeat 20%",
                     backgroundColor: "#14705a",
                   }
             }
@@ -53,22 +55,44 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            to="/profile"
+            to="profile"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
             style={({ isActive }) =>
               isActive
                 ? {
                     background:
-                      "url('./src/assets/User_active.png') no-repeat 25% ",
+                      "url('./src/assets/pictures/user_active.png') no-repeat 20% ",
                     backgroundColor: "white",
                   }
                 : {
-                    background: "url('./src/assets/User.png')no-repeat 25%",
+                    background:
+                      "url('./src/assets/pictures/user.png')no-repeat 20%",
                     backgroundColor: "#14705a",
                   }
             }
           >
             Mon profil
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="team"
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    background:
+                      "url('./src/assets/pictures/user_active.png') no-repeat 20% ",
+                    backgroundColor: "white",
+                  }
+                : {
+                    background:
+                      "url('./src/assets/pictures/user.png')no-repeat 20%",
+                    backgroundColor: "#14705a",
+                  }
+            }
+          >
+            Mon équipe
           </NavLink>
         </li>
       </div>

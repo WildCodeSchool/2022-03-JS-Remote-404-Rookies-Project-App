@@ -1,22 +1,20 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import User from "../components/User";
-import Entity from "../components/Entity";
-import MyProjects from "../components/MyProjects";
+import React, { useContext } from "react";
+import ExportContextUser from "../contexts/UserContext";
 
-import users from "../assets/dataset/users.json";
+import Entity from "../components/Dashboard/Entity";
+import MyProjects from "../components/Dashboard/MyProjects";
+import UserSettings from "../components/Dashboard/UserSettings";
 
 function Dashboard() {
-  const user = users[2];
+  const { user } = useContext(ExportContextUser.UserContext);
 
   return (
-    <div className="flex">
-      <Navbar />
-      <div className="flex flex-col w-full">
-        <User user={user} />
-        <Entity user={user} />
-        <MyProjects />
+    <div className="flex flex-col w-full">
+      <div className="self-end mt-5 mr-10">
+        <UserSettings />
       </div>
+      <Entity user={user} />
+      <MyProjects user={user} />
     </div>
   );
 }
