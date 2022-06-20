@@ -13,7 +13,7 @@ function SelectProject() {
   };
   React.useEffect(() => {
     axios
-      .get("http://localhost:3000/src/assets/dataset/company_projects.json")
+      .get("http://localhost:5000/company-projects")
       .then((res) => setProject(res.data))
       .catch((err) => console.warn(err));
   }, []);
