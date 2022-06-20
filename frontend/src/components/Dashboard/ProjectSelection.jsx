@@ -13,7 +13,7 @@ function SelectProject() {
   };
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/company-projects")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/company-projects`)
       .then((res) => setProject(res.data))
       .catch((err) => console.warn(err));
   }, []);
