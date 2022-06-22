@@ -3,18 +3,18 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import ButtonHandler from "./ButtonHandler";
+import ButtonHandler from "../ButtonHandler";
 
-import ExportContextProject from "../../contexts/ProjectContext";
+import ExportContextProject from "../../../contexts/ProjectContext";
 
 const schema = yup
   .object({
-    projectgoals: yup
+    objectives: yup
       .string()
       .lowercase()
       .required("Veuillez remplir ce champ")
       .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
-    projectmissions: yup
+    mission_examples: yup
       .string()
       .lowercase()
       .required("Veuillez remplir ce champ")
@@ -40,6 +40,7 @@ export default function NewProjectDescriptionSchool({
 
   const onSubmit = (data) => {
     handleProject(data);
+    handleNextStep("Next");
   };
 
   return (
@@ -57,9 +58,9 @@ export default function NewProjectDescriptionSchool({
               type="text"
               rows="3"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
-              {...register("projectgoals")}
+              {...register("objectives")}
             />
-            <p>{errors.projectgoals?.message}</p>
+            <p>{errors.objectives?.message}</p>
           </div>
         </div>
         <div>
@@ -74,17 +75,17 @@ export default function NewProjectDescriptionSchool({
               type="text"
               rows="3"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
-              {...register("projectmissions")}
+              {...register("mission_examples")}
             />
-            <p>{errors.projectmissions?.message}</p>
+            <p>{errors.mission_examples?.message}</p>
           </div>
         </div>
+        <ButtonHandler
+          handleNextStep={handleNextStep}
+          currentStep={currentStep}
+          long={long}
+        />
       </form>
-      <ButtonHandler
-        handleNextStep={handleNextStep}
-        currentStep={currentStep}
-        long={long}
-      />
     </div>
   );
 }
