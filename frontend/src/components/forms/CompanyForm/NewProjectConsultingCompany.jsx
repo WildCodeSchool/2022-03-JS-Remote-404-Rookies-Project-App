@@ -1,29 +1,38 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 
 import * as yup from "yup";
 
-import industries from "../../../assets/dataset/industries.json";
-import range from "../../../assets/dataset/workforce.json";
 import SelectDepartment from "../../SelectDepartment";
-import SelectCity from "../../SelectCity";
+
+import ButtonHandler from "../ButtonHandler";
+
+import ExportContextProject from "../../../contexts/ProjectContext";
+import ExportContextUser from "../../../contexts/UserContext";
 
 const schema = yup
   .object({
-    companyname: yup.string().required("Veuillez remplir ce champ").lowercase(),
-    companydescription: yup
-      .string()
-      .required("Veuillez remplir ce champ")
-      .lowercase()
-      .min(50, "Votre description doit contenir au moins 50 caractères"),
+    name: yup.string().required("Veuillez remplir ce champ").lowercase(),
+    description: yup.string().required("Veuillez remplir ce champ").lowercase(),
     website: yup.string().url("Veuillez rentrer une url valide"),
   })
   .required();
 
-export default function NewProjectConsultingCompany() {
+export default function NewProjectConsultingCompany({
+  handleNextStep,
+  currentStep,
+  long,
+}) {
+  const [workforces, setWorkforces] = useState([]);
+  const [sectors, setSectors] = useState([]);
+  const { handleProject } = useContext(ExportContextProject.ProjectContext);
+  const { user } = useContext(ExportContextUser.UserContext);
+  const [companyName, setCompanyName] = useState();
+
   const {
     handleSubmit,
     register,
@@ -34,39 +43,43 @@ export default function NewProjectConsultingCompany() {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {
-    await 2000;
-    // eslint-disable-next-line no-restricted-syntax
-    console.log(data);
+  const onSubmit = (data) => {
+    handleProject(data);
+    handleNextStep("Next");
   };
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workforces`)
+      .then((res) => setWorkforces(res.data))
+      .catch((err) => console.warn(err));
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/sectors`)
+      .then((res) => setSectors(res.data))
+      .catch((err) => console.warn(err));
+    if (user.company_id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
+        .then((res) => setCompanyName(res.data.name))
+        .catch((err) => console.warn(err));
+    }
+  }, []);
+
   return (
     <div className="border-b-2 flex flex-col flex-wrap w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="p-2">
-        <h2 className="text-base p-1">Le nom de votre entreprise *</h2>
         <div className="flex justify-end">
           <label htmlFor="image">image:</label>
           <input type="file" {...register("image")} />
         </div>
-        <div className="flex flex-wrap m-2 p-1">
+        <div className="flex flex-wrap p-1">
+          <h2 className="text-base p-1">Votre entreprise *</h2>
           <input
-            className="required form-control
-          px-3
-          py-1.5
-          text-base
-          font-normal
-          text-gray-700
-          bg-white bg-clip-padding
-          border border-solid border-gray-300
-          rounded
-          transition
-          ease-in-out
-          m-0
-          focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
-            type="text"
-            placeholder="Entreprise SAS"
-            {...register("companyname")}
+            {...register("name")}
+            className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Saisir votre école"
+            value={companyName}
           />
-          <p>{errors.comapnyname?.message}</p>
         </div>
         <h2 className="text-base p-1">Description de l&apos;entreprise *</h2>
         <div className="flex flex-wrap m-2 p-1">
@@ -76,7 +89,7 @@ export default function NewProjectConsultingCompany() {
             type="text"
             rows="2"
             placeholder="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
-            {...register("companydescription")}
+            {...register("description")}
           />
           <p>{errors.companydescription?.message}</p>
         </div>
@@ -85,9 +98,12 @@ export default function NewProjectConsultingCompany() {
           <div className="flex flex-wrap mb-5">
             <h2 className="text-base p-1">Industrie</h2>
             <div className="flex flex-wrap m-2">
-              <select className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                {industries.map((d) => (
-                  <option>{d.industry}</option>
+              <select
+                {...register("sector")}
+                className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
+                {sectors.map((d) => (
+                  <option key={d.sector}>{d.sector}</option>
                 ))}
               </select>
             </div>
@@ -125,29 +141,29 @@ export default function NewProjectConsultingCompany() {
                   Localisation de l&apos;entreprise
                 </h2>
                 <SelectDepartment />
-                <SelectCity />
               </label>
             </div>
           </div>
           <div className="flex flex-col mb-5">
             <h2 className="text-base p-1">Effectif de l&apos;entreprise</h2>
-            <select className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-              {range.map((d) => (
-                <option>{d.range}</option>
+            <select
+              {...register("range")}
+              className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            >
+              {workforces.map((d) => (
+                <option key={d.range}>{d.range}</option>
               ))}
             </select>
           </div>
         </div>
         <div className=" flex flex-col items-center justify-center">
-          <button
-            type="submit"
-            formMethod="PUT"
-            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Sauvegarder
-          </button>
           {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
+        <ButtonHandler
+          handleNextStep={handleNextStep}
+          currentStep={currentStep}
+          long={long}
+        />
       </form>
     </div>
   );

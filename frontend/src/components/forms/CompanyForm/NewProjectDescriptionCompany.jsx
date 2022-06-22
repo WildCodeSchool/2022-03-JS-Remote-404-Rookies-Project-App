@@ -1,18 +1,25 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import ButtonHandler from "../ButtonHandler";
+
+import ExportContextProject from "../../../contexts/ProjectContext";
+
 const schema = yup
   .object({
-    projectname: yup.string().lowercase().required("Veuillez remplir ce champ"),
-    projectgoals: yup
+    project_name: yup
+      .string()
+      .lowercase()
+      .required("Veuillez remplir ce champ"),
+    goal: yup
       .string()
       .lowercase()
       .required("Veuillez remplir ce champ")
       .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
-    projectresources: yup
+    ressources_available: yup
       .string()
       .lowercase()
       .required("Veuillez remplir ce champ")
@@ -20,7 +27,13 @@ const schema = yup
   })
   .required();
 
-export default function NewProjectDescriptionCompany() {
+export default function NewProjectDescriptionCompany({
+  handleNextStep,
+  currentStep,
+  long,
+}) {
+  const { handleProject } = useContext(ExportContextProject.ProjectContext);
+
   const {
     handleSubmit,
     register,
@@ -31,10 +44,9 @@ export default function NewProjectDescriptionCompany() {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {
-    await 2000;
-    // eslint-disable-next-line no-restricted-syntax
-    console.log(data);
+  const onSubmit = (data) => {
+    handleProject(data);
+    handleNextStep("Next");
   };
 
   return (
@@ -60,7 +72,7 @@ export default function NewProjectDescriptionCompany() {
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="text"
               placeholder="Projet étude de marché (Allemagne)"
-              {...register("projectname")}
+              {...register("project_name")}
             />
             <p>{errors.projectname?.message}</p>
           </div>
@@ -81,7 +93,7 @@ export default function NewProjectDescriptionCompany() {
               type="text"
               rows="2"
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
-              {...register("projectgoals")}
+              {...register("goal")}
             />
             <p>{errors.projectgoals?.message}</p>
           </div>
@@ -105,21 +117,19 @@ export default function NewProjectDescriptionCompany() {
               placeholder="Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.
 
           Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat."
-              {...register("projectresources")}
+              {...register("ressources_available")}
             />
             <p>{errors.projectresources?.message}</p>
           </div>
         </div>
         <div className=" flex items-center justify-center">
-          <button
-            type="submit"
-            formMethod="PUT"
-            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Sauvegarder
-          </button>
           {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
+        <ButtonHandler
+          handleNextStep={handleNextStep}
+          currentStep={currentStep}
+          long={long}
+        />
       </form>
     </div>
   );

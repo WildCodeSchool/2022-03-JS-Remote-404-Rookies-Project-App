@@ -1,33 +1,61 @@
-import React from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
-import industries from "../../../assets/dataset/industries.json";
+import ButtonHandler from "../ButtonHandler";
 
-export default function NewProjectDomainCompany() {
+import ExportContextProject from "../../../contexts/ProjectContext";
+
+export default function NewProjectDomainCompany({
+  handleNextStep,
+  currentStep,
+  long,
+}) {
+  const { handleProject } = useContext(ExportContextProject.ProjectContext);
+  const [sectors, setSectors] = useState([]);
+
+  const { handleSubmit, register } = useForm({
+    mode: "onChange",
+  });
+
+  const onSubmit = (data) => {
+    handleProject(data);
+    handleNextStep("Next");
+  };
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/sectors`)
+      .then((res) => setSectors(res.data))
+      .catch((err) => console.warn(err));
+  }, []);
+
   return (
     <div className="bg-gray-100 p-10 flex flex-wrap justify-around flex-col">
-      <form className="p-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="p-2">
         <h2 className="text-base">Quel est le domaine de votre projet ? *</h2>
         <p className="p-5 font-extralight text-s">
           Choisissez 5 catégories maximum qui correspondent le mieux à votre
           projet.
         </p>
         <div className="inline-block relative m-2">
-          <select className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-            {industries.map((d) => (
-              <option>{d.industry}</option>
+          <select
+            {...register("sector")}
+            multiple
+            size={5}
+            className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            {sectors.map((d) => (
+              <option key={d.sector}>{d.sector}</option>
             ))}
           </select>
         </div>
-        <div />
-        <div className=" flex items-center justify-center">
-          <button
-            type="submit"
-            formMethod="PUT"
-            className="  text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Sauvegarder
-          </button>
-        </div>
+        <ButtonHandler
+          handleNextStep={handleNextStep}
+          currentStep={currentStep}
+          long={long}
+        />
       </form>
     </div>
   );

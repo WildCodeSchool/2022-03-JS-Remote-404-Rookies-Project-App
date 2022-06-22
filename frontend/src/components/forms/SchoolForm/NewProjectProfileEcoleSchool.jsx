@@ -14,7 +14,11 @@ import SelectDepartment from "../../SelectDepartment";
 
 const schema = yup
   .object({
-    companycommitments: yup
+    ideal_location: yup.string().required("Veuillez remplir ce champ"),
+    sector: yup.string().required("Veuillez remplir ce champ"),
+    range: yup.string().required("Veuillez remplir ce champ"),
+    remote: yup.number().required("Veuillez remplir ce champ"),
+    commitment: yup
       .string()
       .lowercase()
       .required("Veuillez remplir ce champ")
@@ -30,6 +34,13 @@ export default function NewProjectProfileEcoleSchool({
   const { handleProject } = useContext(ExportContextProject.ProjectContext);
   const [workforces, setWorkforces] = useState([]);
   const [sectors, setSectors] = useState([]);
+  const [selectedDpt, setSelectedDpt] = useState();
+  const [city, setCity] = useState();
+
+  const manageCity = (value) => {
+    setCity();
+    setSelectedDpt(value);
+  };
 
   const {
     handleSubmit,
@@ -45,6 +56,14 @@ export default function NewProjectProfileEcoleSchool({
     handleProject(data);
     handleNextStep("Next");
   };
+
+  useEffect(() => {
+    if (selectedDpt) {
+      axios
+        .get(`https://geo.api.gouv.fr/departements/${selectedDpt}/communes`)
+        .then((res) => setCity(res.data));
+    }
+  }, [selectedDpt]);
 
   useEffect(() => {
     axios
@@ -94,11 +113,21 @@ export default function NewProjectProfileEcoleSchool({
         <div>
           <div className="flex mb-5 p-1">
             <div className="p-1 flex flex-row justify-evenly">
-              <label htmlFor="campus">
+              <label htmlFor="campus" className="flex">
                 <h2 className="text-base p-1">
                   Localisation de l&apos;entreprise
                 </h2>
-                <SelectDepartment />
+                <SelectDepartment manageCity={manageCity} />
+                {city && (
+                  <select
+                    {...register("ideal_location")}
+                    className="bg-white border ml-2 border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                  >
+                    {city.map((el) => (
+                      <option key={el.nom}>{el.nom}</option>
+                    ))}
+                  </select>
+                )}
               </label>
             </div>
           </div>
@@ -112,8 +141,8 @@ export default function NewProjectProfileEcoleSchool({
               {...register("remote")}
               className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
-              <option value="1">Oui</option>
-              <option value="0">Non</option>
+              <option value={1}>Oui</option>
+              <option value={0}>Non</option>
             </select>
           </div>
         </div>
@@ -140,12 +169,12 @@ export default function NewProjectProfileEcoleSchool({
           </div>
           <p>{errors.companycommitments?.message}</p>
         </div>
+        <ButtonHandler
+          handleNextStep={handleNextStep}
+          currentStep={currentStep}
+          long={long}
+        />
       </form>
-      <ButtonHandler
-        handleNextStep={handleNextStep}
-        currentStep={currentStep}
-        long={long}
-      />
     </div>
   );
 }
