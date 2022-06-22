@@ -16,12 +16,12 @@ function Entity({ user }) {
   useEffect(() => {
     if (user.school_id) {
       axios
-        .get(`http://localhost:5000/schools/${user.school_id}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`)
         .then((res) => setEntity(res.data))
         .catch((err) => console.warn(err));
     } else {
       axios
-        .get(`http://localhost:5000/companies/${user.company_id}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
         .then((res) => setEntity(res.data))
         .catch((err) => console.warn(err));
     }

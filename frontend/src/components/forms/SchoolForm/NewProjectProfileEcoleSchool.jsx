@@ -1,18 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable prettier/prettier */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import ButtonHandler from "./ButtonHandler";
-import ExportContextProject from "../../contexts/ProjectContext";
+import ButtonHandler from "../ButtonHandler";
+import ExportContextProject from "../../../contexts/ProjectContext";
 
-import range from "../../assets/dataset/workforce.json";
-import industries from "../../assets/dataset/industries.json";
-import SelectDepartment from "../SelectDepartment";
-import SelectCity from "../SelectCity";
+import SelectDepartment from "../../SelectDepartment";
 
 const schema = yup
   .object({
@@ -30,6 +28,8 @@ export default function NewProjectProfileEcoleSchool({
   long,
 }) {
   const { handleProject } = useContext(ExportContextProject.ProjectContext);
+  const [workforces, setWorkforces] = useState([]);
+  const [sectors, setSectors] = useState([]);
 
   const {
     handleSubmit,
@@ -43,7 +43,19 @@ export default function NewProjectProfileEcoleSchool({
 
   const onSubmit = (data) => {
     handleProject(data);
+    handleNextStep("Next");
   };
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/workforces`)
+      .then((res) => setWorkforces(res.data))
+      .catch((err) => console.warn(err));
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/sectors`)
+      .then((res) => setSectors(res.data))
+      .catch((err) => console.warn(err));
+  }, []);
 
   return (
     <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
@@ -52,9 +64,12 @@ export default function NewProjectProfileEcoleSchool({
           <div className="flex flex-wrap flex-col p-1">
             <h2 className="text-base p-1">Taille de l’entreprise idéale</h2>
             <div className="p-1 flex flex-col">
-              <select className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                {range.map((d) => (
-                  <option>{d.range}</option>
+              <select
+                {...register("range")}
+                className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
+                {workforces.map((d) => (
+                  <option key={d.range}>{d.range}</option>
                 ))}
               </select>
             </div>
@@ -64,9 +79,12 @@ export default function NewProjectProfileEcoleSchool({
               Industrie qui correspondrait au cours
             </h2>
             <div className="p-1 flex flex-col">
-              <select className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                {industries.map((d) => (
-                  <option>{d.industry}</option>
+              <select
+                {...register("sector")}
+                className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
+                {sectors.map((d) => (
+                  <option key={d.sector}>{d.sector}</option>
                 ))}
               </select>
             </div>
@@ -81,7 +99,6 @@ export default function NewProjectProfileEcoleSchool({
                   Localisation de l&apos;entreprise
                 </h2>
                 <SelectDepartment />
-                <SelectCity />
               </label>
             </div>
           </div>
@@ -91,10 +108,12 @@ export default function NewProjectProfileEcoleSchool({
             Collaboration en distanciel possible ?
           </h2>
           <div className="p-1 flex flex-col">
-            <select className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-              <option>Oui</option>
-              <option>Non</option>
-              <option>Partiellement</option>
+            <select
+              {...register("remote")}
+              className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            >
+              <option value="1">Oui</option>
+              <option value="0">Non</option>
             </select>
           </div>
         </div>
@@ -116,7 +135,7 @@ export default function NewProjectProfileEcoleSchool({
             Évaluer l’implication, le comportement et le travail de chaque
             étudiant de l’équipe,
             Participer au lancement et au jury final de la mission."
-              {...register("companycommitments")}
+              {...register("commitment")}
             />
           </div>
           <p>{errors.companycommitments?.message}</p>

@@ -12,15 +12,15 @@ import keyDates from "../assets/pictures/keyDates.png";
 import entreprise from "../assets/pictures/entreprise.png";
 import apercuform from "../assets/pictures/apercuform.png";
 
-import NewProjectOrganisationSchool from "../components/forms/NewProjectOrganisationSchool";
-import NewProjectDescriptionSchool from "../components/forms/NewProjectDescriptionSchool";
-import NewProjectDomainSchool from "../components/forms/NewProjectDomainSchool";
-import NewProjectDatesClésSchool from "../components/forms/NewProjectDatesClésSchool";
-import NewProjectProfileEcoleSchool from "../components/forms/NewProjectProfileEcoleSchool";
-import NewProjectTypeCompany from "../components/forms/NewProjectTypeCompany";
-import NewProjectDescriptionCompany from "../components/forms/NewProjectDescriptionCompany";
-import NewProjectDomainCompany from "../components/forms/NewProjectDomainCompany";
-import NewProjectConsultingCompany from "../components/forms/NewProjectConsultingCompany";
+import NewProjectOrganisationSchool from "../components/forms/SchoolForm/NewProjectOrganisationSchool";
+import NewProjectDescriptionSchool from "../components/forms/SchoolForm/NewProjectDescriptionSchool";
+import NewProjectDomainSchool from "../components/forms/SchoolForm/NewProjectDomainSchool";
+import NewProjectDatesClésSchool from "../components/forms/SchoolForm/NewProjectDatesClésSchool";
+import NewProjectProfileEcoleSchool from "../components/forms/SchoolForm/NewProjectProfileEcoleSchool";
+import NewProjectTypeCompany from "../components/forms/CompanyForm/NewProjectTypeCompany";
+import NewProjectDescriptionCompany from "../components/forms/CompanyForm/NewProjectDescriptionCompany";
+import NewProjectDomainCompany from "../components/forms/CompanyForm/NewProjectDomainCompany";
+import NewProjectConsultingCompany from "../components/forms/CompanyForm/NewProjectConsultingCompany";
 import NewProjectPreview from "../components/forms/NewProjectPreview";
 
 const steptypes = [
@@ -49,7 +49,7 @@ function Submission() {
     if (step === "Return") setCurrentStep(currentStep - 1);
     setTimeout(() => {
       if (step === "Next") setCurrentStep(currentStep + 1);
-    }, 500);
+    }, 200);
   };
 
   const getForm = () => {

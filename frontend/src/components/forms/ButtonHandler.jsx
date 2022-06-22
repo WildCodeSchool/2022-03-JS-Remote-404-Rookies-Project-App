@@ -1,12 +1,15 @@
-import React /* { useContext } */ from "react";
-
-// import ExportContextProject from "../../contexts/ProjectContext";
+import React, { useContext } from "react";
+import ExportContextProject from "../../contexts/ProjectContext";
 
 import rightarrowbutton from "../../assets/pictures/rightarrowbutton.png";
 import leftarrowbutton from "../../assets/pictures/leftarrowbutton.png";
 
 function ButtonHandler({ handleNextStep, currentStep, long }) {
-  // const { project } = useContext(ExportContextProject.ProjectContext);
+  const { project } = useContext(ExportContextProject.ProjectContext);
+
+  const handleSending = () => {
+    console.warn(project);
+  };
 
   return (
     <div className="button-wrapper">
@@ -24,7 +27,6 @@ function ButtonHandler({ handleNextStep, currentStep, long }) {
         <button
           type="submit"
           formMethod="PUT"
-          onClick={() => handleNextStep("Next")}
           className="primarybutton"
           id="primarybutton"
         >
@@ -33,8 +35,13 @@ function ButtonHandler({ handleNextStep, currentStep, long }) {
       )}
 
       {currentStep >= long - 1 && (
-        <button type="button" id="primarybutton" className="primarybutton">
-          Submit
+        <button
+          type="button"
+          id="primarybutton"
+          className="primarybutton"
+          onClick={() => handleSending()}
+        >
+          Envoyer
         </button>
       )}
     </div>

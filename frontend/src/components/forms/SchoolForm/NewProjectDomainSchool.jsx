@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 import { useForm } from "react-hook-form";
 
-import fields from "../../assets/dataset/teaching_fields.json";
-import languages from "../../assets/dataset/languages.json";
-import ButtonHandler from "./ButtonHandler";
+import ButtonHandler from "../ButtonHandler";
 
-import ExportContextProject from "../../contexts/ProjectContext";
+import ExportContextProject from "../../../contexts/ProjectContext";
 
 export default function NewProjectDomainSchool({
   handleNextStep,
@@ -15,6 +14,8 @@ export default function NewProjectDomainSchool({
   long,
 }) {
   const { handleProject } = useContext(ExportContextProject.ProjectContext);
+  const [fields, setFields] = useState([]);
+  const [languages, setLanguages] = useState([]);
 
   const { handleSubmit, register } = useForm({
     mode: "onChange",
@@ -22,7 +23,19 @@ export default function NewProjectDomainSchool({
 
   const onSubmit = (data) => {
     handleProject(data);
+    handleNextStep("Next");
   };
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/fields`)
+      .then((res) => setFields(res.data))
+      .catch((err) => console.warn(err));
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/languages`)
+      .then((res) => setLanguages(res.data))
+      .catch((err) => console.warn(err));
+  }, []);
 
   return (
     <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
@@ -39,9 +52,10 @@ export default function NewProjectDomainSchool({
             <select
               {...register("teaching_fields")}
               className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              multiple
             >
               {fields.map((d) => (
-                <option>{d.field}</option>
+                <option key={d.field}>{d.field}</option>
               ))}
             </select>
           </div>
@@ -61,7 +75,7 @@ export default function NewProjectDomainSchool({
               className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
               {languages.map((d) => (
-                <option>{d.language}</option>
+                <option key={d.language}>{d.language}</option>
               ))}
             </select>
           </div>

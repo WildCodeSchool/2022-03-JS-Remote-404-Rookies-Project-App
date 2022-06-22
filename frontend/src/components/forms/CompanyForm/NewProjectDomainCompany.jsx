@@ -1,6 +1,6 @@
 import React from "react";
 
-import industries from "../../assets/dataset/industries.json";
+import industries from "../../../assets/dataset/industries.json";
 
 export default function NewProjectDomainCompany() {
   return (

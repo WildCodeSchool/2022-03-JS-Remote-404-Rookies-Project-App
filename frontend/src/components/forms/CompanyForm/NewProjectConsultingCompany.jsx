@@ -6,10 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as yup from "yup";
 
-import industries from "../../assets/dataset/industries.json";
-import range from "../../assets/dataset/workforce.json";
-import SelectDepartment from "../SelectDepartment";
-import SelectCity from "../SelectCity";
+import industries from "../../../assets/dataset/industries.json";
+import range from "../../../assets/dataset/workforce.json";
+import SelectDepartment from "../../SelectDepartment";
+import SelectCity from "../../SelectCity";
 
 const schema = yup
   .object({
