@@ -13,6 +13,7 @@ const {
   SchoolController,
   UserController,
   CompanyProjectController,
+  SchoolProjectController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -69,6 +70,8 @@ router.get("/company-projects/:id", CompanyProjectController.read);
 // ******* Schools **************
 
 //  récupère globalement tous les projets de toutes les schools ou un projet spécifique
+router.get("/school-projects/", SchoolProjectController.browse);
+router.get("/school-projects/:id", SchoolProjectController.read);
 
 // récupérer les projects de schools en fonction de l'user connecté
 
