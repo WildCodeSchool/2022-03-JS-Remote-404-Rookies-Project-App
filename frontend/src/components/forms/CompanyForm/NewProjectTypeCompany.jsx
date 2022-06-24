@@ -10,11 +10,15 @@ import ExportContextProject from "../../../contexts/ProjectContext";
 
 const schema = yup
   .object({
-    project_types_id: yup.number().required("Veuillez remplir ce champ"),
+    project_types_id: yup
+      .number()
+      .required("Veuillez remplir ce champ")
+      .typeError("Veuillez sélectionner un type de projet."),
     end_date: yup
       .date()
       .default(() => new Date())
-      .required("Veuillez remplir ce champ"),
+      .required("Veuillez remplir ce champ")
+      .typeError("Veuillez sélectionner une date."),
   })
   .required();
 
@@ -29,7 +33,7 @@ export default function NewProjectTypeCompany({
     handleSubmit,
     register,
 
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -47,6 +51,9 @@ export default function NewProjectTypeCompany({
           <h2 className="text-base p-1">
             Quel est le type de votre projet ? *
           </h2>
+          <p className="text-red-500 text-sm">
+            {errors.project_types_id?.message}
+          </p>
           <div className="flex m-5">
             <input
               className=" 
@@ -89,15 +96,12 @@ export default function NewProjectTypeCompany({
           <h2 className="text-base p-1">
             Quand peut s&apos;achever le projet au plus tard ? *
           </h2>
+          <p className="text-red-500 text-sm">{errors.end_date?.message}</p>
           <input
             className="required flex p-1 m-5"
             type="date"
             {...register("end_date")}
           />
-          <p>{errors.date?.message}</p>
-        </div>
-        <div className=" flex items-center justify-center">
-          {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
         <ButtonHandler
           handleNextStep={handleNextStep}

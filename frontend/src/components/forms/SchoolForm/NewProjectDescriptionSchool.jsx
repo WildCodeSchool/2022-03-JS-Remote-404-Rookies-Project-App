@@ -11,12 +11,10 @@ const schema = yup
   .object({
     objectives: yup
       .string()
-      .lowercase()
       .required("Veuillez remplir ce champ")
       .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
     mission_examples: yup
       .string()
-      .lowercase()
       .required("Veuillez remplir ce champ")
       .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
   })

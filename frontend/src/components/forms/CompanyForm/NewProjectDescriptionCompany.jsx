@@ -12,17 +12,14 @@ const schema = yup
   .object({
     project_name: yup
       .string()
-      .lowercase()
-      .required("Veuillez remplir ce champ"),
+      .required("Veuillez donner un nom à votre projet."),
     goal: yup
       .string()
-      .lowercase()
-      .required("Veuillez remplir ce champ")
+      .required("Veuillez indiquer le but du projet.")
       .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
     ressources_available: yup
       .string()
-      .lowercase()
-      .required("Veuillez remplir ce champ")
+      .required("Veuillez indiquer les ressources disponibles.")
       .min(50, "Vos ressources doivent contenir au moins 50 caractères"),
   })
   .required();
@@ -38,7 +35,7 @@ export default function NewProjectDescriptionCompany({
     handleSubmit,
     register,
 
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -53,7 +50,8 @@ export default function NewProjectDescriptionCompany({
     <div className="border-b-2 flex flex-col flex-wrap w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="p-2">
         <div>
-          <h2 className="text-base p-1">Nom du projet ? *</h2>
+          <h2 className="text-base">Nom du projet ? *</h2>
+          <p className="text-red-500 text-sm">{errors.project_name?.message}</p>
           <div className="flex flex-wrap p-1 m-2">
             <input
               className="required form-control
@@ -74,7 +72,6 @@ export default function NewProjectDescriptionCompany({
               placeholder="Projet étude de marché (Allemagne)"
               {...register("project_name")}
             />
-            <p>{errors.projectname?.message}</p>
           </div>
         </div>
 
@@ -82,6 +79,7 @@ export default function NewProjectDescriptionCompany({
           <h2 className="text-base p-1">
             Quel est votre objectif principal ? *
           </h2>
+          <p className="text-red-500 text-sm">{errors.goal?.message}</p>
           <p className="p-1 font-extralight text-s">
             Décrivez le problème que les étudiants devront solutionner et le
             résultat attendu des étudiants.
@@ -95,7 +93,6 @@ export default function NewProjectDescriptionCompany({
               placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
               {...register("goal")}
             />
-            <p>{errors.projectgoals?.message}</p>
           </div>
         </div>
 
@@ -103,6 +100,9 @@ export default function NewProjectDescriptionCompany({
           <h2 className="text-base p-1">
             Quelles seront les ressources disponibles pour les étudiants ? *
           </h2>
+          <p className="text-red-500 text-sm">
+            {errors.ressources_available?.message}
+          </p>
           <p className="p-1 font-extralight text-s">
             Décrivez les ressources que vous pourrait mettre à disposition
             (temps disponible, accès aux outils internes, documents utiles,
@@ -119,11 +119,7 @@ export default function NewProjectDescriptionCompany({
           Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat."
               {...register("ressources_available")}
             />
-            <p>{errors.projectresources?.message}</p>
           </div>
-        </div>
-        <div className=" flex items-center justify-center">
-          {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
         <ButtonHandler
           handleNextStep={handleNextStep}
