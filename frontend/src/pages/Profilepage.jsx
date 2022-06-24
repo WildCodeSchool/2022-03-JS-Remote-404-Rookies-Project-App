@@ -6,7 +6,7 @@ import UserInformations from "../components/forms/UserInformations";
 
 function Profilepage() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       <div className=" flex w-full  ">
         <h1 className="  m-5 text-emerald-700">Mon profil</h1>
       </div>
