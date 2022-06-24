@@ -1,4 +1,5 @@
 const express = require("express");
+const { signinSchema, loginSchema } = require("./middleware/user");
 
 const {
   ItemController,
@@ -13,6 +14,7 @@ const {
   SchoolController,
   UserController,
   CompanyProjectController,
+  AuthController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -22,6 +24,11 @@ router.get("/items/:id", ItemController.read);
 router.put("/items/:id", ItemController.edit);
 router.post("/items", ItemController.add);
 router.delete("/items/:id", ItemController.delete);
+
+// auth routes
+
+router.post("/login", loginSchema, AuthController.login);
+router.post("/signin", signinSchema, AuthController.signin);
 
 // Routes to get infos on fixed tables
 router.get("/sectors", SectorController.browse);
