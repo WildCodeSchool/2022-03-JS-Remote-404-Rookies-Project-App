@@ -20,14 +20,14 @@ function MyProjects() {
       setProjects(projects.filter((project) => project.users_id === user.id));
     else
       axios
-        .get("http://localhost:3000/src/assets/dataset/company_projects.json")
+        .get(`${import.meta.env.VITE_BACKEND_URL}/company-projects/#`)
         .then((res) => setProjects(res.data))
         .catch((err) => console.warn(err));
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/src/assets/dataset/company_projects.json")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/company-projects/#`)
       .then((res) => setProjects(res.data))
       .catch((err) => console.warn(err));
   }, []);
