@@ -5,12 +5,15 @@ const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [user, setUser] = useState(users[0]);
+  const handleUser = (slipdebain) => {
+    setUser({ ...user, ...slipdebain });
+  };
 
   return (
     <UserContext.Provider
       value={{
         user,
-        setUser,
+        handleUser,
       }}
     >
       {children}

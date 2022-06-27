@@ -15,9 +15,7 @@ function UploadAvatar() {
       body: formData,
     })
       .then((res) => res.json())
-      .then(() => setImage(data.url))
-      .then(() => console.log(image))
-
+      .then((json) => setImage(json))
       .catch((err) => console.log(err));
   };
 
@@ -27,6 +25,7 @@ function UploadAvatar() {
         <input {...register("file")} type="file" />
         <button type="submit">Submit</button>
       </form>
+      {console.log(image)}
       <p>{image && image.msg}</p>
       <img src={image && image.url} alt="En attente " />
     </div>

@@ -1,27 +1,25 @@
 /* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as yup from "yup";
-import UploadAvatar from "../UploadAvatar";
 import ExportContextUser from "../../contexts/UserContext";
+
+import blankPic from "../../assets/pictures/blank-profile-picture.png";
 
 const schema = yup.object({
   firstname: yup.string().required(),
   lastname: yup.string().required(),
-  email: yup
-    .string()
-    .email("veuillez rentrer un email valide (ex : michel@email.com")
-    .required("Veuillez remplir ce champ"),
   phone: yup.number().min(10, "Veuillez entrer 10 caractères"),
   role: yup.string(),
   linkedin: yup.string("saisissez l'adresse de votre profil"),
 });
 function UserInformations() {
-  const { user } = useContext(ExportContextUser.UserContext);
+  const [pictureChanged, setPictureChanged] = useState(false);
+  const { user, handleUser } = useContext(ExportContextUser.UserContext);
   const {
     handleSubmit,
     register,
@@ -34,19 +32,46 @@ function UserInformations() {
 
   const onSubmit = (data) => {
     // eslint-disable-next-line no-restricted-syntax
-    console.log(data);
+    handleUser({
+      firstname: data.firstname,
+      lastname: data.lastname,
+      phone: data.phone,
+      role: data.role,
+      linkedin: data.linkedin,
+    });
+
+    if (pictureChanged) {
+      const formData = new FormData();
+
+      formData.append("myfile", data.photo[0]);
+      fetch("http://localhost:5000/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((json) =>
+          handleUser({
+            photo: json.url,
+          })
+        )
+        .catch((err) => console.warn(err));
+    }
   };
 
   return (
     <div className="border-b-2  bg-gray-100 flex flex-col  flex-wrap w-11/12 rounded-lg">
       <h2 className="text-base p-5">Mes informations</h2>
-      <div className="flex justify-end  items-center mb-5">
-        <UploadAvatar />
-      </div>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-wrap items-center justify-evenly  "
       >
+        <input
+          {...register("photo")}
+          type="file"
+          onChange={() => setPictureChanged(true)}
+        />
+        <img src={user.photo ? user.photo : blankPic} alt="En attente " />
         <label htmlFor="name" className=" mb-5">
           Nom *
           <input
@@ -66,17 +91,6 @@ function UserInformations() {
             {...register("lastname")}
           />
           <p>{errors.lastname?.message}</p>
-        </label>
-        <label htmlFor="email" className="mb-5 ">
-          Email *
-          <input
-            defaultValue={user.email}
-            className="p-2 ml-5"
-            type="email"
-            placeholder="Email"
-            {...register("email")}
-          />
-          <p>{errors.email?.message}</p>
         </label>
         <label htmlFor="phone" className="mb-5 ">
           Téléphone

@@ -18,11 +18,21 @@ app.use(
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
-// load router
-
 const router = require("./router");
 
 app.use(router);
+
+app.get("*", (req, res) => {
+  if (req.path.includes("public")) {
+    const urlpath = req.path.split("/");
+    res.sendFile(path.join(__dirname, "..", "public", urlpath[2], urlpath[3]));
+  } else {
+    res.sendFile(
+      path.join(__dirname, "..", "..", "frontend", "dist", "index.html")
+    );
+  }
+});
+// load router
 
 // ready to export
 module.exports = app;
