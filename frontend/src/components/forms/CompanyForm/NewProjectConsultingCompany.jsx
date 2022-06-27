@@ -16,8 +16,13 @@ import ExportContextUser from "../../../contexts/UserContext";
 
 const schema = yup
   .object({
-    name: yup.string().required("Veuillez remplir ce champ").lowercase(),
-    description: yup.string().required("Veuillez remplir ce champ").lowercase(),
+    company_name: yup
+      .string()
+      .required("Veuillez indiquer votre nom d'entreprise."),
+    description: yup
+      .string()
+      .required("Veuillez décrire votre entreprise.")
+      .typeError(),
     website: yup.string().url("Veuillez rentrer une url valide"),
   })
   .required();
@@ -27,6 +32,8 @@ export default function NewProjectConsultingCompany({
   currentStep,
   long,
 }) {
+  const [city, setCity] = useState();
+  const [selectedDpt, setSelectedDpt] = useState();
   const [workforces, setWorkforces] = useState([]);
   const [sectors, setSectors] = useState([]);
   const { handleProject } = useContext(ExportContextProject.ProjectContext);
@@ -37,16 +44,29 @@ export default function NewProjectConsultingCompany({
     handleSubmit,
     register,
 
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
 
+  const manageCity = (value) => {
+    setCity();
+    setSelectedDpt(value);
+  };
+
   const onSubmit = (data) => {
     handleProject(data);
     handleNextStep("Next");
   };
+
+  useEffect(() => {
+    if (selectedDpt) {
+      axios
+        .get(`https://geo.api.gouv.fr/departements/${selectedDpt}/communes`)
+        .then((res) => setCity(res.data));
+    }
+  }, [selectedDpt]);
 
   useEffect(() => {
     axios
@@ -66,41 +86,45 @@ export default function NewProjectConsultingCompany({
   }, []);
 
   return (
-    <div className="border-b-2 flex flex-col flex-wrap w-full">
-      <form onSubmit={handleSubmit(onSubmit)} className="p-2">
-        <div className="flex justify-end">
-          <label htmlFor="image">image:</label>
-          <input type="file" {...register("image")} />
+    <div className="flex w-full p-8">
+      <form onSubmit={handleSubmit(onSubmit)} className="p-2 w-full">
+        <div className="flex justify-between w-full pb-4">
+          <div className="flex flex-col">
+            <h2 className="text-base p-1">Votre entreprise *</h2>
+            <p className="text-red-500 text-sm">
+              {errors.company_name?.message}
+            </p>
+            <input
+              {...register("company_name")}
+              className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Saisir votre école"
+              value={companyName}
+            />
+          </div>
+          <div className="flex flex-col">
+            <h2 className="text-base p-1">Votre Logo </h2>
+            <input type="file" {...register("logo")} />
+          </div>
         </div>
-        <div className="flex flex-wrap p-1">
-          <h2 className="text-base p-1">Votre entreprise *</h2>
-          <input
-            {...register("name")}
-            className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Saisir votre école"
-            value={companyName}
-          />
-        </div>
-        <h2 className="text-base p-1">Description de l&apos;entreprise *</h2>
-        <div className="flex flex-wrap m-2 p-1">
+        <div className="flex flex-col w-full pb-4">
+          <h2 className="text-base p-1">Description de l&apos;entreprise *</h2>
+          <p className="text-red-500 text-sm">{errors.description?.message}</p>
           <textarea
             className="required form-control
-            w-1/2 "
+             border-gray-400 rounded border shadow-sm"
             type="text"
             rows="2"
-            placeholder="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
+            placeholder="Description de mon entreprise"
             {...register("description")}
           />
-          <p>{errors.companydescription?.message}</p>
         </div>
-
-        <div className="flex justify-evenly">
-          <div className="flex flex-wrap mb-5">
+        <div className="flex flex-wrap">
+          <div className="flex flex-col pr-4 mb-4">
             <h2 className="text-base p-1">Industrie</h2>
-            <div className="flex flex-wrap m-2">
+            <div className="flex flex-wrap">
               <select
                 {...register("sector")}
-                className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                className=" bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
                 {sectors.map((d) => (
                   <option key={d.sector}>{d.sector}</option>
@@ -109,8 +133,9 @@ export default function NewProjectConsultingCompany({
             </div>
           </div>
 
-          <div className="flex mb-5">
+          <div className="flex flex-col w-1/2">
             <h2 className="text-base p-1">Site web</h2>
+            <p className="text-red-500 text-sm">{errors.website?.message}</p>
             <input
               className="form-control
           px-3
@@ -123,41 +148,45 @@ export default function NewProjectConsultingCompany({
           rounded
           transition
           ease-in-out
-          m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="url"
               placeholder="www.entreprise.com"
               {...register("website")}
             />
-            <p>{errors.website?.message}</p>
           </div>
-        </div>
 
-        <div className="flex justify-evenly">
-          <div className="flex mb-5">
-            <div className="flex flex-row justify-evenly">
-              <label htmlFor="campus">
-                <h2 className="text-base p-1">
-                  Localisation de l&apos;entreprise
-                </h2>
-                <SelectDepartment />
-              </label>
+          <div className="flex flex-col mb-5 mr-32">
+            <label htmlFor="campus">
+              <h2 className="text-base p-1">
+                Localisation de l&apos;entreprise
+              </h2>
+              <SelectDepartment manageCity={manageCity} />
+              {city && (
+                <select
+                  {...register("campus")}
+                  className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                >
+                  {city.map((el) => (
+                    <option key={el.nom}>{el.nom}</option>
+                  ))}
+                </select>
+              )}
+            </label>
+          </div>
+
+          <div className="flex flex-col mb-5 w-1/3">
+            <h2 className="text-base p-1">Effectif de l&apos;entreprise</h2>
+            <div className="w-full">
+              <select
+                {...register("range")}
+                className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
+                {workforces.map((d) => (
+                  <option key={d.range}>{d.range}</option>
+                ))}
+              </select>
             </div>
           </div>
-          <div className="flex flex-col mb-5">
-            <h2 className="text-base p-1">Effectif de l&apos;entreprise</h2>
-            <select
-              {...register("range")}
-              className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            >
-              {workforces.map((d) => (
-                <option key={d.range}>{d.range}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className=" flex flex-col items-center justify-center">
-          {isSubmitSuccessful && <div>Votre formulaire a bien été soumis</div>}
         </div>
         <ButtonHandler
           handleNextStep={handleNextStep}

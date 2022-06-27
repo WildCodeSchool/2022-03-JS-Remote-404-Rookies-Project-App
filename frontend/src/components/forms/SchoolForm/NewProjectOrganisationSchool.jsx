@@ -15,12 +15,24 @@ import SelectDepartment from "../../SelectDepartment";
 
 const schema = yup
   .object({
-    name: yup.string().lowercase().required("Veuillez remplir ce champ"),
-    course: yup.string().lowercase().required("Veuillez remplir ce champ"),
+    name: yup.string().required("Veuillez remplir ce champ"),
+    course: yup.string().required("Veuillez remplir ce champ"),
     training: yup.string().required("Veuillez remplir ce champ"),
+    campus: yup
+      .string()
+      .required(
+        "Veuillez sélectionner le lieu du campus (ou du siège si formation en distanciel)"
+      ),
     level: yup.string().required("Veuillez remplir ce champ"),
     student_workforce: yup.string().required("Veuillez remplir ce champ"),
-    group_quantity: yup.number().required("Veuillez remplir ce champ"),
+    group_quantity: yup
+      .number()
+      .required("Veuillez remplir ce champ")
+      .typeError("Veuillez remplir ce champ"),
+    group_size: yup
+      .number()
+      .required("Veuillez remplir ce champ")
+      .typeError("Veuillez remplir ce champ"),
     weekly_time_dedicated: yup.string().required("Veuillez remplir ce champ"),
   })
   .required();
@@ -86,12 +98,14 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
       >
         <div className="flex flex-wrap p-1">
           <h2 className="text-base p-1">Votre école *</h2>
+
           <input
             {...register("name")}
             className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Saisir votre école"
             value={schoolName}
           />
+          <p className="text-red-500 text-sm">{errors.name?.message}</p>
         </div>
 
         <div className="flex flex-wrap p-1">
@@ -116,7 +130,7 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             placeholder="Management International"
             {...register("course")}
           />
-          <p>{errors.coursename?.message}</p>
+          <p className="text-red-500 text-sm">{errors.course?.message}</p>
         </div>
 
         <div className="flex flex-wrap p-1">
@@ -140,7 +154,7 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             placeholder="Master Commerce International"
             {...register("training")}
           />
-          <p>{errors.formationname?.message}</p>
+          <p className="text-red-500 text-sm">{errors.training?.message}</p>
         </div>
 
         <div className="flex flex-wrap p-1">
@@ -153,6 +167,7 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
               <option key={d.level}>{d.level}</option>
             ))}
           </select>
+          <p className="text-red-500 text-sm">{errors.level?.message}</p>
         </div>
 
         <div className="flex flex-row justify-evenly">
@@ -169,6 +184,7 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             </select>
           )}
         </div>
+        <p className="text-red-500 text-sm">{errors.campus?.message}</p>
 
         <div className="flex flex-wrap p-1">
           <h2 className="text-base p-1">
@@ -198,7 +214,9 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             {...register("student_workforce")}
             onChange={(e) => setWorkforce(e.target.value)}
           />
-          <p>{errors.studentnumber?.message}</p>
+          <p className="text-red-500 text-sm">
+            {errors.student_workforce?.message}
+          </p>
         </div>
 
         <div className="flex flex-wrap p-1">
@@ -256,6 +274,7 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             value={isGrouped}
           />
         </div>
+        <p className="text-red-500 text-sm">{errors.group_size?.message}</p>
 
         <div className="flex flex-wrap p-1">
           <h2 className="text-base p-1">
@@ -280,7 +299,9 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             {...register("group_quantity")}
             onChange={(e) => setQuantity(e.target.value)}
           />
-          <p>{errors.studentgroups?.message}</p>
+          <p className="text-red-500 text-sm">
+            {errors.group_quantity?.message}
+          </p>
         </div>
 
         <div className="flex flex-row justify-around m-2 w-full">
@@ -331,7 +352,9 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
             placeholder="8h par semaine"
             {...register("weekly_time_dedicated")}
           />
-          <p>{errors.weeklyhours?.message}</p>
+          <p className="text-red-500 text-sm">
+            {errors.weekly_time_dedicated?.message}
+          </p>
         </div>
         <ButtonHandler
           handleNextStep={handleNextStep}

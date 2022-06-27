@@ -20,7 +20,6 @@ const schema = yup
     remote: yup.number().required("Veuillez remplir ce champ"),
     commitment: yup
       .string()
-      .lowercase()
       .required("Veuillez remplir ce champ")
       .min(50, "Vos objectifs doivent contenir au moins 50 caractères"),
   })

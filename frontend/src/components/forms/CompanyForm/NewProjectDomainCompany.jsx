@@ -13,7 +13,7 @@ export default function NewProjectDomainCompany({
   long,
 }) {
   const { handleProject } = useContext(ExportContextProject.ProjectContext);
-  const [sectors, setSectors] = useState([]);
+  const [fields, setFields] = useState([]);
 
   const { handleSubmit, register } = useForm({
     mode: "onChange",
@@ -26,13 +26,13 @@ export default function NewProjectDomainCompany({
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/sectors`)
-      .then((res) => setSectors(res.data))
+      .get(`${import.meta.env.VITE_BACKEND_URL}/fields`)
+      .then((res) => setFields(res.data))
       .catch((err) => console.warn(err));
   }, []);
 
   return (
-    <div className="bg-gray-100 p-10 flex flex-wrap justify-around flex-col">
+    <div className="bg-gray-100 p-10 flex justify-around flex-col w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="p-2">
         <h2 className="text-base">Quel est le domaine de votre projet ? *</h2>
         <p className="p-5 font-extralight text-s">
@@ -41,13 +41,14 @@ export default function NewProjectDomainCompany({
         </p>
         <div className="inline-block relative m-2">
           <select
-            {...register("sector")}
+            {...register("teaching_fields")}
             multiple
+            required
             size={5}
             className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
-            {sectors.map((d) => (
-              <option key={d.sector}>{d.sector}</option>
+            {fields.map((d) => (
+              <option key={d.field}>{d.field}</option>
             ))}
           </select>
         </div>
