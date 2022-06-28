@@ -1,7 +1,7 @@
 /* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -18,8 +18,7 @@ const schema = yup.object({
   linkedin: yup.string("saisissez l'adresse de votre profil"),
 });
 function UserInformations() {
-  const [pictureChanged, setPictureChanged] = useState(false);
-  const { user, handleUser } = useContext(ExportContextUser.UserContext);
+  const { user, setUser } = useContext(ExportContextUser.UserContext);
   const {
     handleSubmit,
     register,
@@ -32,30 +31,26 @@ function UserInformations() {
 
   const onSubmit = (data) => {
     // eslint-disable-next-line no-restricted-syntax
-    handleUser({
-      firstname: data.firstname,
-      lastname: data.lastname,
-      phone: data.phone,
-      role: data.role,
-      linkedin: data.linkedin,
-    });
 
-    if (pictureChanged) {
-      const formData = new FormData();
+    const formData = new FormData();
 
-      formData.append("myfile", data.photo[0]);
-      fetch("http://localhost:5000/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((json) =>
-          handleUser({
-            photo: json.url,
-          })
-        )
-        .catch((err) => console.warn(err));
+    formData.append("firstname", user.firstname);
+    formData.append("lastanme", user.lastname);
+    formData.append("phone", user.phone);
+    formData.append("role", user.role);
+    formData.append("linkedin", user.linkedin);
+
+    if (data.image_url[0]) {
+      formData.append("image_url", data.image_url[0]);
     }
+
+    fetch("http://localhost:5000/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((json) => setUser(json))
+      .catch((err) => console.warn(err));
   };
 
   return (
@@ -66,12 +61,11 @@ function UserInformations() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-wrap items-center justify-evenly  "
       >
-        <input
-          {...register("photo")}
-          type="file"
-          onChange={() => setPictureChanged(true)}
+        <input {...register("image_url")} type="file" />
+        <img
+          src={user.image_url ? user.image_url : blankPic}
+          alt="En attente "
         />
-        <img src={user.photo ? user.photo : blankPic} alt="En attente " />
         <label htmlFor="name" className=" mb-5">
           Nom *
           <input

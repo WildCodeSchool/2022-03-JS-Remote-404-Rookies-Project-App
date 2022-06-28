@@ -5,8 +5,8 @@ const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [user, setUser] = useState(users[0]);
-  const handleUser = (slipdebain) => {
-    setUser({ ...user, ...slipdebain });
+  const handleUser = (data) => {
+    setUser({ ...user, ...data });
   };
 
   return (

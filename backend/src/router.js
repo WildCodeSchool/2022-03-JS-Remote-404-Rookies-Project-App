@@ -38,7 +38,7 @@ router.post("/signin", signinSchema, AuthController.signin);
 
 // Upload routes
 
-router.post("/upload", upload.single("myfile"), UploadController.upload);
+router.post("/upload", upload.single("image_url"), UploadController.upload);
 
 // Routes to get infos on fixed tables
 router.get("/sectors", SectorController.browse);
