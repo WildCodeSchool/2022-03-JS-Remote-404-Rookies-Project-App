@@ -21,7 +21,7 @@ function UserSettings() {
       </p>
       <img
         className="img2"
-        src={user.photo ? user.photo : randompic}
+        src={user.image_url ? user.image_url : randompic}
         alt={settings1}
       />
     </div>

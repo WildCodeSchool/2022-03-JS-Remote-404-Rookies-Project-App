@@ -50,7 +50,9 @@ class AuthController {
     try {
       const userExist = await models.users.findOne(req.body.email);
       if (!userExist) {
-        return res.status(400).send({ error: "Email or Password is wrong" });
+        return res
+          .status(400)
+          .send({ error: "Invalid Credentials, please retry" });
       }
 
       const validPass = await verifyPassword(
