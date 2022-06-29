@@ -1,10 +1,9 @@
 import { createContext, useState } from "react";
-import users from "../assets/dataset/users.json";
 
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState(users[0]);
+  const [user, setUser] = useState();
   const handleUser = (data) => {
     setUser({ ...user, ...data });
   };
