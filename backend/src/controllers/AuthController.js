@@ -80,7 +80,7 @@ class AuthController {
           httpOnly: true,
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
         })
-        .json({ ...profile, email: userExist.email, id: userExist.id });
+        .json({ ...profile[0], email: userExist.email, id: userExist.id });
     } catch (err) {
       console.error(err);
       return res.status(401).send(err);
