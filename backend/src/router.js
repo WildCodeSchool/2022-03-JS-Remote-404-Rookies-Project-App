@@ -1,8 +1,8 @@
 const express = require("express");
 
-const multer = require("multer");
+// const multer = require("multer");
 
-const upload = multer({ dest: "public/tmp/" });
+// const upload = multer({ dest: "public/tmp/" });
 
 const { signinSchema, loginSchema } = require("./middleware/user");
 
@@ -20,7 +20,6 @@ const {
   UserController,
   CompanyProjectController,
   AuthController,
-  UploadController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -38,7 +37,7 @@ router.post("/signin", signinSchema, AuthController.signin);
 
 // Upload routes
 
-router.post("/upload", upload.single("image_url"), UploadController.upload);
+// router.post("/upload", upload.single("image_url"), UploadController.upload);
 
 // Routes to get infos on fixed tables
 router.get("/sectors", SectorController.browse);
