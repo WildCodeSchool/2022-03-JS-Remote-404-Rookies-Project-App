@@ -19,7 +19,7 @@ function Entity({ user }) {
         .get(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`)
         .then((res) => setEntity(res.data))
         .catch((err) => console.warn(err));
-    } else {
+    } else if (user.company_id) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
         .then((res) => setEntity(res.data))

@@ -5,7 +5,7 @@ class ProfilesManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `SELECT * FROM ${this.table} INNER JOIN users ON users.id = ${this.table}.user_id INNER JOIN images ON images.id = ${this.table}.images_id`
+      `SELECT * FROM ${this.table} JOIN users on profiles.user_id = users.id`
     );
   }
 
@@ -23,7 +23,7 @@ class ProfilesManager extends AbstractManager {
 
   insert(profile, id) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (firstname, lastname, phone, entity_category_id, user_id, is_admin) VALUES ( ?, ?, ? ,?,?,?)`,
+      `INSERT INTO ${this.table} (firstname, lastname, phone, entity_category_id, user_id, is_admin) VALUES ( ?, ?, ? , ? , ? , ? )`,
       [
         profile.firstname,
         profile.lastname,

@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer } from "react-toastify";
+import { notifySuccess, notifyError } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import ExportContextUser from "../../contexts/UserContext";
 
 import google from "../../assets/pictures/google-logo.png";
@@ -13,26 +17,29 @@ function LogIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [msg, setMsg] = useState();
   const { handleUser } = useContext(ExportContextUser.UserContext);
 
   const onSubmit = () => {
     if (!email || !password) {
-      setMsg("Veuillez remplir tous les champs");
+      notifyError("Veuillez remplir tous les champs");
       return;
     }
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email, password })
       .then((res) => {
         handleUser(res.data);
-        navigate("/dashboard");
+        notifySuccess("Connexion réussie, redirection en cours");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
       })
-      .catch((err) => console.error(err));
+      .catch(() => notifyError("L'email ou le mot de passe est incorrect"));
   };
 
   return (
     <div className="flex flex-col m-10 w-3/5 items-center">
       <ConnexionSwitch isMember={false} align="self-start" linkto="/" />
+      <ToastContainer />
       <div className="flex flex-col items-start">
         <h1 className="text-2xl font-bold mt-10 mb-5">Welcome back !</h1>
         <form className="flex flex-col basis-1/2 items-start w-full">
@@ -64,7 +71,6 @@ function LogIn() {
             value="Se connecter"
             onClick={onSubmit}
           />
-          {msg && <p>{msg}</p>}
         </form>
         <p className="text-xs self-center mb-8 text-emerald-700 font-bold underline">
           Mot de passe oublié ?

@@ -4,9 +4,9 @@ const signinSchema = (req, res, next) => {
   const { error } = Joi.object({
     entity_category_id: Joi.number().integer().required(),
 
-    firstname: Joi.string().alphanum().min(3).max(30).required(),
+    firstname: Joi.string().min(3).max(30).required(),
 
-    lastname: Joi.string().alphanum().min(3).max(30).required(),
+    lastname: Joi.string().min(3).max(30).required(),
 
     email: Joi.string().email({
       minDomainSegments: 2,

@@ -186,9 +186,13 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`users` (
 CREATE UNIQUE INDEX `email_UNIQUE` ON `rookies_app_db`.`users` (`email` ASC);
 
 INSERT INTO `users` (`id`, `email`, `hashedpassword`) VALUES
-('1', 'john.doe@jeanmail.com', 'Test-123'),
-('2', 'margarett.teacher@jeanmail.com', 'Test-123'),
-('3', 'brigitte.school@jeanmail.com', 'Test-123');
+('1', 'john.doe@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('2', 'margarett.teacher@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('3', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('4', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('5', 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('6', 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
+
 
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`profiles`
@@ -256,7 +260,11 @@ CREATE UNIQUE INDEX `company_id_UNIQUE` ON `rookies_app_db`.`profiles` (`company
 INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
 (1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, '1', 1),
 (2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, '2', null),
-(3, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '3', 2);
+(3, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '4', 2),
+(4, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujufitcat', 2, null, null, 1, '3', null),
+(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '5', null),
+(6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '6', null);
+
 
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`student_levels`
