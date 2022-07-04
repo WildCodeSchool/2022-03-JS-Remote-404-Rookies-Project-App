@@ -45,6 +45,10 @@ function Submission() {
 
   const navData = steptypes.filter((el) => el.type === user.entity_category_id);
 
+  window.onbeforeunload = () => {
+    return "Are you sure you want to leave ?";
+  };
+
   const handleNextStep = (step) => {
     if (step === "Return") setCurrentStep(currentStep - 1);
     setTimeout(() => {
