@@ -20,6 +20,7 @@ const {
   UserController,
   CompanyProjectController,
   AuthController,
+  ProfileController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -69,6 +70,9 @@ router.delete("/schools/:id", SchoolController.delete);
 
 router.get("/users/", UserController.browse);
 router.get("/users/:id", UserController.read);
+
+router.get("/profiles/", ProfileController.browse);
+// router.put("/profiles/:id", ProfileController.edit);
 
 //
 // ******* Companies *************

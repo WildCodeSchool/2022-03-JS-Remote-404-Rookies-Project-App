@@ -116,7 +116,7 @@ function UserInformations() {
             placeholder="Profil LinkedIn"
             {...register("linkedin")}
           />
-          <p>{errors.linkedin?.message}</p>
+          <p className="text-red-700">{errors.linkedin?.message}</p>
         </label>
 
         <div className="h-50 ">
