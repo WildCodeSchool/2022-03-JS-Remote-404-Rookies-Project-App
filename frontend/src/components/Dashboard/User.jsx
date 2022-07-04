@@ -18,7 +18,7 @@ function User({ user }) {
       </div>
       <div className="flex -mt-12 items-center">
         <img
-          src={user.photo ? user.photo : blankPic}
+          src={user.image_url ? user.image_url : blankPic}
           alt="user-profile-pic"
           className="w-24 rounded-full border-8 border-white ml-10"
         />

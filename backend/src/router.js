@@ -1,5 +1,11 @@
 const express = require("express");
 
+// const multer = require("multer");
+
+// const upload = multer({ dest: "public/tmp/" });
+
+const { signinSchema, loginSchema } = require("./middleware/user");
+
 const {
   ItemController,
   SectorController,
@@ -13,6 +19,8 @@ const {
   SchoolController,
   UserController,
   CompanyProjectController,
+  AuthController,
+  ProfileController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -22,6 +30,15 @@ router.get("/items/:id", ItemController.read);
 router.put("/items/:id", ItemController.edit);
 router.post("/items", ItemController.add);
 router.delete("/items/:id", ItemController.delete);
+
+// auth routes
+
+router.post("/login", loginSchema, AuthController.login);
+router.post("/signin", signinSchema, AuthController.signin);
+
+// Upload routes
+
+// router.post("/upload", upload.single("image_url"), UploadController.upload);
 
 // Routes to get infos on fixed tables
 router.get("/sectors", SectorController.browse);
@@ -53,6 +70,9 @@ router.delete("/schools/:id", SchoolController.delete);
 
 router.get("/users/", UserController.browse);
 router.get("/users/:id", UserController.read);
+
+router.get("/profiles/", ProfileController.browse);
+// router.put("/profiles/:id", ProfileController.edit);
 
 //
 // ******* Companies *************

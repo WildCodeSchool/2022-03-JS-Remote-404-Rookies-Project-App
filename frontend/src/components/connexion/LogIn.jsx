@@ -1,5 +1,12 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { ToastContainer } from "react-toastify";
+import { notifySuccess, notifyError } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import ExportContextUser from "../../contexts/UserContext";
 
 import google from "../../assets/pictures/google-logo.png";
 import linkedin from "../../assets/pictures/linkedin-logo.png";
@@ -8,16 +15,34 @@ import ConnexionSwitch from "./ConnexionSwitch";
 
 function LogIn() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const { handleUser } = useContext(ExportContextUser.UserContext);
+
+  const onSubmit = () => {
+    if (!email || !password) {
+      notifyError("Veuillez remplir tous les champs");
+      return;
+    }
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email, password })
+      .then((res) => {
+        handleUser(res.data);
+        notifySuccess("Connexion réussie, redirection en cours");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
+      })
+      .catch(() => notifyError("L'email ou le mot de passe est incorrect"));
+  };
 
   return (
     <div className="flex flex-col m-10 w-3/5 items-center">
       <ConnexionSwitch isMember={false} align="self-start" linkto="/" />
+      <ToastContainer />
       <div className="flex flex-col items-start">
         <h1 className="text-2xl font-bold mt-10 mb-5">Welcome back !</h1>
-        <form
-          className="flex flex-col basis-1/2 items-start w-full"
-          onSubmit={() => navigate("/dashboard", { replace: true })}
-        >
+        <form className="flex flex-col basis-1/2 items-start w-full">
           <label className="text-lg mt-3 text-left w-full" htmlFor="mail">
             Votre Email *
             <input
@@ -25,6 +50,8 @@ function LogIn() {
               type="text"
               name="mail"
               placeholder="yourname@email.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </label>
           <label className="text-lg mt-3 text-left w-full" htmlFor="password">
@@ -34,12 +61,15 @@ function LogIn() {
               type="password"
               name="password"
               placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
             />
           </label>
           <input
             className="my-6 w-2/3 self-center bg-green-400 hover:bg-emerald-700 cursor-pointer text-white font-semibold py-1 rounded"
-            type="submit"
+            type="button"
             value="Se connecter"
+            onClick={onSubmit}
           />
         </form>
         <p className="text-xs self-center mb-8 text-emerald-700 font-bold underline">

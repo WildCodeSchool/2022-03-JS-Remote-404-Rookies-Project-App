@@ -15,7 +15,7 @@ function ProjectList({ project }) {
       <p className="text-yellow-400 w-1/4">{project.status}</p>
       <div className="flex w-1/4">
         <img
-          src={projectOwner.photo ? projectOwner.photo : blankPic}
+          src={projectOwner.image_url ? projectOwner.image_url : blankPic}
           alt="owner"
           className="h-7 rounded-full mr-3"
         />
