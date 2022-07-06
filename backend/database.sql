@@ -106,7 +106,6 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`companies` (
   `name` VARCHAR(45) NOT NULL,
   `description` LONGTEXT NULL,
   `website` VARCHAR(45) NULL,
-  `company_project_id` INT NULL,
   `sectors_id` INT NULL,
   `images_id` INT NULL,
   `workforces_id` INT NULL,
@@ -136,8 +135,6 @@ CREATE INDEX `fk_companies_workforces1_idx` ON `rookies_app_db`.`companies` (`wo
 CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`companies` (`images_id` ASC);
 
 CREATE UNIQUE INDEX `sectors_id_UNIQUE` ON `rookies_app_db`.`companies` (`sectors_id` ASC);
-
-CREATE UNIQUE INDEX `company_project_id_UNIQUE` ON `rookies_app_db`.`companies` (`company_project_id` ASC);
 
 CREATE UNIQUE INDEX `workforces_id_UNIQUE` ON `rookies_app_db`.`companies` (`workforces_id` ASC);
 
@@ -188,8 +185,8 @@ CREATE UNIQUE INDEX `email_UNIQUE` ON `rookies_app_db`.`users` (`email` ASC);
 INSERT INTO `users` (`id`, `email`, `hashedpassword`) VALUES
 ('1', 'john.doe@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('2', 'margarett.teacher@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('3', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('4', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('4', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('3', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('5', 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('6', 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
 
@@ -409,6 +406,7 @@ INSERT INTO `stages` (`id`, `stage`) VALUES
 
 CREATE TABLE IF NOT EXISTS `rookies_app_db`.`company_project` (
   `id` VARCHAR(255) NOT NULL,
+  `create_time` VARCHAR(45) NULL DEFAULT 'CURRENT_TIMESTAMP',
   `project_types_id` INT NOT NULL,
   `end_date` DATE NOT NULL,
   `project_name` VARCHAR(255) NOT NULL,

@@ -11,13 +11,9 @@ class ProfilesManager extends AbstractManager {
 
   find(id) {
     return this.connection
-      .query(
-        `SELECT * FROM ${this.table} 
-            LEFT JOIN images ON images.id = ${this.table}.images_id 
-      WHERE ${this.table}.user_id = ?`,
-
-        [id]
-      )
+      .query(`SELECT * FROM ${this.table} WHERE ${this.table}.user_id = ?`, [
+        id,
+      ])
       .then((res) => res[0]);
   }
 
@@ -33,6 +29,13 @@ class ProfilesManager extends AbstractManager {
         1,
       ]
     );
+  }
+
+  modify(newData, id) {
+    return this.connection.query(`UPDATE ${this.table} SET ? WHERE id = ?`, [
+      newData,
+      id,
+    ]);
   }
 }
 

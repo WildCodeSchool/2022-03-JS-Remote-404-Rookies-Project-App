@@ -69,8 +69,8 @@ class AuthController {
       const token = jwt.sign(
         {
           email: userExist.email,
-          role: profile.is_admin,
-          type: profile.entity_category_id,
+          id: userExist.id,
+          type: profile[0].entity_category_id,
         },
         process.env.PRIVATETOKEN
       );

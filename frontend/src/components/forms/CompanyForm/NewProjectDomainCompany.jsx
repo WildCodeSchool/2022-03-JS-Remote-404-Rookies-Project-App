@@ -48,7 +48,9 @@ export default function NewProjectDomainCompany({
             className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
             {fields.map((d) => (
-              <option key={d.field}>{d.field}</option>
+              <option key={d.id} value={d.id}>
+                {d.field}
+              </option>
             ))}
           </select>
         </div>
