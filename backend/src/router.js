@@ -1,10 +1,11 @@
 const express = require("express");
+const multer = require("multer");
 
-// const multer = require("multer");
-
-// const upload = multer({ dest: "public/tmp/" });
+const upload = multer({ dest: "public/tmp/" });
 
 const { signinSchema, loginSchema } = require("./middleware/user");
+
+const { uploadPublic } = require("./middleware/upload");
 
 const {
   ItemController,
@@ -72,7 +73,12 @@ router.get("/users/", UserController.browse);
 router.get("/users/:id", UserController.read);
 
 router.get("/profiles/", ProfileController.browse);
-// router.put("/profiles/:id", ProfileController.edit);
+router.put(
+  "/profiles/:id",
+  upload.single("image_url"),
+  uploadPublic,
+  ProfileController.edit
+);
 
 //
 // ******* Companies *************

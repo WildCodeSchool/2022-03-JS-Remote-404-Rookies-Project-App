@@ -34,6 +34,13 @@ class ProfilesManager extends AbstractManager {
       ]
     );
   }
+
+  update(profile, id) {
+    return this.connection.query(`UPDATE ${this.table}  SET ? WHERE id = ?`, [
+      profile,
+      id,
+    ]);
+  }
 }
 
 module.exports = ProfilesManager;
