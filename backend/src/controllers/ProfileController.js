@@ -30,12 +30,17 @@ class ProfileController {
   };
 
   static edit = (req, res) => {
-    // console.log("profilecontroller.edit");
-    // console.log(req.body);
-    // console.log(req.image);
-    // console.log(req.file);
-
-    res.status(200).send("hello world");
+    const user = JSON.parse(req.body.user);
+    delete user.image_url;
+    models.profiles
+      .update({ ...user, images_id: req.image.id }, req.params.id)
+      .then(() => {
+        res.status(200).send("hello world");
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("error updating profile");
+      });
   };
 }
 
