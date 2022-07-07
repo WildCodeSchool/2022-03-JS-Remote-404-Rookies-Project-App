@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 
 import ButtonHandler from "./ButtonHandler";
 import CompanyProjectOverview from "./CompanyProjectOverview";
+import SchoolProjectOverview from "./SchoolProjectOverview";
 
 import ExportContextProject from "../../contexts/ProjectContext";
 import ExportContextUser from "../../contexts/UserContext";
@@ -18,9 +19,11 @@ export default function NewProjectPreview({
   return (
     <div className="bg-gray-100 rounded-md flex flex-col w-full items-center">
       <div className="w-full">
-        {project.course && <div>School</div>}
-        {project.project_types_id && (
+        {user.entity_category_id === 1 && (
           <CompanyProjectOverview user={user} project={project} />
+        )}
+        {user.entity_category_id === 2 && (
+          <SchoolProjectOverview user={user} project={project} />
         )}
       </div>
       <ButtonHandler
