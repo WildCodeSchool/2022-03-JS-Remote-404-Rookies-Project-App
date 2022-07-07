@@ -34,18 +34,14 @@ function UserInformations() {
 
     const formData = new FormData();
 
-    formData.append("firstname", user.firstname);
-    formData.append("lastanme", user.lastname);
-    formData.append("phone", user.phone);
-    formData.append("role", user.role);
-    formData.append("linkedin", user.linkedin);
-
     if (data.image_url[0]) {
       formData.append("image_url", data.image_url[0]);
     }
 
-    fetch("http://localhost:5000/upload", {
-      method: "POST",
+    formData.append("user", JSON.stringify(data));
+
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/profiles/${user.id}`, {
+      method: "PUT",
       body: formData,
     })
       .then((res) => res.json())
