@@ -134,9 +134,9 @@ CREATE INDEX `fk_companies_workforces1_idx` ON `rookies_app_db`.`companies` (`wo
 
 CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`companies` (`images_id` ASC);
 
-CREATE UNIQUE INDEX `sectors_id_UNIQUE` ON `rookies_app_db`.`companies` (`sectors_id` ASC);
+CREATE INDEX `sectors_id` ON `rookies_app_db`.`companies` (`sectors_id` ASC);
 
-CREATE UNIQUE INDEX `workforces_id_UNIQUE` ON `rookies_app_db`.`companies` (`workforces_id` ASC);
+CREATE INDEX `workforces_id` ON `rookies_app_db`.`companies` (`workforces_id` ASC);
 
 
 INSERT INTO `companies` (`id`, `name`, `description`, `website`, `sectors_id`, `images_id`, `workforces_id`) VALUES

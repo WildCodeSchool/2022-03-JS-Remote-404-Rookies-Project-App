@@ -44,15 +44,21 @@ class CompanyProjectController {
   static create = async (req, res) => {
     try {
       const profile = await models.profiles.find(req.params.userId);
+
       const companyId = !profile.company_id
-        ? await models.companies
-            .addOne(req.body)
-            .then((compId) =>
-              models.profiles
-                .modify({ company_id: compId }, req.params.userId)
-                .then(() => compId)
-            )
-        : await models.companies.edit(profile.company_id);
+        ? await models.companies.addOne(req.body).then((compId) => compId)
+        : await models.companies
+            .edit(profile.company_id)
+            .then(() => profile.company_id);
+
+      if (!profile.company_id) {
+        await models.profiles.modifyEntity(
+          { company_id: companyId },
+          req.params.userId
+        );
+      }
+
+      await models.profiles.find(req.params.userId);
 
       const project = await models.company_project.addOne(
         req.body,

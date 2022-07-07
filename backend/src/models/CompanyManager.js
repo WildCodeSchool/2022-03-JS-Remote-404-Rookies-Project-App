@@ -6,28 +6,37 @@ class CompanyManager extends AbstractManager {
 
   find(id) {
     return this.connection.query(
-      `SELECT * FROM ${this.table} INNER JOIN sectors ON sectors.id = ${this.table}.sectors_id INNER JOIN workforces ON workforces.id = ${this.table}.workforces_id INNER JOIN images ON images.id = ${this.table}.images_id WHERE ${this.table}.id = ?`,
+      `SELECT * FROM ${this.table} WHERE ${this.table}.id = ?`,
       [id]
     );
   }
 
   addOne(newData) {
-    const Uuid = uuidv4();
+    const range = parseInt(newData.range, 10);
+    const sector = parseInt(newData.sector, 10);
+    const uuid = uuidv4();
     return this.connection
       .query(
         `INSERT INTO ${this.table} ( id, name, description, website, sectors_id, images_id, workforces_id ) VALUES ( ? , ? , ? , ? , ? , ? , ? )`,
         [
-          Uuid,
+          uuid,
           newData.company_name,
           newData.description,
           newData.website,
-          newData.sectors_id,
+          sector,
           newData.images_id,
-          newData.worforces_id,
+          range,
         ]
       )
-      .then(() => Uuid)
-      .catch(() => console.warn("Couldn't create the company"));
+      .then(() => uuid)
+      .catch((err) => console.warn(err));
+  }
+
+  edit(newData, id) {
+    return this.connection.query(`UPDATE ${this.table} ? WHERE id = ?`, [
+      newData,
+      id,
+    ]);
   }
 }
 
