@@ -25,6 +25,7 @@ app.use(router);
 app.get("*", (req, res) => {
   if (req.path.includes("public")) {
     const urlpath = req.path.split("/");
+
     res.sendFile(path.join(__dirname, "..", "public", urlpath[2], urlpath[3]));
   } else {
     res.sendFile(
