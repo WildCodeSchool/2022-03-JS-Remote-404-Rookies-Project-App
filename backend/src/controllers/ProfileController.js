@@ -30,10 +30,10 @@ class ProfileController {
   };
 
   static edit = (req, res) => {
-    console.log("profilecontroller.edit");
-    console.log(req.body);
-    console.log(req.image);
-    console.log(req.file);
+    // console.log("profilecontroller.edit");
+    // console.log(req.body);
+    // console.log(req.image);
+    // console.log(req.file);
 
     res.status(200).send("hello world");
   };
