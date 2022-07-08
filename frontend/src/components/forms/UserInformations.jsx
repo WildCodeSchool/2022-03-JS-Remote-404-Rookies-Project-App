@@ -75,10 +75,13 @@ function UserInformations() {
         <img
           src={
             user.image_url
-              ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
+              ? `${import.meta.env.VITE_BACKEND_URL}/public/avatars/${
+                  user.image_url
+                }`
               : blankPic
           }
           alt="En attente "
+          className="max-h-20 p-2"
         />
         <label htmlFor="name" className=" mb-5">
           Nom *
