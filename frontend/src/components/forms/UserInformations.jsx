@@ -6,9 +6,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import * as yup from "yup";
-import ExportContextUser from "../../contexts/UserContext";
+
+import { ToastContainer } from "react-toastify";
+import { notifySuccess, notifyError } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import blankPic from "../../assets/pictures/blank-profile-picture.png";
+
+import ExportContextUser from "../../contexts/UserContext";
 
 const schema = yup.object({
   firstname: yup.string().required(),
@@ -18,7 +23,7 @@ const schema = yup.object({
   linkedin: yup.string("saisissez l'adresse de votre profil"),
 });
 function UserInformations() {
-  const { user, setUser } = useContext(ExportContextUser.UserContext);
+  const { user, handleUser } = useContext(ExportContextUser.UserContext);
   const {
     handleSubmit,
     register,
@@ -34,28 +39,33 @@ function UserInformations() {
 
     const formData = new FormData();
 
-    formData.append("firstname", user.firstname);
-    formData.append("lastanme", user.lastname);
-    formData.append("phone", user.phone);
-    formData.append("role", user.role);
-    formData.append("linkedin", user.linkedin);
-
     if (data.image_url[0]) {
       formData.append("image_url", data.image_url[0]);
     }
 
-    fetch("http://localhost:5000/upload", {
-      method: "POST",
+    formData.append("user", JSON.stringify(data));
+
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/profiles/${user.id}`, {
+      method: "PUT",
       body: formData,
     })
       .then((res) => res.json())
-      .then((json) => setUser(json))
-      .catch((err) => console.warn(err));
+      .then((json) => {
+        handleUser(json);
+        notifySuccess("Modification effectuée, votre profil est mis à jour");
+      })
+      .catch((err) => {
+        console.warn(err);
+        notifyError(
+          "Une erreur est apparue: Veuillez recharger la page ou réessayer"
+        );
+      });
   };
 
   return (
     <div className="border-b-2  bg-gray-100 flex flex-col  flex-wrap w-11/12 rounded-lg">
       <h2 className="text-base p-5">Mes informations</h2>
+      <ToastContainer />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -63,7 +73,11 @@ function UserInformations() {
       >
         <input {...register("image_url")} type="file" />
         <img
-          src={user.image_url ? user.image_url : blankPic}
+          src={
+            user.image_url
+              ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
+              : blankPic
+          }
           alt="En attente "
         />
         <label htmlFor="name" className=" mb-5">
