@@ -22,8 +22,7 @@ function SignIn() {
   const [createPhone, setPhone] = useState();
   const [createPassword, setPassword] = useState();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (
       !entity ||
       !createFirstname ||
@@ -172,7 +171,7 @@ function SignIn() {
           </p>
           <input
             className="my-6 w-2/3 self-center bg-green-400 hover:bg-emerald-700 cursor-pointer text-white font-semibold py-1 rounded"
-            type="submit"
+            type="button"
             value="Créer mon compte"
             onClick={onSubmit}
           />

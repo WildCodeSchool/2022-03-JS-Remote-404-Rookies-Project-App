@@ -86,11 +86,15 @@ router.put(
 // récupèrer globalement tous les projets de toutes les entreprises ou un projet spécifique
 router.get("/company-projects/", CompanyProjectController.browse);
 router.get("/company-projects/:id", CompanyProjectController.read);
+router.get(
+  "/company-projects/company/:id",
+  CompanyProjectController.browseCompany
+);
 
 // récupérer les projects de companies en fonction de l'user connecté
 
 // créer un projet d'entreprise + le modifier
-
+router.post("/company-projects/:userId", CompanyProjectController.create);
 //
 // ******* Schools **************
 

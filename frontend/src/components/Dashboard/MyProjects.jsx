@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
 import ExportContextUser from "../../contexts/UserContext";
 
 import plusLogo from "../../assets/pictures/add.png";
@@ -14,22 +15,31 @@ function MyProjects() {
   const [filtered, setFiltered] = useState(true);
   const entity = user.entity_category_id && "/submission";
 
+  const getProjects = () => {
+    const entityId = user.company_id;
+    axios
+      .get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/company-projects/company/${entityId}`
+      )
+      .then((res) => setProjects([res.data]))
+      .catch((err) => console.warn(err));
+  };
+
   const handleFilter = (status) => {
     setFiltered(!status);
     if (status)
-      setProjects(projects.filter((project) => project.users_id === user.id));
-    else
-      axios
-        .get("http://localhost:3000/src/assets/dataset/company_projects.json")
-        .then((res) => setProjects(res.data))
-        .catch((err) => console.warn(err));
+      setProjects(
+        projects.filter(
+          (project) => parseInt(user.id, 10) === project.profiles_id
+        )
+      );
+    else getProjects();
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/src/assets/dataset/company_projects.json")
-      .then((res) => setProjects(res.data))
-      .catch((err) => console.warn(err));
+    getProjects();
   }, []);
 
   return (

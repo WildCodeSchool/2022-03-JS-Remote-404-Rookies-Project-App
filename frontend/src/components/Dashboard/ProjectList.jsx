@@ -1,26 +1,45 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import users from "../../assets/dataset/users.json";
 import arrowLink from "../../assets/pictures/arrow-link.png";
 import blankPic from "../../assets/pictures/blank-profile-picture.png";
 
 function ProjectList({ project }) {
   const navigate = useNavigate();
-  const projectOwner = users.find((user) => user.id === project.users_id);
+  const [projectOwner, setProjectOwner] = useState();
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/users`)
+      .then((res) =>
+        setProjectOwner(
+          res.data.find(
+            (user) => parseInt(user.id, 10) === project.profiles_id,
+            10
+          )
+        )
+      )
+      .catch((err) => console.warn(err));
+  }, []);
 
   return (
     <div className="flex justify-between pb-5 items-center  text-ellipsis">
       <p className="text-blue-900 font-bold w-1/4">{project.project_name}</p>
-      <p className="text-yellow-400 w-1/4">{project.status}</p>
+      <p className="text-yellow-400 w-1/4">{project.stage}</p>
       <div className="flex w-1/4">
         <img
-          src={projectOwner.image_url ? projectOwner.image_url : blankPic}
+          src={
+            projectOwner && projectOwner.image_url
+              ? projectOwner.image_url
+              : blankPic
+          }
           alt="owner"
           className="h-7 rounded-full mr-3"
         />
         <p className="text-gray-400">
-          {projectOwner.firstname} {projectOwner.lastname}
+          {projectOwner && projectOwner.firstname}{" "}
+          {projectOwner && projectOwner.lastname}
         </p>
       </div>
 

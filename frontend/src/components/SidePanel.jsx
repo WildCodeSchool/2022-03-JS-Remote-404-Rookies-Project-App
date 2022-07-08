@@ -7,8 +7,8 @@ function SidePanel() {
       <Logo />
       <h2 className="text-4xl text-left m-12 font-bold">
         “The best way of learning about anything is{" "}
-        <h2 className="text-yellow-300">by doing.”</h2>
-        <h3 className="text-lg text-right font-semibold">Richard Branson</h3>
+        <p className="text-yellow-300">by doing.”</p>
+        <p className="text-lg text-right font-semibold">Richard Branson</p>
       </h2>
       <div className="font-semibold m-10">
         <a

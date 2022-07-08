@@ -13,6 +13,18 @@ class CompanyProjectController {
       });
   };
 
+  static browseCompany = (req, res) => {
+    models.company_project
+      .findAllFromCompany(req.params.id)
+      .then(([rows]) => {
+        res.send(rows[0]);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static read = (req, res) => {
     models.company_project
       .find(req.params.id)
@@ -27,6 +39,47 @@ class CompanyProjectController {
         console.error(err);
         res.sendStatus(500);
       });
+  };
+
+  static create = async (req, res) => {
+    try {
+      const profile = await models.profiles.find(req.params.userId);
+
+      const companyId = !profile.company_id
+        ? await models.companies.addOne(req.body).then((compId) => compId)
+        : await models.companies
+            .edit(profile.company_id)
+            .then(() => profile.company_id);
+
+      if (!profile.company_id) {
+        await models.profiles.modifyEntity(
+          { company_id: companyId },
+          req.params.userId
+        );
+      }
+
+      await models.profiles.find(req.params.userId);
+
+      const project = await models.company_project.addOne(
+        req.body,
+        companyId,
+        profile[0].id
+      );
+
+      if (project) {
+        await models.company_project_has_teaching_fields.addMany(
+          project,
+          req.body.teaching_fields
+        );
+        return res.status(201).send(project);
+      }
+      return res.status(400).send("Couldn't create project");
+    } catch (err) {
+      console.error(err);
+      return res
+        .status(401)
+        .send("Something bad happened, try again Hackerman !");
+    }
   };
 }
 

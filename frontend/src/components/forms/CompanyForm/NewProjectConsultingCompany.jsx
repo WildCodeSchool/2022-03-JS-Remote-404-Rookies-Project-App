@@ -38,27 +38,7 @@ export default function NewProjectConsultingCompany({
   const [sectors, setSectors] = useState([]);
   const { handleProject } = useContext(ExportContextProject.ProjectContext);
   const { user } = useContext(ExportContextUser.UserContext);
-  const [companyName, setCompanyName] = useState();
-
-  const {
-    handleSubmit,
-    register,
-
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
-
-  const manageCity = (value) => {
-    setCity();
-    setSelectedDpt(value);
-  };
-
-  const onSubmit = (data) => {
-    handleProject(data);
-    handleNextStep("Next");
-  };
+  const [company, setCompany] = useState();
 
   useEffect(() => {
     if (selectedDpt) {
@@ -80,10 +60,39 @@ export default function NewProjectConsultingCompany({
     if (user.company_id) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
-        .then((res) => setCompanyName(res.data.name))
+        .then((res) => setCompany(res.data))
         .catch((err) => console.warn(err));
     }
   }, []);
+
+  const preloadedValues = {
+    company_name: company?.name,
+    description: company?.description,
+    website: company?.website,
+    range: company?.workforces_id,
+    sector: company?.sectors_id,
+  };
+
+  const {
+    handleSubmit,
+    register,
+
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    defaultValues: preloadedValues,
+  });
+
+  const manageCity = (value) => {
+    setCity();
+    setSelectedDpt(value);
+  };
+
+  const onSubmit = (data) => {
+    handleProject(data);
+    handleNextStep("Next");
+  };
 
   return (
     <div className="flex w-full p-8">
@@ -98,7 +107,7 @@ export default function NewProjectConsultingCompany({
               {...register("company_name")}
               className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Saisir votre école"
-              value={companyName}
+              name="company_name"
             />
           </div>
           <div className="flex flex-col">
@@ -115,6 +124,7 @@ export default function NewProjectConsultingCompany({
             type="text"
             rows="2"
             placeholder="Description de mon entreprise"
+            defaultValue={company?.description}
             {...register("description")}
           />
         </div>
@@ -127,7 +137,9 @@ export default function NewProjectConsultingCompany({
                 className=" bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
                 {sectors.map((d) => (
-                  <option key={d.sector}>{d.sector}</option>
+                  <option key={d.id} value={d.id}>
+                    {d.sector}
+                  </option>
                 ))}
               </select>
             </div>
@@ -182,7 +194,9 @@ export default function NewProjectConsultingCompany({
                 className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
                 {workforces.map((d) => (
-                  <option key={d.range}>{d.range}</option>
+                  <option key={d.id} value={d.id}>
+                    {d.range}
+                  </option>
                 ))}
               </select>
             </div>
