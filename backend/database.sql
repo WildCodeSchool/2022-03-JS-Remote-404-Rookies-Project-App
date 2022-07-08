@@ -260,8 +260,8 @@ CREATE UNIQUE INDEX `company_id_UNIQUE` ON `rookies_app_db`.`profiles` (`company
 INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
 (1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, '1', 1),
 (2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, '2', null),
-(3, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '4', 2),
-(4, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujufitcat', 2, null, null, 1, '3', null),
+(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujufitcat', 2, null, null, 1, '3', null),
+(4, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '4', 2),
 (5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '5', null),
 (6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '6', null);
 
