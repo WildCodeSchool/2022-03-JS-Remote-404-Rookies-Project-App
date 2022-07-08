@@ -12,32 +12,26 @@ function Admin() {
       .get(`${import.meta.env.VITE_BACKEND_URL}/users/`)
       .then((res) => setUsers(res.data))
       .catch((err) => console.warn(err));
-  }, []);
-  useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/stages/`)
       .then((res) => setStages(res.data))
       .catch((err) => console.warn(err));
-  }, []);
-  useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/sectors/`)
       .then((res) => setSectors(res.data))
       .catch((err) => console.warn(err));
-  }, []);
-  useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/company_project/`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/company_projects/`)
       .then((res) => setCompanyProject(res.data))
       .catch((err) => console.warn(err));
   }, []);
 
   return (
     <div className="bg-gray-100 h-full w-full">
-      <div className="bg-emerald-700 h-20" id="navbar">
-        <div className="flex text-white m-10 font-bold text-3xl">
+      <div className="bg-emerald-700 h-30" id="navbar">
+        <div className="flex text-white p-10 font-bold text-3xl">
           <div className="bg-green-400 px-3 py-1 rounded-lg">R</div>
-          <h1 className="px-3 py-1">Projects</h1>
+          <h1 className="px-3 py-1">Admin page</h1>
         </div>
       </div>
       <div className="flex flex-col m-5" id="admin-tables">
@@ -74,32 +68,33 @@ function Admin() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((u) => (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
-                    {/* PRENOM */}
-                    <td className="px-6 py-4">{u.firstname}</td>
-                    {/* NOM */}
-                    <td className="px-6 py-4">{u.lastname}</td>
-                    {/* EMAIL */}
-                    <td className="px-6 py-4">{u.email}</td>
-                    {/* TELEPHONE */}
-                    <td className="px-6 py-4">
-                      {u.phone ? u.phone : "Pas de téléphone"}
-                    </td>
-                    {/* IDENTIFIANT */}
-                    <td className="px-6 py-4">{u.id}</td>
-                    {/* CATEGORIE ENTREPRISE OU ECOLE */}
-                    <td className="px-6 py-4">{u.entity_category_id}</td>
-                    {/* PROFESSION */}
-                    <td className="px-6 py-4">
-                      {u.role ? u.role : "Pas de profession"}
-                    </td>
-                    {/* DATE DE CREATION DE PROFIL */}
-                    <td className="px-6 py-4">
-                      {u.create_time ? u.create_time : "pas de date"}
-                    </td>
-                  </tr>
-                ))}
+                {users &&
+                  users.map((u) => (
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
+                      {/* PRENOM */}
+                      <td className="px-6 py-4">{u.firstname}</td>
+                      {/* NOM */}
+                      <td className="px-6 py-4">{u.lastname}</td>
+                      {/* EMAIL */}
+                      <td className="px-6 py-4">{u.email}</td>
+                      {/* TELEPHONE */}
+                      <td className="px-6 py-4">
+                        {u.phone ? u.phone : "Pas de téléphone"}
+                      </td>
+                      {/* IDENTIFIANT */}
+                      <td className="px-6 py-4">{u.id}</td>
+                      {/* CATEGORIE ENTREPRISE OU ECOLE */}
+                      <td className="px-6 py-4">{u.entity_category_id}</td>
+                      {/* PROFESSION */}
+                      <td className="px-6 py-4">
+                        {u.role ? u.role : "Pas de profession"}
+                      </td>
+                      {/* DATE DE CREATION DE PROFIL */}
+                      <td className="px-6 py-4">
+                        {u.create_time ? u.create_time : "pas de date"}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
@@ -142,31 +137,37 @@ function Admin() {
               <tbody>
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                   {/* DATE DE SOUMISSION */}
-                  {companyProject.map((p) => (
-                    <td className="px-4 py-4">{p.create_time}</td>
-                  ))}
+                  {companyProject &&
+                    companyProject.map((p) => (
+                      <td className="px-4 py-4">{p.create_time}</td>
+                    ))}
                   {/* CATEGORIE ENTREPRISE OU ECOLE */}
-                  {users.map((u) => (
-                    <td className="px-4 py-4">{u.entity_category_id}</td>
-                  ))}
+                  {users &&
+                    users.map((u) => (
+                      <td className="px-4 py-4">{u.entity_category_id}</td>
+                    ))}
                   {/* UTILISATEUR */}
-                  {users.map((u) => (
-                    <td className="px-4 py-4">{u.id}</td>
-                  ))}
+                  {users &&
+                    users.map((u) => <td className="px-4 py-4">{u.id}</td>)}
                   {/* TYPE */}
-                  {sectors.map((sc) => (
-                    <td className="px-4 py-4">
-                      {sc.sectors ? sc.sectors : "Type de projet non renseigné"}
-                    </td>
-                  ))}
+                  {sectors &&
+                    sectors.map((sc) => (
+                      <td className="px-4 py-4">
+                        {sc.sectors
+                          ? sc.sectors
+                          : "Type de projet non renseigné"}
+                      </td>
+                    ))}
                   {/* NOM DU PROJET */}
-                  {companyProject.map((p) => (
-                    <td className="px-4 py-4">{p.project_name}</td>
-                  ))}
+                  {companyProject &&
+                    companyProject.map((p) => (
+                      <td className="px-4 py-4">{p.project_name}</td>
+                    ))}
                   {/* DOMAINE/TAG  */}
-                  {companyProject.map((p) => (
-                    <td className="px-4 py-4"> {p.project_types_id}</td>
-                  ))}
+                  {companyProject &&
+                    companyProject.map((p) => (
+                      <td className="px-4 py-4"> {p.project_types_id}</td>
+                    ))}
                   {/* MATCH ACCEPTE PAR L'ENTREPRISE */}
                   <td className="px-4 py-4">
                     <input
@@ -186,11 +187,12 @@ function Admin() {
                     />
                   </td>
                   {/* STATUT DU PROJET */}
-                  {stages.map((st) => (
-                    <td className="px-4 py-4">
-                      {st.stage ? st.stage : "Statut non renseigné"}
-                    </td>
-                  ))}
+                  {stages &&
+                    stages.map((st) => (
+                      <td className="px-4 py-4">
+                        {st.stage ? st.stage : "Statut non renseigné"}
+                      </td>
+                    ))}
                 </tr>
               </tbody>
             </table>

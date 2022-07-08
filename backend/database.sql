@@ -185,8 +185,8 @@ CREATE UNIQUE INDEX `email_UNIQUE` ON `rookies_app_db`.`users` (`email` ASC);
 INSERT INTO `users` (`id`, `email`, `hashedpassword`) VALUES
 ('1', 'john.doe@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('2', 'margarett.teacher@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('4', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('3', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('3', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('4', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('5', 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('6', 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
 

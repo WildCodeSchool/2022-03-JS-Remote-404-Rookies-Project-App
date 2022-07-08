@@ -22,8 +22,10 @@ function UserSettings() {
       <img
         className="img2"
         src={
-          `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
-            ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
+          user.image_url
+            ? `${import.meta.env.VITE_BACKEND_URL}/public/avatars/${
+                user.image_url
+              }`
             : randompic
         }
         alt="user avatar"
