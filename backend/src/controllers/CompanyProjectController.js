@@ -17,7 +17,7 @@ class CompanyProjectController {
     models.company_project
       .findAllFromCompany(req.params.id)
       .then(([rows]) => {
-        res.send(rows[0]);
+        res.send(rows);
       })
       .catch((err) => {
         console.error(err);
@@ -43,13 +43,19 @@ class CompanyProjectController {
 
   static create = async (req, res) => {
     try {
-      const profile = await models.profiles.find(req.params.userId);
+      const profile = await models.profiles
+        .find(req.params.userId)
+        .then((result) => result[0]);
 
-      const companyId = !profile.company_id
-        ? await models.companies.addOne(req.body).then((compId) => compId)
-        : await models.companies
-            .edit(profile.company_id)
-            .then(() => profile.company_id);
+      let companyId = "";
+      if (!profile[0].company_id) {
+        const tempId = await models.companies
+          .addOne(req.body)
+          .then((compId) => compId);
+        companyId += tempId;
+      } else {
+        companyId += profile[0].company_id;
+      }
 
       if (!profile.company_id) {
         await models.profiles.modifyEntity(

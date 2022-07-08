@@ -17,14 +17,16 @@ function MyProjects() {
 
   const getProjects = () => {
     const entityId = user.company_id;
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/company-projects/company/${entityId}`
-      )
-      .then((res) => setProjects([res.data]))
-      .catch((err) => console.warn(err));
+    if (entityId) {
+      axios
+        .get(
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/company-projects/company/${entityId}`
+        )
+        .then((res) => setProjects(res.data))
+        .catch((err) => console.warn(err));
+    }
   };
 
   const handleFilter = (status) => {
@@ -40,7 +42,7 @@ function MyProjects() {
 
   useEffect(() => {
     getProjects();
-  }, []);
+  }, [user]);
 
   return (
     <div className="mx-10 my-5 h-full rounded-2xl shadow-md border">

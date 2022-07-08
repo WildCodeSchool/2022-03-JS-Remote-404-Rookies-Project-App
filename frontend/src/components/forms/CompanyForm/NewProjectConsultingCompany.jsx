@@ -12,7 +12,6 @@ import SelectDepartment from "../../SelectDepartment";
 import ButtonHandler from "../ButtonHandler";
 
 import ExportContextProject from "../../../contexts/ProjectContext";
-import ExportContextUser from "../../../contexts/UserContext";
 
 const schema = yup
   .object({
@@ -36,9 +35,9 @@ export default function NewProjectConsultingCompany({
   const [selectedDpt, setSelectedDpt] = useState();
   const [workforces, setWorkforces] = useState([]);
   const [sectors, setSectors] = useState([]);
-  const { handleProject } = useContext(ExportContextProject.ProjectContext);
-  const { user } = useContext(ExportContextUser.UserContext);
-  const [company, setCompany] = useState();
+  const { project, handleProject } = useContext(
+    ExportContextProject.ProjectContext
+  );
 
   useEffect(() => {
     if (selectedDpt) {
@@ -57,20 +56,14 @@ export default function NewProjectConsultingCompany({
       .get(`${import.meta.env.VITE_BACKEND_URL}/sectors`)
       .then((res) => setSectors(res.data))
       .catch((err) => console.warn(err));
-    if (user.company_id) {
-      axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
-        .then((res) => setCompany(res.data))
-        .catch((err) => console.warn(err));
-    }
   }, []);
 
   const preloadedValues = {
-    company_name: company?.name,
-    description: company?.description,
-    website: company?.website,
-    range: company?.workforces_id,
-    sector: company?.sectors_id,
+    company_name: project?.name,
+    description: project?.description,
+    website: project?.website,
+    range: project?.workforces_id,
+    sector: project?.sectors_id,
   };
 
   const {
@@ -108,6 +101,7 @@ export default function NewProjectConsultingCompany({
               className="bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Saisir votre nom d'entreprise"
               name="company_name"
+              defaultValue={project?.name}
             />
           </div>
           <div className="flex flex-col">
@@ -124,7 +118,7 @@ export default function NewProjectConsultingCompany({
             type="text"
             rows="2"
             placeholder="Description de mon entreprise"
-            defaultValue={company?.description}
+            defaultValue={project?.description}
             {...register("description")}
           />
         </div>
@@ -135,6 +129,7 @@ export default function NewProjectConsultingCompany({
               <select
                 {...register("sector")}
                 className=" bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                selected={project?.sector}
               >
                 {sectors.map((d) => (
                   <option key={d.id} value={d.id}>
@@ -164,6 +159,7 @@ export default function NewProjectConsultingCompany({
               type="url"
               placeholder="www.entreprise.com"
               {...register("website")}
+              defaultValue={project?.website}
             />
           </div>
 

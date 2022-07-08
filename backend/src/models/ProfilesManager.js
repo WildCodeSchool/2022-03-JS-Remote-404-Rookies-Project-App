@@ -11,10 +11,11 @@ class ProfilesManager extends AbstractManager {
 
   find(id) {
     return this.connection
-      .query(`SELECT * FROM ${this.table} WHERE ${this.table}.user_id = ?`, [
-        id,
-      ])
-      .then((res) => res[0]);
+      .query(
+        `SELECT *, users.id FROM ${this.table} JOIN users on profiles.user_id = users.id LEFT JOIN images ON images.id = ${this.table}.images_id WHERE ${this.table}.user_id = ?`,
+        [id]
+      )
+      .then((res) => res);
   }
 
   insert(profile, id) {

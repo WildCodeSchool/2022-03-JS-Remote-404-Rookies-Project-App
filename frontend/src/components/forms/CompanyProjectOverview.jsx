@@ -92,9 +92,9 @@ function CompanyProjectOverview({ user, project }) {
           <h3 className="text-emerald-700 text-xl pb-2">
             Quel est le ou les domaines du projet ?
           </h3>
-          {project.sector.split(" ").map((d) => (
+          {/* {project.sector.split(" ").map((d) => (
             <option key={d.sector}>{d.sector}</option>
-          ))}
+          ))} */}
           <h3 className="text-emerald-700 text-xl pb-2">
             L’entreprise en quelques mots
           </h3>
