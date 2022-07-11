@@ -7,7 +7,7 @@ import websiteLogo from "../../assets/pictures/mouse-logo.png";
 
 function SchoolProjectOverview({ user, project }) {
   return (
-    <div className="flex flex-col items-center w-full px-20 py-10 ">
+    <div className="flex flex-col items-center w-full  ">
       <h1 className="text-xl mb-10">Prévisualiser votre cours :</h1>
       <div className="flex flex-col items-center rounded-2xl w-full bg-white">
         {/* header */}
@@ -69,7 +69,7 @@ function SchoolProjectOverview({ user, project }) {
           {project.project_name}
         </h1>
         {/* Project */}
-        <div className="flex flex-col w-full p-6">
+        <div className="flex flex-col w-100 p-6">
           <div className="flex justify-between">
             <h2 className="text-emerald-700 text-2xl underline pb-4">
               Brief du projet :
@@ -79,21 +79,21 @@ function SchoolProjectOverview({ user, project }) {
               {project.end_date.getMonth()}/{project.end_date.getFullYear()}
             </p>
           </div>
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             L’objectif principal du projet ?
           </h3>
           <p className="text-gray-500 pb-2">{project.goal}</p>
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             Quelles seront les ressources disponibles pour les étudiants ?
           </h3>
           <p className="text-gray-500 pb-2">{project.ressources_available}</p>
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             Quel est le ou les domaines du projet ?
           </h3>
           {project.sector.split(" ").map((d) => (
             <option key={d.sector}>{d.sector}</option>
           ))}
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             L’entreprise en quelques mots
           </h3>
           <p className="text-gray-500 pb-2">{project.description}</p>

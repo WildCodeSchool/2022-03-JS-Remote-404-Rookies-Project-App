@@ -7,8 +7,8 @@ import websiteLogo from "../../assets/pictures/mouse-logo.png";
 
 function CompanyProjectOverview({ user, project }) {
   return (
-    <div className="flex flex-col items-center w-full px-20 py-10 ">
-      <h1 className="text-xl mb-10">Prévisualiser votre projet :</h1>
+    <div className="flex flex-col items-center w-full px-10 py-5 ">
+      <h1 className="text-xl mb-5">Prévisualiser votre projet :</h1>
       <div className="flex flex-col items-center rounded-2xl w-full bg-white">
         {/* header */}
         <div className="flex justify-between w-full">
@@ -71,7 +71,7 @@ function CompanyProjectOverview({ user, project }) {
           {project.project_name}
         </h1>
         {/* Project */}
-        <div className="flex flex-col w-full p-6">
+        <div className="flex flex-col w-100 p-6">
           <div className="flex justify-between">
             <h2 className="text-emerald-700 text-2xl underline pb-4">
               Brief du projet :
@@ -81,21 +81,21 @@ function CompanyProjectOverview({ user, project }) {
               {project.end_date.getMonth()}/{project.end_date.getFullYear()}
             </p>
           </div>
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             L’objectif principal du projet ?
           </h3>
           <p className="text-gray-500 pb-2">{project.goal}</p>
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             Quelles seront les ressources disponibles pour les étudiants ?
           </h3>
           <p className="text-gray-500 pb-2">{project.ressources_available}</p>
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             Quel est le ou les domaines du projet ?
           </h3>
           {project.sector.split(" ").map((d) => (
             <option key={d.sector}>{d.sector}</option>
           ))}
-          <h3 className="text-emerald-700 text-xl pb-2">
+          <h3 className="text-emerald-700 text-l pb-2">
             L’entreprise en quelques mots
           </h3>
           <p className="text-gray-500 pb-2">{project.description}</p>

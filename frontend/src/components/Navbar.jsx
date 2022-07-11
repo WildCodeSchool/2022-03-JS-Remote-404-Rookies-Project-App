@@ -7,7 +7,7 @@ import "../styles/Navbar.css";
 
 function Navbar() {
   return (
-    <div className="navbar-layout h-screen">
+    <div className="navbar-layout h-100">
       <Logo />
       <div className="menu-items">
         <li>
