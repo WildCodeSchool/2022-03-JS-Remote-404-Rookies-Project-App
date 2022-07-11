@@ -58,7 +58,9 @@ export default function NewProjectDomainSchool({
               size="3"
             >
               {fields.map((d) => (
-                <option key={d.field}>{d.field}</option>
+                <option key={d.field} value={d.id}>
+                  {d.field}
+                </option>
               ))}
             </select>
           </div>
@@ -80,7 +82,9 @@ export default function NewProjectDomainSchool({
               size="3"
             >
               {languages.map((d) => (
-                <option key={d.language}>{d.language}</option>
+                <option key={d.language} value={d.id}>
+                  {d.language}
+                </option>
               ))}
             </select>
           </div>

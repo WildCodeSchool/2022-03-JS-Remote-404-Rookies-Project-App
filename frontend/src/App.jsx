@@ -40,8 +40,8 @@ function App() {
               }
             >
               <Route path="dashboard" element={<Dashboard />} />
-              <Route path="projets/*" element={<Project />} />
-
+              <Route path="projets" element={<Project />} />
+              <Route path="projets/:id" element={<Project />} />
               <Route path="submission" element={<Submission />} />
               <Route path="profile" element={<Profilepage />} />
               <Route path="team" element={<Teampage />} />

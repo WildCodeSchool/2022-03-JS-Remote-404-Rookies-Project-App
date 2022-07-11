@@ -1,34 +1,13 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
-
-import ExportContextUser from "../../contexts/UserContext";
+import React from "react";
 
 import ProjectSelected from "./ProjectSelected";
 import MatchesInProject from "./MatchesInProject";
 
-function SelectProject() {
-  const { user } = useContext(ExportContextUser.UserContext);
-  const [project, setProject] = useState();
-  const [selected, setSelected] = useState();
+function SelectProject({ selected, setSelected, project }) {
   const handleChange = (value) => {
     const projectSelected = project.find((e) => e.id === value);
     setSelected(projectSelected);
   };
-  // company-projects/
-
-  useEffect(() => {
-    const entityId = user.company_id;
-    if (entityId) {
-      axios
-        .get(
-          `${
-            import.meta.env.VITE_BACKEND_URL
-          }/company-projects/company/${entityId}`
-        )
-        .then((res) => setProject(res.data))
-        .catch((err) => console.warn(err));
-    }
-  }, []);
 
   return (
     <div className="blocproject">

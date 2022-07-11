@@ -17,18 +17,33 @@ function ButtonHandler({ handleNextStep, currentStep, long }) {
   const navigate = useNavigate();
 
   const handleSending = () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_BACKEND_URL}/company-projects/${user.id}`,
-        project
-      )
-      .then(() => {
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 2000);
-        notifySuccess("Projet créé !");
-      })
-      .catch(() => notifyError("Un problème est survenu"));
+    if (project.course) {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/school-ressources/${user.id}`,
+          project
+        )
+        .then(() => {
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 2000);
+          notifySuccess("Projet créé !");
+        })
+        .catch(() => notifyError("Un problème est survenu"));
+    } else {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/company-projects/${user.id}`,
+          project
+        )
+        .then(() => {
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 4000);
+          notifySuccess("Projet créé !");
+        })
+        .catch(() => notifyError("Un problème est survenu"));
+    }
   };
 
   return (

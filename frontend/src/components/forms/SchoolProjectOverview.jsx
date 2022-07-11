@@ -38,7 +38,7 @@ function SchoolProjectOverview({ user, project }) {
           {/* company */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={project.logo.length > 0 ? project.logo : blankPic}
+              src={project.logo ? project.logo : blankPic}
               alt="company-logo"
               className="w-32 rounded-3xl border-8 border-gray-400"
             />

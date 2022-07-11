@@ -16,13 +16,21 @@ function MyProjects() {
   const entity = user.entity_category_id && "/submission";
 
   const getProjects = () => {
-    const entityId = user.company_id;
-    if (entityId) {
+    if (user.company_id) {
       axios
         .get(
-          `${
-            import.meta.env.VITE_BACKEND_URL
-          }/company-projects/company/${entityId}`
+          `${import.meta.env.VITE_BACKEND_URL}/company-projects/company/${
+            user.company_id
+          }`
+        )
+        .then((res) => setProjects(res.data))
+        .catch((err) => console.warn(err));
+    } else if (user.school_id) {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/school-ressources/school/${
+            user.school_id
+          }`
         )
         .then((res) => setProjects(res.data))
         .catch((err) => console.warn(err));
