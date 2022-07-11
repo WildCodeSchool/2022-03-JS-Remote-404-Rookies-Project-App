@@ -60,6 +60,18 @@ router.get("/images/:id", ImageController.read);
 
 router.get("/companies", CompanyController.browse);
 router.get("/companies/:id", CompanyController.read);
+router.post(
+  "/companies/",
+  upload.single("image_url"),
+  uploadPublic,
+  CompanyController.add
+);
+router.put(
+  "/companies/:id",
+  upload.single("image_url"),
+  uploadPublic,
+  CompanyController.edit
+);
 // créer / modifier / supprimer une entreprise
 
 router.get("/schools", SchoolController.browse);
