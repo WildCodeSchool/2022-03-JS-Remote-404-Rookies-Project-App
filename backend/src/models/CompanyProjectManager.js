@@ -25,7 +25,7 @@ class CompanyProjectManager extends AbstractManager {
 
   findAllFromCompany(id) {
     return this.connection.query(
-      `SELECT * FROM ${this.table} LEFT JOIN stages ON stages.id = ${this.table}.stages_id WHERE ${this.table}.companies_id = ?`,
+      `SELECT *, company_project.id FROM ${this.table} LEFT JOIN stages ON stages.id = ${this.table}.stages_id WHERE ${this.table}.companies_id = ?`,
       [id]
     );
   }

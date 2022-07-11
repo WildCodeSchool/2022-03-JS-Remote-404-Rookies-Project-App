@@ -64,8 +64,6 @@ class CompanyProjectController {
         );
       }
 
-      await models.profiles.find(req.params.userId);
-
       const project = await models.company_project.addOne(
         req.body,
         companyId,

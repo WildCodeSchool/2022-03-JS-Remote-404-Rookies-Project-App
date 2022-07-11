@@ -15,7 +15,11 @@ function CompanyProjectOverview({ user, project }) {
           {/* user */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={user.photo ? user.photo : blankPic}
+              src={
+                user.image_url
+                  ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
+                  : blankPic
+              }
               alt="user-profile-pic"
               className="w-32 rounded-full border-8 border-gray-100"
             />

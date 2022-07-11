@@ -1,6 +1,6 @@
 import React from "react";
 
-import Share from "@assets/pictures/share.png";
+import Share from "../../assets/pictures/share.png";
 
 function ProjectSelection({ project }) {
   return (
@@ -25,9 +25,11 @@ function ProjectSelection({ project }) {
           </div>
           <div className="bloc6">
             <h2 className="titleh2">L’objectif principal du projet ?</h2>
-            <p className="ph3">Fin souhaité avant le : {project.end_date}</p>
+            <p className="ph3">
+              Fin souhaité avant le : {project.end_date.slice(0, 10)}
+            </p>
           </div>
-          <p className="ph2">{project.objectif}</p>
+          <p className="ph2">{project.goal}</p>
           <h3 className="titleh2">
             Quelles seront les ressources disponibles pour les étudiants ?
           </h3>

@@ -5,7 +5,7 @@ class ProfilesManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `SELECT * FROM ${this.table} JOIN users on profiles.user_id = users.id`
+      `SELECT *, users.id FROM ${this.table} JOIN users on profiles.user_id = users.id LEFT JOIN images ON images.id = ${this.table}.images_id`
     );
   }
 

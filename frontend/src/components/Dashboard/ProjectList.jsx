@@ -11,7 +11,7 @@ function ProjectList({ project }) {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/users`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/profiles`)
       .then((res) =>
         setProjectOwner(
           res.data.find(
@@ -31,7 +31,7 @@ function ProjectList({ project }) {
         <img
           src={
             projectOwner && projectOwner.image_url
-              ? projectOwner.image_url
+              ? `${import.meta.env.VITE_BACKEND_URL}${projectOwner.image_url}`
               : blankPic
           }
           alt="owner"
@@ -46,7 +46,7 @@ function ProjectList({ project }) {
       <button
         type="button"
         className="pl-10"
-        onClick={() => navigate("/projets")}
+        onClick={() => navigate("/projets/1")}
       >
         <img src={arrowLink} alt="arrow link" className="h-7" />
       </button>

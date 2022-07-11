@@ -63,8 +63,6 @@ function Submission() {
         .get(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`)
         .then((res) => handleProject(res.data))
         .catch((err) => console.warn(err));
-    } else {
-      handleProject({ entity_tocreate: true });
     }
   }, []);
 
