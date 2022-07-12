@@ -85,32 +85,31 @@ function UserInformations() {
             }
             alt="En attente "
             className="w-16 p-2 rounded-full"
-
           />
         </div>
         <div className="name-container flex w-full ml-2">
           <label htmlFor="name" className="flex flex-col w-1/3 font-bold p-2 ">
             Nom *
             <input
-              defaultValue={user.firstname}
+              defaultValue={user.lastname}
               className="w-full"
               placeholder="Nom"
-              {...register("firstname")}
+              {...register("lastname")}
             />
-            <p>{errors.firstname?.message}</p>
+            <p>{errors.lastname?.message}</p>
           </label>
           <label
-            htmlFor="lastname"
+            htmlFor="firstname"
             className=" flex flex-col w-1/3 font-bold p-2"
           >
             Prénom *
             <input
-              defaultValue={user.lastname}
+              defaultValue={user.firstname}
               className="w-full "
               placeholder="Prénom"
-              {...register("lastname")}
+              {...register("firstname")}
             />
-            <p>{errors.lastname?.message}</p>
+            <p>{errors.firstname?.message}</p>
           </label>
         </div>
         <div className="flex flex-wrap items-center justify-center w-full ml-2 ">
