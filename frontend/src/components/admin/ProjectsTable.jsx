@@ -46,7 +46,7 @@ function ProjectsTable({
     <div className="flex flex-col p-5" id="project-table">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
         <table className="w-full text-sm text-left table-auto">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3 w-1/10">
                 Id
@@ -109,27 +109,50 @@ function ProjectsTable({
                   </td>
                   <td className="px-4 py-4">To define</td>
                   <td className="px-4 py-4">
-                    <select
-                      className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                      onChange={(e) => handleMatchChange(e.target.value, p.id)}
-                      defaultValue="Choisir un projet d'école"
-                    >
-                      <option key="default" value={null}>
-                        Choisir un cours
-                      </option>
-                      {schoolRessources.map((d) => (
-                        <option key={d.id} value={d.id}>
-                          {d.course}
+                    {p.project_name ? (
+                      <select
+                        className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                        onChange={(e) =>
+                          handleMatchChange(e.target.value, p.id)
+                        }
+                        defaultValue="Choisir un projet d'école"
+                      >
+                        <option key="default" value={null}>
+                          Choisir un cours
                         </option>
-                      ))}
-                    </select>
+                        {schoolRessources.map((d) => (
+                          <option key={d.id} value={d.id}>
+                            {d.course}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <select
+                        className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                        onChange={(e) =>
+                          handleMatchChange(p.id, e.target.value)
+                        }
+                        defaultValue="Choisir un projet d'école"
+                      >
+                        <option key="default" value={null}>
+                          Choisir un projet
+                        </option>
+                        {companyProject.map((d) => (
+                          <option key={d.id} value={d.id}>
+                            {d.project_name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                   </td>
                   <td className="px-4 py-4">
-                    {p.school_ressources_id &&
-                      schoolRessources.find(
-                        (e) => p.school_ressources_id === e.id
-                      ).course}
-                    {!p.school_ressources_id && "Pas de match"}
+                    {p.school_ressources_id
+                      ? schoolRessources.find(
+                          (e) => p.school_ressources_id === e.id
+                        ).course
+                      : companyProject.find(
+                          (e) => p.id === e.school_ressources_id
+                        )?.project_name}
                   </td>
                   <select
                     className="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
@@ -139,7 +162,7 @@ function ProjectsTable({
                     defaultValue="Choisir un statut"
                   >
                     <option key="default" value={null}>
-                      Choisir un statut
+                      Statut
                     </option>
                     {stages.map((d) => (
                       <option key={d.id} value={d.id}>

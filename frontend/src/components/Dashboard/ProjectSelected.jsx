@@ -9,12 +9,26 @@ import Share from "../../assets/pictures/share.png";
 
 function ProjectSelection({ project }) {
   const [stages, setStages] = useState([]);
+  const [fields, setFields] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/stages`)
       .then((res) => setStages(res.data))
       .catch((err) => console.warn(err));
+    if (project.project_name) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/project-fields/${project.id}`)
+        .then((res) => setFields(res.data))
+        .catch((err) => console.warn(err));
+    } else if (project.course) {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/ressource-fields/${project.id}`
+        )
+        .then((res) => setFields(res.data))
+        .catch((err) => console.warn(err));
+    }
   }, []);
 
   return (
@@ -76,9 +90,10 @@ function ProjectSelection({ project }) {
           <p className="ph2">{project.ressources_available}</p>
           <h4 className="titleh2">Quel est le domaine du projet ?</h4>
           <div className="domaineproject">
-            <p className="circlegrey">Business</p>
-            <p className="circlegrey">Marketing</p>
-            <p className="circlegrey">Etude de marché</p>
+            {fields &&
+              fields.map((field) => (
+                <p className="circlegrey">{field.field}</p>
+              ))}
           </div>
           <h5 className="titleh2">L’entreprise en quelques mots</h5>
           <p className="ph2">{project.ressources_available}</p>

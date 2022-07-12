@@ -47,6 +47,8 @@ router.get("/sectors", SectorController.browse);
 router.get("/sectors/:id", SectorController.read);
 router.get("/fields", FieldController.browse);
 router.get("/fields/:id", FieldController.read);
+router.get("/project-fields/:id", FieldController.findManyCompany);
+router.get("/ressource-fields/:id", FieldController.findManySchool);
 router.get("/levels", StudentLevelController.browse);
 router.get("/levels/:id", StudentLevelController.read);
 router.get("/workforces", WorkforceController.browse);

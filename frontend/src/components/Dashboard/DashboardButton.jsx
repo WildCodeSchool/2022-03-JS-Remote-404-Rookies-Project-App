@@ -7,7 +7,7 @@ function DashboardButton({ action }) {
   return (
     <button
       type="button"
-      className="bg-green-400 text-white font-bold text-sm flex justify-around px-5 py-2 rounded-md m-4 mr-8 h-9 w-28 shadow-md z-10"
+      className="bg-green-400 text-white font-bold text-sm flex justify-around px-5 py-2 rounded-md m-4 mr-8 h-9 w-28 shadow-md z-10 hover:bg-emerald-700"
       onClick={() => navigate(action.link)}
     >
       <img src={action.logo} alt="button_logo" className="mr-3 mt-1" />{" "}
