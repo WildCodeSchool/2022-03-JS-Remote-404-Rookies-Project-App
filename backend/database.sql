@@ -141,7 +141,9 @@ CREATE INDEX `workforces_id` ON `rookies_app_db`.`companies` (`workforces_id` AS
 
 INSERT INTO `companies` (`id`, `name`, `description`, `website`, `sectors_id`, `images_id`, `workforces_id`) VALUES
 ('1', 'Dunder Mifflin', 'Nous vendons du papier. Notre boss Michael est pas ouf, mais on peu bosser à la cool chez nous. Pas de travail en remote.', 'https://dundermifflin-paper-company.com', 2, 4, 4),
-('2', 'The Boring Company', null, null, null, null, null);
+('2', 'The Boring Company', null, null, null, null, null),
+('3', 'Rookies', 'machine à projets', 'https://rookies.com', null, null, null);
+
 
 
 -- -----------------------------------------------------
@@ -259,7 +261,7 @@ INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `
 (2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, '2', null),
 (3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujufitcat', 2, null, null, 1, '3', null),
 (4, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '4', 2),
-(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '5', null),
+(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, 3, null, 1, '5', null),
 (6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '6', null);
 
 

@@ -1,26 +1,24 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 import ExportContextUser from "../../contexts/UserContext";
 
-import settings1 from "../../assets/pictures/settings1.png";
+import logout from "../../assets/pictures/logout.svg";
 import randompic from "../../assets/pictures/blank-profile-picture.png";
 
 function UserSettings() {
   const { user } = useContext(ExportContextUser.UserContext);
 
-  const navigate = useNavigate();
-
   return (
     <div className="flex items-center">
-      <button type="submit" onClick={() => navigate("/dashboard")}>
-        <img className="mr-5" src={settings1} alt={settings1} />
+      <button type="submit" onClick={() => window.location.reload()}>
+        <img className="mr-5 " src={logout} alt={logout} width="30px" />
       </button>
       <p className="mr-5 text-emerald-700 font-semibold">
         {user.firstname} {user.lastname}
       </p>
       <img
-        className="img2"
+        className="w-12 rounded-full"
+        width="30px"
         src={
           user.image_url
             ? `${import.meta.env.VITE_BACKEND_URL}/public/avatars/${
