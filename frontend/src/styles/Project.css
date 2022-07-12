@@ -124,6 +124,11 @@
   justify-content: center;
 }
 
+.share:hover {
+  background-color: #02e494;
+  color: white;
+}
+
 .edit {
   margin: 5px;
   margin-right: 20px;
@@ -136,6 +141,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.edit:hover {
+  background-color: #02e494;
+  color: white;
 }
 
 .ph2 {

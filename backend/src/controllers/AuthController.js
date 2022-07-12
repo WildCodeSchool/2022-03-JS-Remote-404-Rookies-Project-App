@@ -38,7 +38,7 @@ class AuthController {
 
       await models.profiles.insert(req.body, id);
 
-      res.status(201).json("user created successfully ");
+      res.status(201).json({ email: req.body.email, id });
     } catch (err) {
       res.status(500).json({
         error: err.message,
