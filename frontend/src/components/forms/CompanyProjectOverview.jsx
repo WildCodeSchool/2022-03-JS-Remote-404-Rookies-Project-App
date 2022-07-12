@@ -15,7 +15,11 @@ function CompanyProjectOverview({ user, project }) {
           {/* user */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={user.photo ? user.photo : blankPic}
+              src={
+                user.image_url
+                  ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
+                  : blankPic
+              }
               alt="user-profile-pic"
               className="w-32 rounded-full border-8 border-gray-100"
             />
@@ -38,7 +42,11 @@ function CompanyProjectOverview({ user, project }) {
           {/* company */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={project.logo.length > 0 ? project.logo : blankPic}
+              src={
+                project.logo && project.logo.length > 0
+                  ? project.logo
+                  : blankPic
+              }
               alt="company-logo"
               className="w-32 rounded-3xl border-8 border-gray-400"
             />
@@ -77,8 +85,8 @@ function CompanyProjectOverview({ user, project }) {
               Brief du projet :
             </h2>
             <p className="text-sm text-gray-500 underline">
-              Fin souhaitée avant le : {project.end_date.getDay()}/
-              {project.end_date.getMonth()}/{project.end_date.getFullYear()}
+              {/* Fin souhaitée avant le : {project.end_date.getDay()}/
+              {project.end_date.getMonth()}/{project.end_date.getFullYear()} */}
             </p>
           </div>
           <h3 className="text-emerald-700 text-xl pb-2">
@@ -92,9 +100,9 @@ function CompanyProjectOverview({ user, project }) {
           <h3 className="text-emerald-700 text-xl pb-2">
             Quel est le ou les domaines du projet ?
           </h3>
-          {project.sector.split(" ").map((d) => (
+          {/* {project.sector.split(" ").map((d) => (
             <option key={d.sector}>{d.sector}</option>
-          ))}
+          ))} */}
           <h3 className="text-emerald-700 text-xl pb-2">
             L’entreprise en quelques mots
           </h3>

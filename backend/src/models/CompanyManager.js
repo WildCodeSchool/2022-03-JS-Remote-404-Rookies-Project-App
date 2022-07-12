@@ -33,7 +33,7 @@ class CompanyManager extends AbstractManager {
   }
 
   edit(newData, id) {
-    return this.connection.query(`UPDATE ${this.table} ? WHERE id = ?`, [
+    return this.connection.query(`UPDATE ${this.table} SET ? WHERE id = ?`, [
       newData,
       id,
     ]);

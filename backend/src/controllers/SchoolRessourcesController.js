@@ -1,8 +1,8 @@
 const models = require("../models");
 
-class CompanyProjectController {
+class SchoolRessourcesController {
   static browse = (req, res) => {
-    models.company_project
+    models.school_ressources
       .findAll()
       .then(([rows]) => {
         res.send(rows);
@@ -13,9 +13,9 @@ class CompanyProjectController {
       });
   };
 
-  static browseCompany = (req, res) => {
-    models.company_project
-      .findAllFromCompany(req.params.id)
+  static browseSchool = (req, res) => {
+    models.school_ressources
+      .findAllFromSchool(req.params.id)
       .then(([rows]) => {
         res.send(rows);
       })
@@ -26,7 +26,7 @@ class CompanyProjectController {
   };
 
   static read = (req, res) => {
-    models.company_project
+    models.school_ressources
       .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
@@ -47,33 +47,37 @@ class CompanyProjectController {
         .find(req.params.userId)
         .then((result) => result[0]);
 
-      let companyId = "";
-      if (!profile[0].company_id) {
-        const tempId = await models.companies
+      let schoolId = "";
+      if (!profile[0].school_id) {
+        const tempId = await models.schools
           .addOne(req.body)
-          .then((compId) => compId);
-        companyId += tempId;
+          .then((schId) => schId);
+        schoolId += tempId;
       } else {
-        companyId += profile[0].company_id;
+        schoolId += profile[0].school_id;
       }
 
-      if (!profile.company_id) {
+      if (!profile.school_id) {
         await models.profiles.modifyEntity(
-          { company_id: companyId },
+          { school_id: schoolId },
           req.params.userId
         );
       }
 
-      const project = await models.company_project.addOne(
+      const project = await models.school_ressources.addOne(
         req.body,
-        companyId,
+        schoolId,
         profile[0].id
       );
 
       if (project) {
-        await models.company_project_has_teaching_fields.addMany(
+        await models.school_project_has_teaching_field.addMany(
           project,
           req.body.teaching_fields
+        );
+        await models.school_projects_has_languages.addMany(
+          project,
+          req.body.languages
         );
         return res.status(201).send(project);
       }
@@ -86,25 +90,9 @@ class CompanyProjectController {
     }
   };
 
-  static match = (req, res) => {
-    models.company_project
-      .connect(req.params.srId, req.params.cpId)
-      .then((rows) => {
-        if (rows[0] == null) {
-          res.sendStatus(404);
-        } else {
-          res.status(200).send("Match completed");
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
   static changeStage = (req, res) => {
-    models.company_project
-      .changeStage(req.params.stId, req.params.cpId)
+    models.school_ressources
+      .changeStage(req.params.stId, req.params.srId)
       .then((rows) => {
         if (rows[0] == null) {
           res.sendStatus(404);
@@ -119,4 +107,4 @@ class CompanyProjectController {
   };
 }
 
-module.exports = CompanyProjectController;
+module.exports = SchoolRessourcesController;

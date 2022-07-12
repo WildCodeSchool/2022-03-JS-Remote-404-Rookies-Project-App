@@ -22,6 +22,7 @@ const {
   CompanyProjectController,
   AuthController,
   ProfileController,
+  SchoolRessourcesController,
 } = require("./controllers");
 
 const router = express.Router();
@@ -90,18 +91,34 @@ router.get(
   "/company-projects/company/:id",
   CompanyProjectController.browseCompany
 );
-
-// récupérer les projects de companies en fonction de l'user connecté
-
-// créer un projet d'entreprise + le modifier
 router.post("/company-projects/:userId", CompanyProjectController.create);
+router.put(
+  "/company-projects/match/:srId/:cpId",
+  CompanyProjectController.match
+);
+router.put(
+  "/company-projects/stages/:stId/:cpId",
+  CompanyProjectController.changeStage
+);
+
+// modifier un projet d'entreprise
+
 //
 // ******* Schools **************
 
 //  récupère globalement tous les projets de toutes les schools ou un projet spécifique
+router.get("/school-ressources/", SchoolRessourcesController.browse);
+router.get("/school-ressources/:id", SchoolRessourcesController.read);
+router.get(
+  "/school-ressources/school/:id",
+  SchoolRessourcesController.browseSchool
+);
+router.post("/school-ressources/:userId", SchoolRessourcesController.create);
+router.put(
+  "/school-ressources/stages/:stId/:srId",
+  SchoolRessourcesController.changeStage
+);
 
-// récupérer les projects de schools en fonction de l'user connecté
-
-// créer un projet/ressources d'école + le modifier
+// modifier un projet/ressources d'école
 
 module.exports = router;

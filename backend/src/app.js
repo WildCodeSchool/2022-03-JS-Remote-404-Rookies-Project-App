@@ -31,9 +31,7 @@ app.get("*", (req, res) => {
 
     res.sendFile(path.join(__dirname, "..", "public", urlpath[2], urlpath[3]));
   } else {
-    res.sendFile(
-      path.join(__dirname, "..", "..", "frontend", "dist", "index.html")
-    );
+    res.sendFile(path.join(__dirname, "..", "..", "frontend", "index.html"));
   }
 });
 // load router

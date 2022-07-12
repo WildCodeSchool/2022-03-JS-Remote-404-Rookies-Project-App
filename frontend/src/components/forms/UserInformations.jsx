@@ -5,6 +5,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { useNavigate } from "react-router-dom";
+
 import * as yup from "yup";
 
 import { ToastContainer } from "react-toastify";
@@ -23,7 +25,8 @@ const schema = yup.object({
   linkedin: yup.string("saisissez l'adresse de votre profil"),
 });
 function UserInformations() {
-  const { user, handleUser } = useContext(ExportContextUser.UserContext);
+  const navigate = useNavigate();
+  const { user } = useContext(ExportContextUser.UserContext);
   const {
     handleSubmit,
     register,
@@ -45,14 +48,16 @@ function UserInformations() {
 
     formData.append("user", JSON.stringify(data));
 
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/profiles/${user.id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/profiles/${user.user_id}`, {
       method: "PUT",
       body: formData,
     })
       .then((res) => res.json())
-      .then((json) => {
-        handleUser(json);
+      .then(() => {
         notifySuccess("Modification effectuée, votre profil est mis à jour");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       })
       .catch((err) => {
         console.warn(err);
@@ -75,9 +80,7 @@ function UserInformations() {
         <img
           src={
             user.image_url
-              ? `${import.meta.env.VITE_BACKEND_URL}/public/avatars/${
-                  user.image_url
-                }`
+              ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
               : blankPic
           }
           alt="En attente "
