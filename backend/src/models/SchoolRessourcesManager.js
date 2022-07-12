@@ -68,6 +68,13 @@ class SchoolRessourcesManager extends AbstractManager {
       )
       .then(() => Uuid);
   }
+
+  changeStage(stageId, schoolRessourcesId) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET stages_id = ? WHERE id = ?`,
+      [stageId, schoolRessourcesId]
+    );
+  }
 }
 
 module.exports = SchoolRessourcesManager;

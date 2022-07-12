@@ -18,7 +18,7 @@ class CompanyProjectManager extends AbstractManager {
 
   find(id) {
     return this.connection.query(
-      `SELECT * FROM ${this.table} INNER JOIN stages ON stages.id = ${this.table}.stages_id WHERE ${this.table}.id = ?`,
+      `SELECT *, company_project.id FROM ${this.table} LEFT JOIN stages ON stages.id = ${this.table}.stages_id WHERE ${this.table}.id = ?`,
       [id]
     );
   }
@@ -49,6 +49,20 @@ class CompanyProjectManager extends AbstractManager {
         ]
       )
       .then(() => Uuid);
+  }
+
+  connect(schoolRessourcesId, companyProjectId) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET school_ressources_id = ? WHERE id = ?`,
+      [schoolRessourcesId, companyProjectId]
+    );
+  }
+
+  changeStage(stageId, companyProjectId) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET stages_id = ? WHERE id = ?`,
+      [stageId, companyProjectId]
+    );
   }
 }
 

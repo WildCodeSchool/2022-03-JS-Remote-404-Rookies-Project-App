@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import Share from "../../assets/pictures/share.png";
 
 function ProjectSelection({ project }) {
+  const [stages, setStages] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/stages`)
+      .then((res) => setStages(res.data))
+      .catch((err) => console.warn(err));
+  }, []);
+
   return (
     <div className="blocproject">
       <div className="bloc">
         <div className="blocproject2">
           <h1 className="title2">AVANCEMENT DU PROJET</h1>
+          {stages &&
+            stages.map((stage) => {
+              return (
+                <p
+                  className={`p-2 ${
+                    project.stages_id < stage.id
+                      ? "text-gray-300"
+                      : "text-green-400 font-bold"
+                  }`}
+                >
+                  &bull; {stage.stage}
+                </p>
+              );
+            })}
         </div>
         <div className="blocproject3">
           <div className="blocproject3bis">

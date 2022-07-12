@@ -407,7 +407,7 @@ INSERT INTO `stages` (`id`, `stage`) VALUES
 
 CREATE TABLE IF NOT EXISTS `rookies_app_db`.`company_project` (
   `id` VARCHAR(255) NOT NULL,
-  `create_time` VARCHAR(45) NULL DEFAULT 'CURRENT_TIMESTAMP',
+  `create_time` VARCHAR(45) NULL DEFAULT '10-01-2022',
   `project_types_id` INT NOT NULL,
   `end_date` DATE NOT NULL,
   `project_name` VARCHAR(255) NOT NULL,
@@ -455,7 +455,7 @@ CREATE INDEX `fk_company_project_school_ressources1_idx` ON `rookies_app_db`.`co
 CREATE INDEX `fk_company_project_companies1_idx` ON `rookies_app_db`.`company_project` (`companies_id` ASC);
 
 INSERT INTO `company_project` (`id`, `project_types_id`, `end_date`, `project_name`, `goal`, `ressources_available`, `profiles_id`, `stages_id`, `school_ressources_id`, `companies_id`) VALUES
-('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', '1', 2, null, '1');
+('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', '1', 2, '1', '1');
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`languages`
 -- -----------------------------------------------------

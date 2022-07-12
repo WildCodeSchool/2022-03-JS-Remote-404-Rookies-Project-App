@@ -92,6 +92,14 @@ router.get(
   CompanyProjectController.browseCompany
 );
 router.post("/company-projects/:userId", CompanyProjectController.create);
+router.put(
+  "/company-projects/match/:srId/:cpId",
+  CompanyProjectController.match
+);
+router.put(
+  "/company-projects/stages/:stId/:cpId",
+  CompanyProjectController.changeStage
+);
 
 // modifier un projet d'entreprise
 
@@ -106,6 +114,10 @@ router.get(
   SchoolRessourcesController.browseSchool
 );
 router.post("/school-ressources/:userId", SchoolRessourcesController.create);
+router.put(
+  "/school-ressources/stages/:stId/:srId",
+  SchoolRessourcesController.changeStage
+);
 
 // modifier un projet/ressources d'école
 

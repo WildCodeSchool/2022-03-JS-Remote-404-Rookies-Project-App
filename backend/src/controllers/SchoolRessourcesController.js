@@ -89,6 +89,22 @@ class SchoolRessourcesController {
         .send("Something bad happened, try again Hackerman !");
     }
   };
+
+  static changeStage = (req, res) => {
+    models.school_ressources
+      .changeStage(req.params.stId, req.params.srId)
+      .then((rows) => {
+        if (rows[0] == null) {
+          res.sendStatus(404);
+        } else {
+          res.status(200).send("Stage changed");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
 }
 
 module.exports = SchoolRessourcesController;
