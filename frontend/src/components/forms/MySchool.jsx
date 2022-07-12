@@ -13,15 +13,15 @@ import "react-toastify/dist/ReactToastify.css";
 import ExportContextUser from "../../contexts/UserContext";
 import blankPic from "../../assets/pictures/blank-profile-picture.png";
 import fields from "../../assets/dataset/teaching_fields.json";
-import SelectDepartment from "../SelectDepartment";
-import SelectCity from "../SelectCity";
+
 import UserSettings from "../Dashboard/UserSettings";
 
 const schema = yup
   .object({
-    name: yup.string().required("Veuillez remplir ce champ").lowercase(),
-    description: yup.string().lowercase(),
+    name: yup.string(),
+    description: yup.string(),
     website: yup.string().url("Veuillez rentrer une url valide"),
+    campus: yup.string(),
   })
   .required();
 
@@ -38,7 +38,7 @@ function MySchool() {
     if (data.image_url[0]) {
       formData.append("image_url", data.image_url[0]);
     }
-    formData.append("school", JSON.stringify({ ...data, user_id: user.id }));
+    formData.append("schools", JSON.stringify(data));
     if (user.school_id) {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`, {
         method: "PUT",
@@ -46,9 +46,7 @@ function MySchool() {
       })
         .then((res) => res.json())
         .then(() => {
-          notifySuccess(
-            "Modification effectuée, votre entreprise est mise à jour"
-          );
+          notifySuccess("Modification effectuée, votre école est mise à jour");
         })
         .catch((err) => {
           console.warn(err);
@@ -168,8 +166,13 @@ function MySchool() {
               className="flex flex-col w-1/2 font-bold p-2 "
             >
               Localisation des campus:
-              <SelectDepartment />
-              <SelectCity {...register("campuses")} />
+              <input
+                className="w-full"
+                defaultValue={school && school.campuses}
+                placeholder="saisir les code postaux, séparés par une virgule"
+                type="text"
+                {...register("campus")}
+              />
             </label>
 
             <label htmlFor="web" className="flex flex-col w-1/2 font-bold p-2 ">

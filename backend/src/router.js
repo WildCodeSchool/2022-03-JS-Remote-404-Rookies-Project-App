@@ -79,9 +79,22 @@ router.put(
 
 router.get("/schools", SchoolController.browse);
 router.get("/schools/:id", SchoolController.read);
-router.put("/schools/:id", SchoolController.edit);
-router.post("/schools", SchoolController.add);
+
 router.delete("/schools/:id", SchoolController.delete);
+
+router.post(
+  "/schools/",
+  upload.single("image_url"),
+  uploadPublic,
+  SchoolController.add
+);
+router.put(
+  "/schools/:id",
+  upload.single("image_url"),
+  uploadPublic,
+  SchoolController.edit
+);
+
 // créer / modifier / supprimer une école
 
 router.get("/users/", UserController.browse);
