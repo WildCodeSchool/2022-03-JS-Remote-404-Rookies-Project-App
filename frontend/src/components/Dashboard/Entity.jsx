@@ -36,7 +36,11 @@ function Entity({ user }) {
       </div>
       <div className="flex -mt-12 items-center">
         <img
-          src={entity && entity.image_url ? entity.image_url : blankPic}
+          src={
+            entity?.image_url
+              ? `${import.meta.env.VITE_BACKEND_URL}${entity.image_url}`
+              : blankPic
+          }
           alt="entity-logo"
           className="w-24 rounded-3xl border-8 border-gray-400 ml-10"
         />
