@@ -48,7 +48,7 @@ export default function NewProjectDescriptionCompany({
 
   return (
     <div className="border-b-2 flex flex-col flex-wrap w-full">
-      <form onSubmit={handleSubmit(onSubmit)} className="p-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="p-2 w-full">
         <div>
           <h2 className="text-base">Nom du projet ? *</h2>
           <p className="text-red-500 text-sm">{errors.project_name?.message}</p>

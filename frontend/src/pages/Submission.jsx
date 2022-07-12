@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 import ExportContextUser from "../contexts/UserContext";
+import ExportContextProject from "../contexts/ProjectContext";
 import NavigationForm from "../components/forms/NavigationForm";
 
 import "../styles/NavbarForm.css";
@@ -42,12 +44,27 @@ function Submission() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const { user } = useContext(ExportContextUser.UserContext);
+  const { handleProject } = useContext(ExportContextProject.ProjectContext);
 
   const navData = steptypes.filter((el) => el.type === user.entity_category_id);
 
   window.onbeforeunload = () => {
     return "Are you sure you want to leave ?";
   };
+
+  useEffect(() => {
+    if (user.company_id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
+        .then((res) => handleProject(res.data))
+        .catch((err) => console.warn(err));
+    } else if (user.school_id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`)
+        .then((res) => handleProject(res.data))
+        .catch((err) => console.warn(err));
+    }
+  }, []);
 
   const handleNextStep = (step) => {
     if (step === "Return") setCurrentStep(currentStep - 1);

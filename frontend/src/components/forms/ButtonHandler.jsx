@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { notifySuccess, notifyError } from "../../services/toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,15 +14,36 @@ import leftarrowbutton from "../../assets/pictures/leftarrowbutton.png";
 function ButtonHandler({ handleNextStep, currentStep, long }) {
   const { project } = useContext(ExportContextProject.ProjectContext);
   const { user } = useContext(ExportContextUser.UserContext);
+  const navigate = useNavigate();
 
   const handleSending = () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_BACKEND_URL}/company-projects/${user.id}`,
-        project
-      )
-      .then(() => notifySuccess("Projet créé !"))
-      .catch(() => notifyError("Un problème est survenu"));
+    if (project.course) {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/school-ressources/${user.id}`,
+          project
+        )
+        .then(() => {
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 2000);
+          notifySuccess("Projet créé !");
+        })
+        .catch(() => notifyError("Un problème est survenu"));
+    } else {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/company-projects/${user.id}`,
+          project
+        )
+        .then(() => {
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 4000);
+          notifySuccess("Projet créé !");
+        })
+        .catch(() => notifyError("Un problème est survenu"));
+    }
   };
 
   return (

@@ -5,6 +5,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { useNavigate } from "react-router-dom";
+
 import * as yup from "yup";
 
 import { ToastContainer } from "react-toastify";
@@ -23,7 +25,8 @@ const schema = yup.object({
   linkedin: yup.string("saisissez l'adresse de votre profil"),
 });
 function UserInformations() {
-  const { user, handleUser } = useContext(ExportContextUser.UserContext);
+  const navigate = useNavigate();
+  const { user } = useContext(ExportContextUser.UserContext);
   const {
     handleSubmit,
     register,
@@ -45,14 +48,16 @@ function UserInformations() {
 
     formData.append("user", JSON.stringify(data));
 
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/profiles/${user.id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/profiles/${user.user_id}`, {
       method: "PUT",
       body: formData,
     })
       .then((res) => res.json())
-      .then((json) => {
-        handleUser(json);
+      .then(() => {
         notifySuccess("Modification effectuée, votre profil est mis à jour");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       })
       .catch((err) => {
         console.warn(err);
@@ -80,13 +85,14 @@ function UserInformations() {
             }
             alt="En attente "
             className="w-16 p-2 rounded-full"
+
           />
         </div>
         <div className="name-container flex w-full ml-2">
           <label htmlFor="name" className="flex flex-col w-1/3 font-bold p-2 ">
             Nom *
             <input
-              defaultValue={user.lastname}
+              defaultValue={user.firstname}
               className="w-full"
               placeholder="Nom"
               {...register("firstname")}
@@ -99,7 +105,7 @@ function UserInformations() {
           >
             Prénom *
             <input
-              defaultValue={user.firstname}
+              defaultValue={user.lastname}
               className="w-full "
               placeholder="Prénom"
               {...register("lastname")}
