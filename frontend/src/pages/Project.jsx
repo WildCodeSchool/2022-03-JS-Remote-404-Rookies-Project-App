@@ -45,7 +45,7 @@ function Project() {
   }, [project]);
 
   return (
-    <div className="w-full">
+    <div className="w-full h-screen">
       <div className="flex flex-col">
         <div className="flex justify-between m-10 items-center text-gray-500">
           <p>

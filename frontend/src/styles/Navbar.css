@@ -1,5 +1,5 @@
 .navbar-layout {
-  width: 300px;
+  width: 250px;
   padding-top: 1.5rem;
   background-color: var(--MainColor);
   display: flex;
@@ -38,7 +38,7 @@
 }
 
 .inactive {
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: row;
   align-items: center;

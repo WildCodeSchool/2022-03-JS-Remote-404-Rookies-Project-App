@@ -17,7 +17,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-screen h-screen">
       <div className="self-end mt-5 mr-10">
         <UserSettings />
       </div>
