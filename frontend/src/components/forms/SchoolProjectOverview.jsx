@@ -75,8 +75,8 @@ function SchoolProjectOverview({ user, project }) {
               Brief du projet :
             </h2>
             <p className="text-sm text-gray-500 underline">
-              Fin souhaitée avant le : {project.end_date.getDay()}/
-              {project.end_date.getMonth()}/{project.end_date.getFullYear()}
+              {/* Fin souhaitée avant le : {project.end_date.getDay()}/
+              {project.end_date.getMonth()}/{project.end_date.getFullYear()} */}
             </p>
           </div>
           <h3 className="text-emerald-700 text-xl pb-2">
@@ -90,9 +90,9 @@ function SchoolProjectOverview({ user, project }) {
           <h3 className="text-emerald-700 text-xl pb-2">
             Quel est le ou les domaines du projet ?
           </h3>
-          {project.sector.split(" ").map((d) => (
+          {/* {project.sector.split(" ").map((d) => (
             <option key={d.sector}>{d.sector}</option>
-          ))}
+          ))} */}
           <h3 className="text-emerald-700 text-xl pb-2">
             L’entreprise en quelques mots
           </h3>

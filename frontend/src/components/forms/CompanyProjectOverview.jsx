@@ -42,7 +42,11 @@ function CompanyProjectOverview({ user, project }) {
           {/* company */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={project.logo.length > 0 ? project.logo : blankPic}
+              src={
+                project.logo && project.logo.length > 0
+                  ? project.logo
+                  : blankPic
+              }
               alt="company-logo"
               className="w-32 rounded-3xl border-8 border-gray-400"
             />
@@ -81,8 +85,8 @@ function CompanyProjectOverview({ user, project }) {
               Brief du projet :
             </h2>
             <p className="text-sm text-gray-500 underline">
-              Fin souhaitée avant le : {project.end_date.getDay()}/
-              {project.end_date.getMonth()}/{project.end_date.getFullYear()}
+              {/* Fin souhaitée avant le : {project.end_date.getDay()}/
+              {project.end_date.getMonth()}/{project.end_date.getFullYear()} */}
             </p>
           </div>
           <h3 className="text-emerald-700 text-xl pb-2">

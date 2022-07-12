@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { ToastContainer } from "react-toastify";
+import { notifySuccess } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Share from "../../assets/pictures/share.png";
 
 function ProjectSelection({ project }) {
@@ -15,6 +19,7 @@ function ProjectSelection({ project }) {
 
   return (
     <div className="blocproject">
+      <ToastContainer />
       <div className="bloc">
         <div className="blocproject2">
           <h1 className="title2">AVANCEMENT DU PROJET</h1>
@@ -37,7 +42,18 @@ function ProjectSelection({ project }) {
           <div className="blocproject3bis">
             <h1 className="title3">Brief du projet :</h1>
             <div className="shareedit">
-              <button type="submit" className="share">
+              <button
+                type="submit"
+                className="share"
+                onClick={() => {
+                  notifySuccess("Lien copié !");
+                  navigator.clipboard.writeText(
+                    `http://localhost:3000/share/${
+                      project.goal ? "company-projects" : "school-ressources"
+                    }/${project.id}`
+                  );
+                }}
+              >
                 <img src={Share} alt={Share} />
                 Partager
               </button>
