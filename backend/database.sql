@@ -309,6 +309,7 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`school_ressources` (
   `remote` TINYINT NULL,
   `schools_id` VARCHAR(255) NOT NULL,
   `full` TINYINT NOT NULL,
+  `stages_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_school_project_student_level1`
     FOREIGN KEY (`student_level_id`)
@@ -346,8 +347,8 @@ CREATE INDEX `fk_school_projects_sectors1_idx` ON `rookies_app_db`.`school_resso
 
 CREATE INDEX `fk_school_ressources_schools1_idx` ON `rookies_app_db`.`school_ressources` (`schools_id` ASC);
 
-INSERT INTO `school_ressources` (`id`, `course`, `training`, `student_level_id`, `campus`, `student_workforce`, `is_grouped`, `group_size`, `group_quantity`, `weekly_time_dedicated`, `objectives`, `mission_examples`, `submission_date`, `start_date`, `end_date`, `ideal_location`, `commitment`, `profiles_id`, `workforces_id`, `sectors_id`, `remote`, `schools_id`, `full`) VALUES
-('1', 'Management international', 'Master Commerce International', 3, 'Paris', 40, 1, 4, '2 groupes', 8, 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 20220715, 20220801, 20221101, 1, 'Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.', '3', null, null, 1, '1', 0);
+INSERT INTO `school_ressources` (`id`, `course`, `training`, `student_level_id`, `campus`, `student_workforce`, `is_grouped`, `group_size`, `group_quantity`, `weekly_time_dedicated`, `objectives`, `mission_examples`, `submission_date`, `start_date`, `end_date`, `ideal_location`, `commitment`, `profiles_id`, `workforces_id`, `sectors_id`, `remote`, `schools_id`, `full`, `stages_id`) VALUES
+('1', 'Management international', 'Master Commerce International', 3, 'Paris', 40, 1, 4, '2 groupes', 8, 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 20220715, 20220801, 20221101, 1, 'Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.', '3', null, null, 1, '1', 0, 2);
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`teaching_fields`
 -- -----------------------------------------------------
@@ -406,7 +407,7 @@ INSERT INTO `stages` (`id`, `stage`) VALUES
 
 CREATE TABLE IF NOT EXISTS `rookies_app_db`.`company_project` (
   `id` VARCHAR(255) NOT NULL,
-  `create_time` VARCHAR(45) NULL DEFAULT 'CURRENT_TIMESTAMP',
+  `create_time` VARCHAR(45) NULL DEFAULT '10-01-2022',
   `project_types_id` INT NOT NULL,
   `end_date` DATE NOT NULL,
   `project_name` VARCHAR(255) NOT NULL,
@@ -454,7 +455,7 @@ CREATE INDEX `fk_company_project_school_ressources1_idx` ON `rookies_app_db`.`co
 CREATE INDEX `fk_company_project_companies1_idx` ON `rookies_app_db`.`company_project` (`companies_id` ASC);
 
 INSERT INTO `company_project` (`id`, `project_types_id`, `end_date`, `project_name`, `goal`, `ressources_available`, `profiles_id`, `stages_id`, `school_ressources_id`, `companies_id`) VALUES
-('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', '1', 2, null, '1');
+('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', '1', 2, '1', '1');
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`languages`
 -- -----------------------------------------------------

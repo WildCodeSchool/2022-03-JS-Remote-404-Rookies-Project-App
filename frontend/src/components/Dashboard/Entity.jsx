@@ -25,7 +25,7 @@ function Entity({ user }) {
         .then((res) => setEntity(res.data))
         .catch((err) => console.warn(err));
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="flex flex-col mx-10 my-5 rounded-2xl shadow-md border">
