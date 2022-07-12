@@ -65,13 +65,13 @@ router.get("/companies", CompanyController.browse);
 router.get("/companies/:id", CompanyController.read);
 router.post(
   "/companies/",
-  upload.single("image_url"),
+  upload.single("images_url"),
   uploadPublic,
   CompanyController.add
 );
 router.put(
   "/companies/:id",
-  upload.single("image_url"),
+  upload.single("images_url"),
   uploadPublic,
   CompanyController.edit
 );

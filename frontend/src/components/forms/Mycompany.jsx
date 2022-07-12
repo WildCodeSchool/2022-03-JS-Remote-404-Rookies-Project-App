@@ -18,8 +18,8 @@ import UserSettings from "../Dashboard/UserSettings";
 
 const schema = yup
   .object({
-    name: yup.string().required("Veuillez remplir ce champ").lowercase(),
-    description: yup.string().lowercase(),
+    name: yup.string(),
+    description: yup.string(),
     website: yup.string().url("Veuillez rentrer une url valide"),
   })
   .required();
@@ -27,6 +27,7 @@ const schema = yup
 function Mycompany() {
   const { user, handleUser } = useContext(ExportContextUser.UserContext);
   const [company, setCompany] = useState();
+  const [users, setUsers] = useState();
   const {
     handleSubmit,
     register,
@@ -43,7 +44,7 @@ function Mycompany() {
     if (data.images_url[0]) {
       formData.append("images_url", data.images_url[0]);
     }
-    formData.append("company", JSON.stringify({ ...data, user_id: user.id }));
+    formData.append("company", JSON.stringify(data));
     if (user.company_id) {
       fetch(
         `${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`,
@@ -92,6 +93,10 @@ function Mycompany() {
         .then((res) => setCompany(res.data))
         .catch((err) => console.warn(err));
     }
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/users/`)
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.warn(err));
   }, []);
 
   return (
@@ -223,6 +228,11 @@ function Mycompany() {
             Inviter
           </button>
         </div>
+        {company &&
+          users &&
+          users
+            .filter((us) => us.id === company.id)
+            .map((u) => <p>{u.firstname}</p>)}
       </div>
     </div>
   );

@@ -30,10 +30,8 @@ class CompanyController {
   };
 
   static edit = (req, res) => {
-    const companies = JSON.parse(req.body.companies);
-    companies.name = companies.company_name;
-    delete companies.company_name;
-    delete companies.image_url;
+    const companies = JSON.parse(req.body.company);
+    delete companies.images_url;
     models.companies
       .edit({ ...companies, images_id: req.image.id }, req.params.id)
       .then(() => {
