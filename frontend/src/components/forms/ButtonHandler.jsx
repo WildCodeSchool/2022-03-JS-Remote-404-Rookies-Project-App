@@ -21,7 +21,8 @@ function ButtonHandler({ handleNextStep, currentStep, long }) {
       axios
         .post(
           `${import.meta.env.VITE_BACKEND_URL}/school-ressources/${user.id}`,
-          project
+          project,
+          { withCredentials: true }
         )
         .then(() => {
           setTimeout(() => {
