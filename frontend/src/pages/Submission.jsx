@@ -162,7 +162,7 @@ function Submission() {
   };
 
   return (
-    <div className="company-NavBar-form">
+    <div className="company-NavBar-form h-screen w-screen">
       <hr className="progressbar" />
       <NavigationForm navData={navData} currentStep={currentStep} />
 

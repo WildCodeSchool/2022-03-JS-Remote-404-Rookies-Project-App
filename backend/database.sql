@@ -80,7 +80,10 @@ INSERT INTO `images` (`id`, `image_url`, `image_alt`) VALUES
 (1, '/src/assets/pictures/random-user.jpg', 'profile-john-doe'),
 (2, '/src/assets/pictures/random-user.jpg', 'profile-brigitte-school'),
 (3, '/src/assets/pictures/poudlard.jpg', 'school-poudlard'),
-(4, '/src/assets/pictures/dunder-mifflin.jpg', 'company-dunder-mifflin');
+(4, '/src/assets/pictures/dunder-mifflin.jpg', 'company-dunder-mifflin'),
+(5, '/public/avatars/wcs.png', 'wildcodeschool'),
+(6, '/public/avatars/rookies.png', 'rookies');
+
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`workforces`
 -- -----------------------------------------------------
@@ -142,7 +145,7 @@ CREATE INDEX `workforces_id` ON `rookies_app_db`.`companies` (`workforces_id` AS
 INSERT INTO `companies` (`id`, `name`, `description`, `website`, `sectors_id`, `images_id`, `workforces_id`) VALUES
 ('1', 'Dunder Mifflin', 'Nous vendons du papier. Notre boss Michael est pas ouf, mais on peu bosser à la cool chez nous. Pas de travail en remote.', 'https://dundermifflin-paper-company.com', 2, 4, 4),
 ('2', 'The Boring Company', null, null, null, null, null),
-('3', 'Rookies', 'machine à projets', 'https://rookies.com', null, null, null);
+('4', 'Rookies', 'machine à projets', 'https://www.rookiesprojects.com/', 15, 6, 2);
 
 
 
@@ -170,7 +173,9 @@ CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`schools` (`images_id
 
 INSERT INTO `schools` (`id`, `name`, `description`, `website`, `images_id`, `campuses`) VALUES
 ('1', 'Poudlard', 'Ecole tout à fait normale, aucun étudiant en danger ou de créatures dangereuses sur lesquelles on peut tomber au contour du couloir.', 'https://www.poudlard.com', 3, "Edimburg"),
-('2', 'Beauxbatons', null, null, null, null);
+('2', 'Beauxbatons', null, null, null, null),
+('3', 'Wild Code School', 'La Wild Code School propose des formations intensives aux métiers tech - Développement web, Data analyse, Cybersécurité, Product management - sur campus, à distance ou en entreprise.', 'https://www.wildcodeschool.com/fr-FR', 5, "Remote");
+
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`users`
 -- -----------------------------------------------------
@@ -190,7 +195,12 @@ INSERT INTO `users` (`id`, `email`, `hashedpassword`) VALUES
 ('3', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('4', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 ('5', 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('6', 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
+('6', 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('7', 'cloe.truel@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('8', 'vicky.lucea@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('9', 'guilhem.seyvet@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+('10', 'elyes.sahli@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
+
 
 
 -- -----------------------------------------------------
@@ -252,17 +262,21 @@ CREATE INDEX `fk_profile_images1_idx` ON `rookies_app_db`.`profiles` (`images_id
 
 CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`profiles` (`images_id` ASC);
 
-CREATE UNIQUE INDEX `school_id_UNIQUE` ON `rookies_app_db`.`profiles` (`school_id` ASC);
+CREATE INDEX `school_id_idx` ON `rookies_app_db`.`profiles` (`school_id` ASC);
 
-CREATE UNIQUE INDEX `company_id_UNIQUE` ON `rookies_app_db`.`profiles` (`company_id` ASC);
+CREATE INDEX `company_id_idx` ON `rookies_app_db`.`profiles` (`company_id` ASC);
 
 INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
 (1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, '1', 1),
 (2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, '2', null),
-(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujufitcat', 2, null, null, 1, '3', null),
+(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujurichard', 2, null, "3", 1, '3', null),
 (4, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '4', 2),
-(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, 3, null, 1, '5', null),
-(6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '6', null);
+(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, "4", null, 1, '5', null),
+(6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '6', null),
+(7, 'Cloé', 'Truel', '13072022', 0492651752, 'career specialist', 'linkedin.com/cloétruel', 2, null, "3", 1, '7', null),
+(8, 'Vicky', 'Lucea', '13072022', 0492651755, 'Experience manager', 'linkedin.com/vickylucea', 2, null, "3", 1, '8', null),
+(9, 'Guilhem', 'Seyvet', '13072022', 0687587813, 'Teaching Assistant', 'linkedin.com/guilhemCV', 2, null, "3", 1, '9', null),
+(10, 'Elyes', 'Sahli', '13072022', 0655183712, 'Fondateur', 'linkedin.com/elyessahli', 1, "4", null, 1, '10', null);
 
 
 -- -----------------------------------------------------

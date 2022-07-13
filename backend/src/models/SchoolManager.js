@@ -6,7 +6,7 @@ class SchoolManager extends AbstractManager {
 
   find(id) {
     return this.connection.query(
-      `select * from ${this.table} WHERE ${this.table}.id = ?`,
+      `SELECT *, ${this.table}.id FROM ${this.table} LEFT JOIN images ON images.id = ${this.table}.images_id WHERE ${this.table}.id = ?`,
       [id]
     );
   }
