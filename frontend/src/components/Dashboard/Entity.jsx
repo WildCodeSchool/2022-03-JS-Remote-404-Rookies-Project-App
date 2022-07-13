@@ -31,7 +31,7 @@ function Entity({ user }) {
           action={{ logo: modify, text: "Modifier", link: "/team" }}
         />
       </div>
-      <div className="flex -mt-8 items-center justify-center text-center mb-5 mr-2">
+      <div className="flex -mt-8 items-center justify-left text-center mb-5 mr-2">
         <img
           src={
             entity?.image_url

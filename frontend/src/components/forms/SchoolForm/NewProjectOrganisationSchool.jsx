@@ -91,7 +91,7 @@ function NewProjectOrganisationSchool({ handleNextStep, currentStep, long }) {
   }, []);
 
   return (
-    <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
+    <div className="bg-gray-100 flex flex-wrap">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-row flex-wrap p-2"
