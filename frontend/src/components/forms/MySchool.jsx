@@ -28,6 +28,7 @@ const schema = yup
 function MySchool() {
   const { user, handleUser } = useContext(ExportContextUser.UserContext);
   const [school, setSchool] = useState();
+  const [users, setUsers] = useState();
   const { handleSubmit, register } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -81,10 +82,14 @@ function MySchool() {
         .then((res) => setSchool(res.data))
         .catch((err) => console.warn(err));
     }
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/users/`)
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.warn(err));
   }, []);
 
   return (
-    <div className="border-b-2 flex flex-col items-center flex-wrap p-2 w-screen h-screen">
+    <div className="border-b-2 flex flex-col items-center flex-wrap p-2 ">
       <ToastContainer />
       <div className="flex justify-between w-11/12 m-auto mb-5 mt-5  ">
         <h1 className="m-5 text-2xl text-emerald-700">Mon équipe</h1>
@@ -206,6 +211,32 @@ function MySchool() {
           >
             Inviter
           </button>
+        </div>
+        <div className="flex flex-col flex-wrap  m-5  ">
+          {school &&
+            users &&
+            users
+              .filter((us) => us.school_id === school.id)
+              .map((u) => (
+                <ul className="flex  border-2 m-2 items-center rounded shadow-lg p-1 ">
+                  <li className=" w-2/12 p-3 text-center ">{u.lastname}</li>
+                  <li className=" w-2/12 p-3  text-center">{u.firstname}</li>
+                  <li className=" w-2/12 p-3  text-center">{u.role}</li>
+                  <li className=" w-4/12 p-3  text-center">{u.email}</li>
+                  <li className=" w-2/12 p-3   ">
+                    <img
+                      className="w-12 self-center m-auto rounded-full"
+                      width="30px"
+                      src={
+                        u.image_url
+                          ? `${import.meta.env.VITE_BACKEND_URL}${u.image_url}`
+                          : blankPic
+                      }
+                      alt="user avatar"
+                    />
+                  </li>
+                </ul>
+              ))}
         </div>
       </div>
     </div>

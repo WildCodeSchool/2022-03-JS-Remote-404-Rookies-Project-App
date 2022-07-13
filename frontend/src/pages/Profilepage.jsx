@@ -7,7 +7,7 @@ import UserSettings from "../components/Dashboard/UserSettings";
 
 function Profilepage() {
   return (
-    <div className="border-b-2 flex flex-wrap  items-center  justify-center p-2 w-full h-full">
+    <div className="border-b-2 flex flex-wrap  items-center  justify-center p-2 w-screen">
       <div className="flex justify-between w-11/12 items-center mb-5 mt-5 ">
         <h1 className="m-5 text-2xl text-emerald-700">Mon équipe</h1>
         <UserSettings />
