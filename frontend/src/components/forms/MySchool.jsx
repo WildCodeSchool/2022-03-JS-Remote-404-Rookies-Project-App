@@ -40,6 +40,7 @@ function MySchool() {
       formData.append("image_url", data.image_url[0]);
     }
     formData.append("schools", JSON.stringify(data));
+    formData.append("user_id", JSON.stringify(user.id));
     if (user.school_id) {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`, {
         method: "PUT",
@@ -130,7 +131,7 @@ function MySchool() {
             Le nom de votre école: *
             <input
               className="w-full"
-              defaultValue={school && school.name}
+              defaultValue={school?.name ? school.name : ""}
               required
               type="text"
               {...register("name")}
@@ -143,7 +144,7 @@ function MySchool() {
           >
             Description:
             <textarea
-              defaultValue={school && school.description}
+              defaultValue={school?.description ? school.description : ""}
               className="w-full p-2 m-1"
               type="text"
               rows="2"
@@ -173,7 +174,7 @@ function MySchool() {
               Localisation des campus:
               <input
                 className="w-full"
-                defaultValue={school && school.campuses}
+                defaultValue={school?.campuses ? school.campuses : ""}
                 placeholder="saisir les code postaux, séparés par une virgule"
                 type="text"
                 {...register("campus")}
@@ -186,7 +187,7 @@ function MySchool() {
                 className=""
                 type="url"
                 {...register("website")}
-                defaultValue={school && school.website}
+                defaultValue={school?.website ? school.website : ""}
               />
             </label>
           </div>

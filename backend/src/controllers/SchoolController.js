@@ -30,41 +30,76 @@ class SchoolController {
   };
 
   static edit = (req, res) => {
-    const schools = JSON.parse(req.body.school);
-    delete schools.images_url;
-    models.schools
-      .edit({ ...schools, images_id: req.image.id }, req.params.id)
-      .then(() => {
-        res.status(200).json(req.body);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("error while updating school");
-      });
+    const schools = JSON.parse(req.body.schools);
+
+    delete schools.image_url;
+    delete schools.campus;
+    if (!req.file) {
+      models.schools
+        .edit(schools, req.params.id)
+        .then(() => {
+          res.status(200).json(req.body);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).send("error while updating school");
+        });
+    } else {
+      models.schools
+        .edit({ ...schools, images_id: req.image.id }, req.params.id)
+        .then(() => {
+          res.status(200).json(req.body);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).send("error while updating school");
+        });
+    }
   };
 
   static add = (req, res) => {
     const schools = JSON.parse(req.body.schools);
+    const userId = JSON.parse(req.body.user_id);
 
     delete schools.image_url;
-    delete schools.campuses;
-    models.schools
-      .addOne({ ...schools, images_id: req.image.id })
-      .then((schoolsId) => {
-        models.profiles
-          .modifyEntity({ school_id: schoolsId }, schools.user_id)
-          .then(() => {
-            res.status(200).json({ ...schools, school_id: schoolsId });
-          })
-          .catch((err) => {
-            console.error(err);
-            res.status(500).send("internal error");
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("error while adding a new school");
-      });
+    delete schools.campus;
+    if (!req.file) {
+      models.schools
+        .createOne(schools)
+        .then((schoolsId) => {
+          models.profiles
+            .modifyEntity({ school_id: schoolsId }, userId)
+            .then(() => {
+              res.status(200).json({ ...schools, school_id: schoolsId });
+            })
+            .catch((err) => {
+              console.error(err);
+              res.status(500).send("internal error");
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).send("error while adding a new school");
+        });
+    } else {
+      models.schools
+        .createOne({ ...schools, images_id: req.image.id })
+        .then((schoolsId) => {
+          models.profiles
+            .modifyEntity({ school_id: schoolsId }, userId)
+            .then(() => {
+              res.status(200).json({ ...schools, school_id: schoolsId });
+            })
+            .catch((err) => {
+              console.error(err);
+              res.status(500).send("internal error");
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).send("error while adding a new school");
+        });
+    }
   };
 
   static delete = (req, res) => {

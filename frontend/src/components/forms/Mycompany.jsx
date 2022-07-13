@@ -45,6 +45,7 @@ function Mycompany() {
       formData.append("images_url", data.images_url[0]);
     }
     formData.append("company", JSON.stringify(data));
+    formData.append("user_id", JSON.stringify(user.id));
     if (user.company_id) {
       fetch(
         `${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`,
@@ -134,8 +135,7 @@ function Mycompany() {
             Le nom de votre Entreprise *
             <input
               className="w-full"
-              defaultValue={company && company.name}
-              required
+              defaultValue={company?.name ? company.name : ""}
               type="text"
               {...register("name")}
             />
@@ -148,7 +148,7 @@ function Mycompany() {
           >
             Description
             <textarea
-              defaultValue={company && company.description}
+              defaultValue={company?.description ? company.description : ""}
               className="w-full"
               type="text"
               rows="2"
@@ -167,7 +167,9 @@ function Mycompany() {
                   <option
                     key={d.id}
                     value={d.id}
-                    defaultValue={company && company.worforces_id}
+                    defaultValue={
+                      company?.worforces_id ? company.worforces_id : ""
+                    }
                   >
                     {d.range}
                   </option>
@@ -185,7 +187,7 @@ function Mycompany() {
                   <option
                     key={d.id}
                     value={d.id}
-                    defaultValue={company && company.sectors_id}
+                    defaultValue={company?.sectors_id ? company.sectors_id : ""}
                   >
                     {d.industry}
                   </option>
@@ -201,7 +203,7 @@ function Mycompany() {
               <input
                 className="m-1 flex flex-row flex-wrap p-1"
                 type="url"
-                defaultValue={company && company.website}
+                defaultValue={company?.website ? company.website : ""}
                 {...register("website")}
               />
               <p>{errors.website?.message}</p>
@@ -234,7 +236,10 @@ function Mycompany() {
             users
               .filter((us) => us.company_id === company.id)
               .map((u) => (
-                <ul className="flex  border-2 m-2 items-center rounded shadow-lg p-1 ">
+                <ul
+                  className="flex  border-2 m-2 items-center rounded shadow-lg p-1"
+                  key={u.id}
+                >
                   <li className=" w-2/12 p-3 text-center ">{u.lastname}</li>
                   <li className=" w-2/12 p-3  text-center">{u.firstname}</li>
                   <li className=" w-2/12 p-3  text-center">{u.role}</li>

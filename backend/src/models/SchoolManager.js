@@ -49,6 +49,24 @@ class SchoolManager extends AbstractManager {
       id,
     ]);
   }
+
+  createOne(newData) {
+    const uuid = uuidv4();
+    return this.connection
+      .query(
+        `INSERT INTO ${this.table} ( id, name, description, website, images_id, campuses ) VALUES ( ? , ? , ? , ? , ? , ? )`,
+        [
+          uuid,
+          newData.name,
+          newData.description,
+          newData.website,
+          newData.images_id,
+          newData.campus,
+        ]
+      )
+      .then(() => uuid)
+      .catch((err) => console.warn(err));
+  }
 }
 
 module.exports = SchoolManager;
