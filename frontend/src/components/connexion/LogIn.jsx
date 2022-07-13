@@ -25,7 +25,11 @@ function LogIn() {
       return;
     }
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, { email, password })
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/login`,
+        { email, password },
+        { withCredentials: true }
+      )
       .then((res) => {
         handleUser(res.data);
         notifySuccess("Connexion réussie, redirection en cours");

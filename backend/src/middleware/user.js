@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const jwt = require("jsonwebtoken");
 
 const signinSchema = (req, res, next) => {
   const { error } = Joi.object({
@@ -41,7 +42,27 @@ const loginSchema = (req, res, next) => {
   }
 };
 
+const checkAuth = (req, res, next) => {
+  if (req.cookies) {
+    jwt.verify(
+      req.cookies.user_token,
+      process.env.PRIVATETOKEN,
+      (err, decode) => {
+        if (err) {
+          res.status(401).send("You don t have the correct rights");
+        } else {
+          req.user = decode;
+          next();
+        }
+      }
+    );
+  } else {
+    res.status(401).send("You don t have the correct rights");
+  }
+};
+
 module.exports = {
+  checkAuth,
   signinSchema,
   loginSchema,
 };

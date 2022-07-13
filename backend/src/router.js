@@ -3,7 +3,7 @@ const multer = require("multer");
 
 const upload = multer({ dest: "public/tmp/" });
 
-const { signinSchema, loginSchema } = require("./middleware/user");
+const { signinSchema, loginSchema, checkAuth } = require("./middleware/user");
 
 const { uploadPublic } = require("./middleware/upload");
 
@@ -140,7 +140,11 @@ router.get(
   "/school-ressources/school/:id",
   SchoolRessourcesController.browseSchool
 );
-router.post("/school-ressources/:userId", SchoolRessourcesController.create);
+router.post(
+  "/school-ressources/:userId",
+  checkAuth,
+  SchoolRessourcesController.create
+);
 router.put(
   "/school-ressources/stages/:stId/:srId",
   SchoolRessourcesController.changeStage

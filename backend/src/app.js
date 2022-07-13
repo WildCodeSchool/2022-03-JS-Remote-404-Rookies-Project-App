@@ -10,15 +10,17 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 // use some application-level middlewares
+app.use(cookieParser());
 app.use(
   cors({
     origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
     optionsSuccessStatus: 200,
+    credentials: true,
   })
 );
 
 app.use(express.json());
-app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, "../public")));
 
 const router = require("./router");

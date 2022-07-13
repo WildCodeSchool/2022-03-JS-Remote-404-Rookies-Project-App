@@ -61,6 +61,7 @@ function Project() {
             setSelected={setSelected}
             selected={selected}
             project={project}
+            user={user}
           />
         )}
         <DashboardButton
