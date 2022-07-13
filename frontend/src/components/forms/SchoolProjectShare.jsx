@@ -1,46 +1,46 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { ToastContainer } from "react-toastify";
+import { notifySuccess } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import blankPic from "../../assets/pictures/blank-profile-picture.png";
 import userLogo from "../../assets/pictures/user-logo.png";
 import mailLogo from "../../assets/pictures/mail-logo.png";
 import websiteLogo from "../../assets/pictures/mouse-logo.png";
 import planning from "../../assets/pictures/planning-project.png";
 
-function SchoolProjectOverview({ user, project }) {
+function SchoolProjectShare({ user, project }) {
   const [fields, setFields] = useState();
   const [levels, setLevels] = useState();
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/fields/`)
-      .then((res) =>
-        setFields(
-          res.data.find(
-            (f) => f.id === parseInt(project.teaching_fields[0], 10)
-          )
-        )
-      )
+      .then((res) => setFields(res.data.find((f) => f.id === 1)))
       .catch((err) => console.warn(err));
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/levels/`)
       .then((res) =>
-        setLevels(res.data.find((l) => l.id === parseInt(project.level, 10)))
+        setLevels(
+          res.data.find((l) => l.id === parseInt(project.student_level_id, 10))
+        )
       )
       .catch((err) => console.warn(err));
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-2/3">
-      <h1 className="text-xl mb-10">Prévisualiser votre cours :</h1>
+    <div className="flex flex-col items-center">
+      <ToastContainer />
       <div className="flex flex-col items-center rounded-2xl w-full bg-white">
         {/* header */}
         <div className="flex justify-around w-full">
           {/* company */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={project.logo ? project.logo : blankPic}
-              alt="school-logo"
+              src={project?.logo ? project.logo : blankPic}
+              alt="company-logo"
               className="w-40 rounded-3xl border-8 border-gray-400"
             />
 
@@ -102,8 +102,7 @@ function SchoolProjectOverview({ user, project }) {
               Mon brief:
             </h2>
           </div>
-
-          <h3 className="text-emerald-700 text-xl pb-2 mt-2">
+          <h3 className="text-emerald-700 text-xl pb-2">
             Quel est le domaine du projet ?
           </h3>
           <div className="flex">
@@ -120,24 +119,19 @@ function SchoolProjectOverview({ user, project }) {
             <div className="flex flex-col">
               <p className="text-gray-500">Soumission du projet</p>
               <p className="text-red-500">
-                Avant le : {project?.submission_date.getDay()}/
-                {project?.submission_date.getMonth()}/
-                {project?.submission_date.getFullYear()}
+                Avant le : {project?.submission_date.slice(0, 10)}
               </p>
             </div>
             <div className="mr-52">
               <p className="text-gray-500">Lancement</p>
               <p className="text-green-500">
-                le : {project?.start_date.getDay()}/
-                {project?.start_date.getMonth()}/
-                {project?.start_date.getFullYear()}
+                le : {project?.start_date.slice(0, 10)}
               </p>
             </div>
             <div className="ml-52">
               <p className="text-gray-500">Date de cloture</p>
               <p className="text-green-500">
-                le : {project?.end_date.getDay()}/{project?.end_date.getMonth()}
-                /{project?.end_date.getFullYear()}
+                le : {project?.end_date.slice(0, 10)}
               </p>
             </div>
           </div>
@@ -202,9 +196,16 @@ function SchoolProjectOverview({ user, project }) {
           </h3>
           <p className="text-gray-500 pb-2">{project?.commitment}</p>
         </div>
+        <button
+          type="button"
+          onClick={() => notifySuccess("Match soumis !")}
+          className="bg-green-400 text-white py-2 px-4 rounded-lg mx-10 hover:bg-green-700 mb-10"
+        >
+          Candidater
+        </button>
       </div>
     </div>
   );
 }
 
-export default SchoolProjectOverview;
+export default SchoolProjectShare;

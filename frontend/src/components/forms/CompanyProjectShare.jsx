@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { ToastContainer } from "react-toastify";
+import { notifySuccess } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import blankPic from "../../assets/pictures/blank-profile-picture.png";
 import userLogo from "../../assets/pictures/user-logo.png";
 import mailLogo from "../../assets/pictures/mail-logo.png";
 import websiteLogo from "../../assets/pictures/mouse-logo.png";
 
-function CompanyProjectOverview({ user, project }) {
+function CompanyProjectShare({ user, project }) {
   const [fields, setFields] = useState();
 
   useEffect(() => {
@@ -23,8 +27,8 @@ function CompanyProjectOverview({ user, project }) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-2/3">
-      <h1 className="text-xl mb-10">Prévisualiser votre projet :</h1>
+    <div className="flex flex-col items-center">
+      <ToastContainer />
       <div className="flex flex-col items-center rounded-2xl w-full bg-white">
         {/* header */}
         <div className="flex justify-between w-full">
@@ -91,8 +95,7 @@ function CompanyProjectOverview({ user, project }) {
               Brief du projet :
             </h2>
             <p className="text-sm text-gray-500 underline">
-              Fin souhaitée avant le : {project.end_date.getDay()}/
-              {project.end_date.getMonth()}/{project.end_date.getFullYear()}
+              Fin souhaitée avant le : {project.end_date.slice(0, 10)}
             </p>
           </div>
 
@@ -120,9 +123,16 @@ function CompanyProjectOverview({ user, project }) {
           </h3>
           <p className="text-gray-500 pb-2">{project.description}</p>
         </div>
+        <button
+          type="button"
+          onClick={() => notifySuccess("Match soumis !")}
+          className="bg-green-400 text-white py-2 px-4 rounded-lg mx-10 hover:bg-green-700 mb-10"
+        >
+          Candidater
+        </button>
       </div>
     </div>
   );
 }
 
-export default CompanyProjectOverview;
+export default CompanyProjectShare;
