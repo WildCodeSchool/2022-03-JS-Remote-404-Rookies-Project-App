@@ -32,7 +32,7 @@ export default function NewProjectDomainCompany({
   }, []);
 
   return (
-    <div className="bg-gray-100 p-10 flex justify-around flex-col w-full">
+    <div className="p-10 flex justify-around flex-col w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="p-2 w-full">
         <h2 className="text-base">Quel est le domaine de votre projet ? *</h2>
         <p className="p-5 font-extralight text-s">

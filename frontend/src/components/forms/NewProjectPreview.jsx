@@ -17,7 +17,10 @@ export default function NewProjectPreview({
   const { user } = useContext(ExportContextUser.UserContext);
 
   return (
-    <div className="bg-gray-100 rounded-md flex flex-col w-full items-center">
+    <div
+      className="bg-gray-100 rounded-md flex flex-col items-center mb-10 overflow-y-scroll"
+      id="megaheight"
+    >
       <div className="w-full flex justify-center">
         {user.entity_category_id === 1 && (
           <CompanyProjectOverview user={user} project={project} />

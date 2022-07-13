@@ -33,17 +33,17 @@ class ProfilesManager extends AbstractManager {
   }
 
   modifyEntity(entId, id) {
-    return this.connection.query(`UPDATE ${this.table} SET ? WHERE id = ?`, [
-      entId,
-      id,
-    ]);
+    return this.connection.query(
+      `UPDATE ${this.table} SET ? WHERE user_id = ?`,
+      [entId, id]
+    );
   }
 
   update(profile, id) {
-    return this.connection.query(`UPDATE ${this.table}  SET ? WHERE id = ?`, [
-      profile,
-      id,
-    ]);
+    return this.connection.query(
+      `UPDATE ${this.table}  SET ? WHERE user_id = ?`,
+      [profile, id]
+    );
   }
 }
 

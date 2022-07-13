@@ -38,6 +38,27 @@ class CompanyManager extends AbstractManager {
       id,
     ]);
   }
+
+  createOne(newData) {
+    const range = parseInt(newData.workforces_id, 10);
+    const sector = parseInt(newData.sectors_id, 10);
+    const uuid = uuidv4();
+    return this.connection
+      .query(
+        `INSERT INTO ${this.table} ( id, name, description, website, sectors_id, images_id, workforces_id ) VALUES ( ? , ? , ? , ? , ? , ? , ? )`,
+        [
+          uuid,
+          newData.name,
+          newData.description,
+          newData.website,
+          sector,
+          newData.images_id,
+          range,
+        ]
+      )
+      .then(() => uuid)
+      .catch((err) => console.warn(err));
+  }
 }
 
 module.exports = CompanyManager;

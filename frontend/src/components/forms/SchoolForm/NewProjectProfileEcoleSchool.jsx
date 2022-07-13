@@ -76,7 +76,7 @@ export default function NewProjectProfileEcoleSchool({
   }, []);
 
   return (
-    <div className="bg-gray-100 rounded-md flex flex-wrap m-2">
+    <div className="bg-gray-100 rounded-md flex flex-wrap">
       <form onSubmit={handleSubmit(onSubmit)} className="p-2">
         <div className="flex flex-row flex-wrap">
           <div className="flex flex-wrap flex-col p-1">

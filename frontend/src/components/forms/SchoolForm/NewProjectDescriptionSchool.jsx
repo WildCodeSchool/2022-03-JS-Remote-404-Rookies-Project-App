@@ -55,7 +55,7 @@ export default function NewProjectDescriptionSchool({
               w-full "
               type="text"
               rows="3"
-              placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
+              placeholder="Objectifs pédagogiques"
               {...register("objectives")}
             />
             <p>{errors.objectives?.message}</p>
@@ -72,7 +72,7 @@ export default function NewProjectDescriptionSchool({
               w-full "
               type="text"
               rows="3"
-              placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
+              placeholder="Missions"
               {...register("mission_examples")}
             />
             <p>{errors.mission_examples?.message}</p>

@@ -162,11 +162,13 @@ function Submission() {
   };
 
   return (
-    <div className="company-NavBar-form h-screen w-screen">
-      <hr className="progressbar" />
-      <NavigationForm navData={navData} currentStep={currentStep} />
+    <div className="company-NavBar-form w-screen overflow-x-hidden overflow-y-hidden">
+      <div className="bg-gray-100 m-8 rounded-lg">
+        <hr className="progressbar" />
+        <NavigationForm navData={navData} currentStep={currentStep} />
 
-      <div className="layout-wrapper">{getForm()}</div>
+        <div className="rounded-b-lg">{getForm()}</div>
+      </div>
     </div>
   );
 }

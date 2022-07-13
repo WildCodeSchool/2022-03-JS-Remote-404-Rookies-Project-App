@@ -47,7 +47,7 @@ export default function NewProjectDescriptionCompany({
   };
 
   return (
-    <div className="border-b-2 flex flex-col flex-wrap w-full">
+    <div className="flex flex-col flex-wrap w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="p-2 w-full">
         <div>
           <h2 className="text-base">Nom du projet ? *</h2>
@@ -90,7 +90,7 @@ export default function NewProjectDescriptionCompany({
               w-full "
               type="text"
               rows="2"
-              placeholder="Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta."
+              placeholder="Objectif principal"
               {...register("goal")}
             />
           </div>
@@ -114,9 +114,7 @@ export default function NewProjectDescriptionCompany({
               w-full "
               type="text"
               rows="2"
-              placeholder="Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.
-
-          Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat."
+              placeholder="Ressources disponibles"
               {...register("ressources_available")}
             />
           </div>
