@@ -71,28 +71,41 @@ function UserInformations() {
     <div className="">
       <h2 className="text-2xl p-5">Mes informations</h2>
       <ToastContainer />
-
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap  ">
-        <div className="flex justify-end items-center w-full ">
+        <div className="pl-2 flex items-center w-full justify-between mb-5">
+          <label
+            className="flex font-bold p-1  items-center"
+            htmlFor="image_url"
+          >
+            Avatar:{" "}
+          </label>
           <input {...register("image_url")} type="file" />
-          <img
-            src={
-              user.image_url
-                ? `${import.meta.env.VITE_BACKEND_URL}/public/avatars/${
-                    user.image_url
-                  }`
-                : blankPic
-            }
-            alt="En attente "
-            className="w-16 p-2 rounded-full"
-          />
+          {user && user.image_url ? (
+            <div
+              className="flex w-32 h-32 items-center justify-center hover:scale-125   mr-5 rounded-lg shadow-lg"
+              id="cardprofilepicture"
+              style={{
+                backgroundImage: `url(${import.meta.env.VITE_BACKEND_URL}${
+                  user.image_url
+                })`,
+              }}
+            />
+          ) : (
+            <div
+              id="cardprofilepicture"
+              className="flex w-32 h-32 items-center justify-center hover:scale-125   mr-5 rounded-lg shadow-lg"
+              style={{
+                backgroundImage: `url(${blankPic})`,
+              }}
+            />
+          )}
         </div>
-        <div className="name-container flex w-full ml-2">
-          <label htmlFor="name" className="flex flex-col w-1/3 font-bold p-2 ">
+        <div className="name-container flex w-full mb-5">
+          <label htmlFor="name" className="flex flex-col w-1/2 font-bold pl-2 ">
             Nom *
             <input
               defaultValue={user.lastname}
-              className="w-full"
+              className="w-full p-2 rounded-lg shadow-md"
               placeholder="Nom"
               {...register("lastname")}
             />
@@ -100,27 +113,27 @@ function UserInformations() {
           </label>
           <label
             htmlFor="firstname"
-            className=" flex flex-col w-1/3 font-bold p-2"
+            className=" flex flex-col w-1/2 font-bold pl-2 pr-2"
           >
             Prénom *
             <input
               defaultValue={user.firstname}
-              className="w-full "
+              className="w-full p-2 rounded-lg shadow-md"
               placeholder="Prénom"
               {...register("firstname")}
             />
             <p>{errors.firstname?.message}</p>
           </label>
         </div>
-        <div className="flex flex-wrap items-center justify-center w-full ml-2 ">
+        <div className="flex flex-wrap items-center justify-center w-full mt-5 pl-2  ">
           <label
             htmlFor="phone"
-            className=" flex w-1/3 items-center p-3 font-bold"
+            className=" flex w-1/3 items-center justify-between font-bold"
           >
             Téléphone
             <input
               defaultValue={user.phone}
-              className="p-2 ml-5"
+              className="p-2 rounded-lg shadow-md"
               type="tel"
               placeholder="Téléphone"
               {...register("phone")}
@@ -129,12 +142,12 @@ function UserInformations() {
           </label>
           <label
             htmlFor="prof"
-            className=" flex w-1/3 items-center p-3 font-bold"
+            className=" flex w-1/3 items-center justify-between  font-bold"
           >
             Profession
             <input
               defaultValue={user.role}
-              className="p-2 ml-5"
+              className="p-2 rounded-lg shadow-md"
               type="text"
               placeholder="Profession"
               {...register("role")}
@@ -143,12 +156,12 @@ function UserInformations() {
           </label>
           <label
             htmlFor="linkedin"
-            className=" flex w-1/3 items-center p-3 font-bold"
+            className=" flex w-1/3 items-center justify-between  font-bold"
           >
             LinkedIn
             <input
               defaultValue={user.linkedin}
-              className="p-2 ml-5"
+              className="p-2 rounded-lg shadow-md"
               placeholder="Profil LinkedIn"
               {...register("linkedin")}
             />
@@ -156,20 +169,7 @@ function UserInformations() {
           </label>
         </div>
 
-        <div className="w-full mt-5 mb-5">
-          <label htmlFor="auth" className="flex flex-col  justify-start ml-10">
-            Authentification
-            <label htmlFor="">
-              Lier à Google
-              <input className="p-1 m-3" type="radio" value="Google" />
-            </label>
-            <label htmlFor="">
-              Lier à LinkedIn
-              <input className="p-1 m-3" type="radio" value="LinkedIn" />
-            </label>
-          </label>
-        </div>
-        <div className="flex w-full justify-center mb-5">
+        <div className="flex w-full justify-center mb-5 mt-10">
           <button
             type="submit"
             className="flex justify-center items-center text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-md text-sm px-7 py-2.5 text-center mr-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"

@@ -16,15 +16,15 @@ function UserSettings() {
       <p className="mr-5 text-emerald-700 font-semibold">
         {user.firstname} {user.lastname}
       </p>
-      <img
-        className="w-12 rounded-full"
-        width="30px"
-        src={
-          user.image_url
-            ? `${import.meta.env.VITE_BACKEND_URL}${user.image_url}`
-            : randompic
-        }
-        alt="user avatar"
+      <div
+        className="w-12 h-12 rounded-full"
+        id="cardprofilepicture"
+        style={{
+          backgroundImage:
+            user && user.image_url
+              ? `url(${import.meta.env.VITE_BACKEND_URL}${user.image_url})`
+              : `url(${randompic})`,
+        }}
       />
     </div>
   );

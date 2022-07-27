@@ -9,6 +9,7 @@ import planning from "../../assets/pictures/planning-project.png";
 
 function SchoolProjectOverview({ user, project }) {
   const [fields, setFields] = useState();
+  const [school, setSchool] = useState();
   const [levels, setLevels] = useState();
 
   useEffect(() => {
@@ -23,6 +24,11 @@ function SchoolProjectOverview({ user, project }) {
       )
       .catch((err) => console.warn(err));
     axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`)
+      .then((res) => setSchool(res.data))
+      .catch((err) => console.warn(err));
+
+    axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/levels/`)
       .then((res) =>
         setLevels(res.data.find((l) => l.id === parseInt(project.level, 10)))
@@ -31,18 +37,22 @@ function SchoolProjectOverview({ user, project }) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-2/3">
+    <div className="flex flex-col items-center w-11/12 rounded-lg">
       <h1 className="text-xl mb-10">Prévisualiser votre cours :</h1>
       <div className="flex flex-col items-center rounded-2xl w-full bg-white">
         {/* header */}
-        <div className="flex justify-around w-full">
+        <div className="flex justify-between w-full">
           {/* company */}
           <div className="flex flex-col items-center py-5 px-10">
-            <img
-              src={project.logo ? project.logo : blankPic}
-              alt="school-logo"
-              className="w-40 rounded-3xl border-8 border-gray-400"
-            />
+            {school && school.image_url ? (
+              <img
+                src={`${import.meta.env.VITE_BACKEND_URL}${school.image_url}`}
+                alt="school-logo"
+                className="w-40 h-40 rounded-3xl border-8 border-gray-400"
+              />
+            ) : (
+              blankPic
+            )}
 
             <p className="font-bold text-emerald-700 text-xl m-2">
               {project.name}
@@ -68,7 +78,7 @@ function SchoolProjectOverview({ user, project }) {
                   : blankPic
               }
               alt="user-profile-pic"
-              className="w-40 rounded-full border-8 border-gray-100"
+              className="w-40 h-40 rounded-full border-8 border-gray-100"
             />
             <p className="font-bold text-emerald-700 text-xl m-2">
               {user.firstname} {user.lastname}

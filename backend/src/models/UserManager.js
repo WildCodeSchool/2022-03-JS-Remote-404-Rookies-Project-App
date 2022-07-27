@@ -22,10 +22,10 @@ class UserManager extends AbstractManager {
       .then((user) => user[0][0]);
   }
 
-  insert({ id, email, hashedpassword }) {
+  insert({ email, hashedpassword }) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (id, email, hashedpassword) VALUES (?, ?, ? )`,
-      [id, email, hashedpassword]
+      `INSERT INTO ${this.table} ( email, hashedpassword) VALUES ( ?, ? )`,
+      [email, hashedpassword]
     );
   }
 }

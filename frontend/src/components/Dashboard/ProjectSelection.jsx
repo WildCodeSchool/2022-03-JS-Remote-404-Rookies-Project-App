@@ -11,8 +11,11 @@ function SelectProject({ selected, setSelected, project, user }) {
 
   return (
     <div className="blocproject">
-      <select className="menu1" onChange={(e) => handleChange(e.target.value)}>
-        <option className="title1">Choisissez un projet</option>
+      <select
+        className="menu1 font-bold"
+        onChange={(e) => handleChange(e.target.value)}
+      >
+        <option className="title1 font-bold">Choisissez un projet</option>
         {project &&
           user.company_id &&
           project.map((e, index) => (
