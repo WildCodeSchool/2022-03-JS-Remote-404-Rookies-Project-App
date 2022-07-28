@@ -50,7 +50,7 @@ function PasswordChange() {
         <label htmlFor="upload" className="flex w-11/12 flex-col m-5 font-bold">
           Mot de passe actuel *
           <input
-            className="p-1"
+            className="p-1 rounded-lg shadow-md"
             required
             type="password"
             {...register("password")}
@@ -59,7 +59,7 @@ function PasswordChange() {
         <label htmlFor="new" className="flex w-11/12  flex-col m-5 font-bold">
           Nouveau mot de passe *
           <input
-            className="p-1"
+            className="p-1 rounded-lg shadow-md"
             required
             type="password"
             {...register("password")}
@@ -71,7 +71,7 @@ function PasswordChange() {
         >
           Confirmer le mot de passe *
           <input
-            className="p-1"
+            className="p-1 rounded-lg shadow-md"
             required
             type="password"
             {...register("confirmpassword")}

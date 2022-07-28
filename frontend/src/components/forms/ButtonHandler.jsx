@@ -15,7 +15,6 @@ function ButtonHandler({ handleNextStep, currentStep, long }) {
   const { project } = useContext(ExportContextProject.ProjectContext);
   const { user } = useContext(ExportContextUser.UserContext);
   const navigate = useNavigate();
-
   const handleSending = () => {
     if (project.course) {
       axios

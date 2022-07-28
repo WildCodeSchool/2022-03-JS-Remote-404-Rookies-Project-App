@@ -96,31 +96,35 @@ function MySchool() {
         <h1 className="m-5 text-2xl text-emerald-700">Mon équipe</h1>
         <UserSettings />
       </div>
-      <div className="border-b-2  bg-gray-100 flex flex-col  flex-wrap w-11/12 justify-center mr-auto ml-auto rounded-lg">
-        <h2 className="text-2xl  m-5 ">Mon Ecole</h2>
+      <div className="border-b-2  bg-gray-100 flex flex-col  flex-wrap w-11/12 justify-center  rounded-lg">
+        <h2 className="text-2xl  ml-5 mt-2 ">Mon Ecole</h2>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-wrap  m-2 p-2"
         >
-          <div className="p-2 flex justify-end">
-            <label htmlFor="image">
-              Image:
-              <input
-                type="file"
-                {...register("image_url")}
-                className="flex flex-wrap flex-col p-2"
-              />
+          <div className="p-2 flex items-center w-full justify-between">
+            <label
+              className="flex font-bold p-1  items-center"
+              htmlFor="image"
+              id="labeluploadinput"
+            >
+              Avatar:{" "}
             </label>
+
+            <input
+              id="uploadinput"
+              type="file"
+              {...register("image_url")}
+              className="flex flex-wrap flex-col p-2"
+            />
             <img
               src={
-                user.image_url
-                  ? `${import.meta.env.VITE_BACKEND_URL}/public/avatars/${
-                      user.image_url
-                    }`
+                school && school.image_url
+                  ? `${import.meta.env.VITE_BACKEND_URL}${school.image_url}`
                   : blankPic
               }
               alt="En attente "
-              className=" flex w-16 h-16 items-center justify-center p-2 rounded-full"
+              className=" flex w-32 h-32 items-center justify-center p-2 rounded-lg shadow-lg "
             />
           </div>
 
@@ -130,8 +134,8 @@ function MySchool() {
           >
             Le nom de votre école: *
             <input
-              className="w-full"
-              defaultValue={school?.name ? school.name : ""}
+              className="w-full p-2 rounded-lg shadow-sm"
+              defaultValue={school && school.name}
               required
               type="text"
               {...register("name")}
@@ -144,8 +148,8 @@ function MySchool() {
           >
             Description:
             <textarea
-              defaultValue={school?.description ? school.description : ""}
-              className="w-full p-2 m-1"
+              defaultValue={school && school.description}
+              className="w-full p-2 rounded-lg shadow-sm"
               type="text"
               rows="2"
               {...register("description")}
@@ -158,7 +162,7 @@ function MySchool() {
           >
             Domaines d&apos;enseignement:
             <select
-              className="w-full p-2 m-1 flex flex-col flex-wrap"
+              className="w-full p-2 rounded-lg shadow-sm m-1 flex flex-col flex-wrap"
               name="user_domain"
             >
               {fields.map((d) => (
@@ -173,8 +177,8 @@ function MySchool() {
             >
               Localisation des campus:
               <input
-                className="w-full"
-                defaultValue={school?.campuses ? school.campuses : ""}
+                className="w-full p-2 rounded-lg shadow-sm"
+                defaultValue={school && school.campus}
                 placeholder="saisir les code postaux, séparés par une virgule"
                 type="text"
                 {...register("campus")}
@@ -184,15 +188,15 @@ function MySchool() {
             <label htmlFor="web" className="flex flex-col w-1/2 font-bold p-2 ">
               Site web:
               <input
-                className=""
+                className="p-2 rounded-lg shadow-sm"
                 type="url"
                 {...register("website")}
-                defaultValue={school?.website ? school.website : ""}
+                defaultValue={school && school.website}
               />
             </label>
           </div>
 
-          <div className="flex w-full p-2 m-1  items-center justify-center">
+          <div className="flex w-full p-2 m-1  items-center justify-center mt-5">
             <button
               type="submit"
               formMethod="PUT"
@@ -205,7 +209,7 @@ function MySchool() {
         <hr className="w-11/12 flex items-center justify-center m-auto bg-black  mb-5" />
 
         <div className="p-2 m-1 w-full flex items-center justify-between">
-          <h2 className=" ml-5 text-2xl p-2 ">Mon Equipe</h2>
+          <h2 className=" ml-5 text-2xl ">Mon Equipe</h2>
           <button
             type="button"
             className="   mr-7 flex justify-center items-center text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 font-medium rounded-md text-sm px-7 py-2.5 text-center  mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -213,18 +217,19 @@ function MySchool() {
             Inviter
           </button>
         </div>
-        <div className="flex flex-col flex-wrap  m-5  ">
+
+        <div className="flex flex-col flex-wrap  m-5   ">
           {school &&
             users &&
             users
               .filter((us) => us.school_id === school.id)
               .map((u) => (
-                <ul className="flex  border-2 m-2 items-center rounded shadow-lg p-1 ">
+                <ul className="flex  border-2 m-2 items-center rounded shadow-lg p-1 cursor-pointer hover:scale-105 ">
                   <li className=" w-2/12 p-3 text-center ">{u.lastname}</li>
                   <li className=" w-2/12 p-3  text-center">{u.firstname}</li>
                   <li className=" w-2/12 p-3  text-center">{u.role}</li>
                   <li className=" w-4/12 p-3  text-center">{u.email}</li>
-                  <li className=" w-2/12 p-3   ">
+                  <li className=" w-2/12   ">
                     <img
                       className="w-12 self-center m-auto rounded-full"
                       width="30px"

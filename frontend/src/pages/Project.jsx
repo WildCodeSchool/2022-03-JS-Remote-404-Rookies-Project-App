@@ -50,9 +50,11 @@ function Project() {
         <div className="flex justify-between m-10 items-center text-gray-500">
           <p>
             {user.company_id ? "Mon entreprise" : "Mon école"} / Mes Projets /
-            {selected && selected?.project_name
-              ? selected?.project_name
-              : selected?.course}
+            <span className=" font-bold">
+              {selected && selected?.project_name
+                ? selected?.project_name
+                : selected?.course}
+            </span>
           </p>
           <UserSettings />
         </div>

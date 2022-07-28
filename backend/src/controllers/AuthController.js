@@ -1,7 +1,5 @@
 const argon2 = require("argon2");
 
-const { v4: uuidv4 } = require("uuid");
-
 const jwt = require("jsonwebtoken");
 
 const models = require("../models");
@@ -29,16 +27,15 @@ class AuthController {
 
     try {
       const hash = await hashPassword(password);
-      const id = uuidv4();
-      await models.users.insert({
-        id,
+
+      const newUser = await models.users.insert({
         email,
         hashedpassword: hash,
       });
 
-      await models.profiles.insert(req.body, id);
+      await models.profiles.insert(req.body, newUser[0].insertId);
 
-      res.status(201).json({ email: req.body.email, id });
+      res.status(201).json({ email: req.body.email, id: newUser[0].insertId });
     } catch (err) {
       res.status(500).json({
         error: err.message,

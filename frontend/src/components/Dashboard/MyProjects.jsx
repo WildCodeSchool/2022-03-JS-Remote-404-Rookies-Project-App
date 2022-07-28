@@ -87,8 +87,7 @@ function MyProjects() {
           )}
         </div>
         <p className="text-xs text-gray-400 absolute bottom-0 m-10">
-          Showing {projects && projects.length} from{" "}
-          {projects && projects.length} data
+          {projects && projects.length} projets trouvés
         </p>
       </div>
     </div>

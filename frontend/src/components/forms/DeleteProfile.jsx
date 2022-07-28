@@ -6,7 +6,7 @@ function DeleteProfile() {
   return (
     <div className="">
       <h2 className="text-2xl p-5">Supprimer mon compte</h2>
-      <form className="flex items-center justify-around m-5">
+      <form className="flex items-center justify-between m-5">
         <h3 className="text-m p-1 text-red-600">
           Attention, une fois votre compte supprimé, vous ne pourrez plus
           retourner en arrière

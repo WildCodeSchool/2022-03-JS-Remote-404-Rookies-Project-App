@@ -82,7 +82,12 @@ INSERT INTO `images` (`id`, `image_url`, `image_alt`) VALUES
 (3, '/src/assets/pictures/poudlard.jpg', 'school-poudlard'),
 (4, '/src/assets/pictures/dunder-mifflin.jpg', 'company-dunder-mifflin'),
 (5, '/public/avatars/wcs.png', 'wildcodeschool'),
-(6, '/public/avatars/rookies.png', 'rookies');
+(6, '/public/avatars/rookies.png', 'rookies'),
+(7, '/public/avatars/jerome-santoni.jpg', 'rookies fondateur'),
+(8, '/public/avatars/julien-richard.jpg', 'wcs teacher'),
+(9, '/public/avatars/elyes-sahli.jpg', 'rookies co-fondateur');
+
+
 
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`workforces`
@@ -145,7 +150,7 @@ CREATE INDEX `workforces_id` ON `rookies_app_db`.`companies` (`workforces_id` AS
 INSERT INTO `companies` (`id`, `name`, `description`, `website`, `sectors_id`, `images_id`, `workforces_id`) VALUES
 ('1', 'Dunder Mifflin', 'Nous vendons du papier. Notre boss Michael est pas ouf, mais on peu bosser à la cool chez nous. Pas de travail en remote.', 'https://dundermifflin-paper-company.com', 2, 4, 4),
 ('2', 'The Boring Company', null, null, null, null, null),
-('4', 'Rookies', 'machine à projets', 'https://www.rookiesprojects.com/', 15, 6, 2);
+('3', 'Rookies', 'machine à projets', 'https://www.rookiesprojects.com/', 15, 6, 2);
 
 
 
@@ -182,7 +187,7 @@ INSERT INTO `schools` (`id`, `name`, `description`, `website`, `images_id`, `cam
 
 
 CREATE TABLE IF NOT EXISTS `rookies_app_db`.`users` (
-  `id` VARCHAR(255) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
   `hashedpassword` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`));
@@ -190,16 +195,16 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`users` (
 CREATE UNIQUE INDEX `email_UNIQUE` ON `rookies_app_db`.`users` (`email` ASC);
 
 INSERT INTO `users` (`id`, `email`, `hashedpassword`) VALUES
-('1', 'john.doe@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('2', 'margarett.teacher@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('3', 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('4', 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('5', 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('6', 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('7', 'cloe.truel@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('8', 'vicky.lucea@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('9', 'guilhem.seyvet@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-('10', 'elyes.sahli@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
+(1, 'john.doe@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(2, 'margarett.teacher@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(3, 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(4, 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(5, 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(6, 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(7, 'cloe.truel@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(8, 'vicky.lucea@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(9, 'guilhem.seyvet@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
+(10, 'elyes.sahli@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo');
 
 
 
@@ -220,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`profiles` (
   `company_id` VARCHAR(255) NULL,
   `school_id` VARCHAR(255) NULL,
   `is_admin` TINYINT NOT NULL,
-  `user_id` VARCHAR(255) NOT NULL,
+  `user_id` INT NOT NULL,
   `images_id` INT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_User_Entity`
@@ -267,16 +272,16 @@ CREATE INDEX `school_id_idx` ON `rookies_app_db`.`profiles` (`school_id` ASC);
 CREATE INDEX `company_id_idx` ON `rookies_app_db`.`profiles` (`company_id` ASC);
 
 INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
-(1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, '1', 1),
-(2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, '2', null),
-(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujurichard', 2, null, "3", 1, '3', null),
-(4, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, '4', 2),
-(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, "4", null, 1, '5', null),
-(6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, '6', null),
-(7, 'Cloé', 'Truel', '13072022', 0492651752, 'career specialist', 'linkedin.com/cloétruel', 2, null, "3", 1, '7', null),
-(8, 'Vicky', 'Lucea', '13072022', 0492651755, 'Experience manager', 'linkedin.com/vickylucea', 2, null, "3", 1, '8', null),
-(9, 'Guilhem', 'Seyvet', '13072022', 0687587813, 'Teaching Assistant', 'linkedin.com/guilhemCV', 2, null, "3", 1, '9', null),
-(10, 'Elyes', 'Sahli', '13072022', 0655183712, 'Fondateur', 'linkedin.com/elyessahli', 1, "4", null, 1, '10', null);
+(1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, 1, 1),
+(2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, 2, null),
+(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujurichard', 2, null, "3", 1, 3, 8),
+(4, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, 4, 2),
+(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, "3", null, 1, 5, 7),
+(6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, 6, null),
+(7, 'Cloé', 'Truel', '13072022', 0492651752, 'career specialist', 'linkedin.com/cloétruel', 2, null, "3", 1, 7, null),
+(8, 'Vicky', 'Lucea', '13072022', 0492651755, 'Experience manager', 'linkedin.com/vickylucea', 2, null, "3", 1, 8, null),
+(9, 'Guilhem', 'Seyvet', '13072022', 0687587813, 'Teaching Assistant', 'linkedin.com/guilhemCV', 2, null, "3", 1, 9, null),
+(10, 'Elyes', 'Sahli', '13072022', 0655183712, 'Fondateur', 'linkedin.com/elyessahli', 1, "3", null, 1, 10, 9);
 
 
 -- -----------------------------------------------------
@@ -364,7 +369,7 @@ CREATE INDEX `fk_school_projects_sectors1_idx` ON `rookies_app_db`.`school_resso
 CREATE INDEX `fk_school_ressources_schools1_idx` ON `rookies_app_db`.`school_ressources` (`schools_id` ASC);
 
 INSERT INTO `school_ressources` (`id`, `course`, `training`, `student_level_id`, `campus`, `student_workforce`, `is_grouped`, `group_size`, `group_quantity`, `weekly_time_dedicated`, `objectives`, `mission_examples`, `submission_date`, `start_date`, `end_date`, `ideal_location`, `commitment`, `profiles_id`, `workforces_id`, `sectors_id`, `remote`, `schools_id`, `full`, `stages_id`) VALUES
-('1', 'Management international', 'Master Commerce International', 3, 'Paris', 40, 1, 4, '2 groupes', 8, 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 20220715, 20220801, 20221101, 1, 'Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.', '3', null, null, 1, '1', 0, 2);
+('1', 'Management international', 'Master Commerce International', 3, 'Paris', 40, 1, 4, '2 groupes', 8, 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 20220715, 20220801, 20221101, 1, 'Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.', 3, null, null, 1, '1', 0, 2);
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`teaching_fields`
 -- -----------------------------------------------------
@@ -471,7 +476,7 @@ CREATE INDEX `fk_company_project_school_ressources1_idx` ON `rookies_app_db`.`co
 CREATE INDEX `fk_company_project_companies1_idx` ON `rookies_app_db`.`company_project` (`companies_id` ASC);
 
 INSERT INTO `company_project` (`id`, `project_types_id`, `end_date`, `project_name`, `goal`, `ressources_available`, `profiles_id`, `stages_id`, `school_ressources_id`, `companies_id`) VALUES
-('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', '1', 2, '1', '1');
+('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', 1, 2, '1', '1');
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`languages`
 -- -----------------------------------------------------

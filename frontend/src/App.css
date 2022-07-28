@@ -60,3 +60,15 @@ a {
   max-width: 200px;
   max-height: 200px;
 }
+
+#cardprofilepicture {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#cardprofilepicturecompany {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
