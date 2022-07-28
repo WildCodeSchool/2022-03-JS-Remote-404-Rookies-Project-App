@@ -5,7 +5,7 @@ function UsersTable({ users }) {
     <div className="flex flex-col p-5" id="user-table">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left table-auto">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-300  ">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Prénom
@@ -38,10 +38,10 @@ function UsersTable({ users }) {
               users.map((u) => (
                 <tr
                   key={u.id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  className=" border-b bg-white border-gray-700 hover:bg-gray-100 "
                 >
                   {/* PRENOM */}
-                  <td className="px-6 py-4">{u.firstname}</td>
+                  <td className="px-6 py-4 font-normal">{u.firstname}</td>
                   {/* NOM */}
                   <td className="px-6 py-4">{u.lastname}</td>
                   {/* EMAIL */}

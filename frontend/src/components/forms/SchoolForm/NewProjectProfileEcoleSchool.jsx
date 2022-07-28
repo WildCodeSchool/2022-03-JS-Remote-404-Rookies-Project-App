@@ -157,16 +157,6 @@ export default function NewProjectProfileEcoleSchool({
               w-full "
               type="text"
               rows="2"
-              placeholder="Compléter le cahier des charges,
-            Orienter le travail des étudiants, en exigeant d’eux le comportement
-            de professionnels,
-            Mettre à disposition de l’équipe les informations nécessaires à la
-            réussite de la mission,
-            Prendre en charge les frais inhérents à la mission (frais de
-            déplacements, hébergement et matériels si nécessaire),
-            Évaluer l’implication, le comportement et le travail de chaque
-            étudiant de l’équipe,
-            Participer au lancement et au jury final de la mission."
               {...register("commitment")}
             />
           </div>

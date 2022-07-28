@@ -92,7 +92,6 @@ function MatchesInProject({ project }) {
               />
             </div>
             <div className="listed">
-              <p className="school">Ecole Group</p>
               <p className="schoolbis">
                 {matchUser?.firstname} {matchUser?.lastname}
               </p>

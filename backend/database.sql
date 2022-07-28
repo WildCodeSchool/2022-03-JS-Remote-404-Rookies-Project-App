@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`images` (
   PRIMARY KEY (`id`));
 
 INSERT INTO `images` (`id`, `image_url`, `image_alt`) VALUES
-(1, '/src/assets/pictures/random-user.jpg', 'profile-john-doe'),
+(1, 'frontend/src/assets/pictures/random-user.jpg', 'profile-john-doe'),
 (2, '/src/assets/pictures/random-user.jpg', 'profile-brigitte-school'),
 (3, '/src/assets/pictures/poudlard.jpg', 'school-poudlard'),
 (4, '/src/assets/pictures/dunder-mifflin.jpg', 'company-dunder-mifflin'),
@@ -140,7 +140,7 @@ CREATE INDEX `fk_companies_images1_idx` ON `rookies_app_db`.`companies` (`images
 
 CREATE INDEX `fk_companies_workforces1_idx` ON `rookies_app_db`.`companies` (`workforces_id` ASC);
 
-CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`companies` (`images_id` ASC);
+CREATE INDEX `images_id` ON `rookies_app_db`.`companies` (`images_id` ASC);
 
 CREATE INDEX `sectors_id` ON `rookies_app_db`.`companies` (`sectors_id` ASC);
 
@@ -148,9 +148,7 @@ CREATE INDEX `workforces_id` ON `rookies_app_db`.`companies` (`workforces_id` AS
 
 
 INSERT INTO `companies` (`id`, `name`, `description`, `website`, `sectors_id`, `images_id`, `workforces_id`) VALUES
-('1', 'Dunder Mifflin', 'Nous vendons du papier. Notre boss Michael est pas ouf, mais on peu bosser à la cool chez nous. Pas de travail en remote.', 'https://dundermifflin-paper-company.com', 2, 4, 4),
-('2', 'The Boring Company', null, null, null, null, null),
-('3', 'Rookies', 'machine à projets', 'https://www.rookiesprojects.com/', 15, 6, 2);
+('1', 'Rookies', 'machine à projets', 'https://www.rookiesprojects.com/', 15, 6, 2);
 
 
 
@@ -174,12 +172,10 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`schools` (
 
 CREATE INDEX `fk_schools_images1_idx` ON `rookies_app_db`.`schools` (`images_id` ASC);
 
-CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`schools` (`images_id` ASC);
+CREATE INDEX `images_id` ON `rookies_app_db`.`schools` (`images_id` ASC);
 
 INSERT INTO `schools` (`id`, `name`, `description`, `website`, `images_id`, `campuses`) VALUES
-('1', 'Poudlard', 'Ecole tout à fait normale, aucun étudiant en danger ou de créatures dangereuses sur lesquelles on peut tomber au contour du couloir.', 'https://www.poudlard.com', 3, "Edimburg"),
-('2', 'Beauxbatons', null, null, null, null),
-('3', 'Wild Code School', 'La Wild Code School propose des formations intensives aux métiers tech - Développement web, Data analyse, Cybersécurité, Product management - sur campus, à distance ou en entreprise.', 'https://www.wildcodeschool.com/fr-FR', 5, "Remote");
+('1', 'Wild Code School', 'La Wild Code School propose des formations intensives aux métiers tech - Développement web, Data analyse, Cybersécurité, Product management - sur campus, à distance ou en entreprise.', 'https://www.wildcodeschool.com/fr-FR', 5, "Remote");
 
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`users`
@@ -195,10 +191,7 @@ CREATE TABLE IF NOT EXISTS `rookies_app_db`.`users` (
 CREATE UNIQUE INDEX `email_UNIQUE` ON `rookies_app_db`.`users` (`email` ASC);
 
 INSERT INTO `users` (`id`, `email`, `hashedpassword`) VALUES
-(1, 'john.doe@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-(2, 'margarett.teacher@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 (3, 'julien.richard@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
-(4, 'brigitte.school@jeanmail.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 (5, 'jeromesantoni@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 (6, 'admin@rookies.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
 (7, 'cloe.truel@wildcodeschool.com', '$argon2id$v=19$m=65536,t=5,p=1$wCiUeYdaDWDCX7ZQ2qKFng$pYxPOsrdfo9p2XJO6st7h60EIL++m2j+o/AS58W8dMo'),
@@ -265,23 +258,20 @@ CREATE INDEX `fk_profile_user1_idx` ON `rookies_app_db`.`profiles` (`user_id` AS
 
 CREATE INDEX `fk_profile_images1_idx` ON `rookies_app_db`.`profiles` (`images_id` ASC);
 
-CREATE UNIQUE INDEX `images_id_UNIQUE` ON `rookies_app_db`.`profiles` (`images_id` ASC);
+CREATE INDEX `images_id` ON `rookies_app_db`.`profiles` (`images_id` ASC);
 
 CREATE INDEX `school_id_idx` ON `rookies_app_db`.`profiles` (`school_id` ASC);
 
 CREATE INDEX `company_id_idx` ON `rookies_app_db`.`profiles` (`company_id` ASC);
 
 INSERT INTO `profiles` (`id`, `firstname`, `lastname`, `create_time`, `phone`, `role`, `linkedin`, `entity_category_id`, `company_id`, `school_id`, `is_admin`, `user_id`, `images_id`) VALUES
-(1, 'John', 'Doe', '10062022', 0612345678, 'Fondateur', 'linkedin.com/jeanjean', 1, '1', null, 1, 1, 1),
-(2, 'Margarett', 'Teacher', '10062022', null, null, null, 2, null, null, 1, 2, null),
-(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujurichard', 2, null, "3", 1, 3, 8),
-(4, 'Brigitte', 'Cools', '10062022', 0612345679, 'Enseignante', 'linkedin.com/bridgetschool', 2, null, '1', 1, 4, 2),
-(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, "3", null, 1, 5, 7),
-(6, 'Jérôme', 'admin', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, null, null, 1, 6, null),
-(7, 'Cloé', 'Truel', '13072022', 0492651752, 'career specialist', 'linkedin.com/cloétruel', 2, null, "3", 1, 7, null),
-(8, 'Vicky', 'Lucea', '13072022', 0492651755, 'Experience manager', 'linkedin.com/vickylucea', 2, null, "3", 1, 8, null),
-(9, 'Guilhem', 'Seyvet', '13072022', 0687587813, 'Teaching Assistant', 'linkedin.com/guilhemCV', 2, null, "3", 1, 9, null),
-(10, 'Elyes', 'Sahli', '13072022', 0655183712, 'Fondateur', 'linkedin.com/elyessahli', 1, "3", null, 1, 10, 9);
+(3, 'Julien', 'Richard', '10062022', 0607070707, 'Formateur', 'linkedin.com/jujurichard', 2, null, "1", 1, 3, 8),
+(5, 'Jérôme', 'Santoni', '10062022', 0606060608, 'Entrepreneur', 'linkedin.com/rookies', 1, "1", null, 1, 5, 7),
+(6, 'Jérôme', 'admin', '10062022', 0617341155, 'Fondateur', 'linkedin.com/rookies', 1, "1", null, 1, 6, 7),
+(7, 'Cloé', 'Truel', '13072022', 0492651752, 'career specialist', 'linkedin.com/cloétruel', 2, null, "1", 1, 7, null),
+(8, 'Vicky', 'Lucea', '13072022', 0492651755, 'Experience manager', 'linkedin.com/vickylucea', 2, null, "1", 1, 8, null),
+(9, 'Guilhem', 'Seyvet', '13072022', 0687587813, 'Teaching Assistant', 'linkedin.com/guilhemCV', 2, null, "1", 1, 9, null),
+(10, 'Elyes', 'Sahli', '13072022', 0655183712, 'Fondateur', 'linkedin.com/elyessahli', 1, "1", null, 1, 10, 9);
 
 
 -- -----------------------------------------------------
@@ -368,8 +358,6 @@ CREATE INDEX `fk_school_projects_sectors1_idx` ON `rookies_app_db`.`school_resso
 
 CREATE INDEX `fk_school_ressources_schools1_idx` ON `rookies_app_db`.`school_ressources` (`schools_id` ASC);
 
-INSERT INTO `school_ressources` (`id`, `course`, `training`, `student_level_id`, `campus`, `student_workforce`, `is_grouped`, `group_size`, `group_quantity`, `weekly_time_dedicated`, `objectives`, `mission_examples`, `submission_date`, `start_date`, `end_date`, `ideal_location`, `commitment`, `profiles_id`, `workforces_id`, `sectors_id`, `remote`, `schools_id`, `full`, `stages_id`) VALUES
-('1', 'Management international', 'Master Commerce International', 3, 'Paris', 40, 1, 4, '2 groupes', 8, 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 20220715, 20220801, 20221101, 1, 'Compléter le cahier des charges, Orienter le travail des étudiants, en exigeant d’eux le comportementde professionnels,Mettre à disposition de l’équipe les informations nécessaires à laréussite de la mission,Prendre en charge les frais inhérents à la mission (frais dedéplacements, hébergement et matériels si nécessaire),Évaluer l’implication, le comportement et le travail de chaqueétudiant de l’équipe,Participer au lancement et au jury final de la mission.', 3, null, null, 1, '1', 0, 2);
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`teaching_fields`
 -- -----------------------------------------------------
@@ -420,7 +408,7 @@ INSERT INTO `stages` (`id`, `stage`) VALUES
 (3, 'Projet en Matching'),
 (4, 'Projet Matché'),
 (5, 'Projet en cours'),
-(6, 'Projet fini');
+(6, 'Projet terminé');
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`company_project`
 -- -----------------------------------------------------
@@ -475,8 +463,8 @@ CREATE INDEX `fk_company_project_school_ressources1_idx` ON `rookies_app_db`.`co
 
 CREATE INDEX `fk_company_project_companies1_idx` ON `rookies_app_db`.`company_project` (`companies_id` ASC);
 
-INSERT INTO `company_project` (`id`, `project_types_id`, `end_date`, `project_name`, `goal`, `ressources_available`, `profiles_id`, `stages_id`, `school_ressources_id`, `companies_id`) VALUES
-('1', 1, 20221030, 'Projet étude de marché (Allemagne)', 'Lorseum sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet. Sit omnis autem est asperiores voluptatem est ratione maiores ut veritatis voluptatem. Eum commodi accusamus et error quod eum dolores eaque qui doloremque enim sit illo dicta.', 'Et fugit soluta dolorem ratione et quia minus eum unde voluptas ad autem dolor. Non ipsam adipisci sit dolores accusamus non voluptatem enim. Qui quia tenetur et odit quia vel maiores nemo aut voluptatum tenetur et minus laboriosam.Aut nostrum odio ea iure obcaecati aut reiciendis dignissimos qui mollitia labore est quia dolore. Id magnam incidunt hic rerum ipsum est placeat.', 1, 2, '1', '1');
+
+
 -- -----------------------------------------------------
 -- Table `rookies_app_db`.`languages`
 -- -----------------------------------------------------

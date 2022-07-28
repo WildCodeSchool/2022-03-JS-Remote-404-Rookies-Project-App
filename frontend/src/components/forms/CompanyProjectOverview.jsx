@@ -8,8 +8,13 @@ import websiteLogo from "../../assets/pictures/mouse-logo.png";
 
 function CompanyProjectOverview({ user, project }) {
   const [fields, setFields] = useState();
+  const [company, setCompany] = useState();
 
   useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
+      .then((res) => setCompany(res.data))
+      .catch((err) => console.warn(err));
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/fields/`)
       .then((res) =>
@@ -59,7 +64,11 @@ function CompanyProjectOverview({ user, project }) {
           {/* company */}
           <div className="flex flex-col items-center py-5 px-10">
             <img
-              src={project.logo ? blankPic : blankPic}
+              src={
+                company && company.image_url
+                  ? `${import.meta.env.VITE_BACKEND_URL}${company.image_url}`
+                  : blankPic
+              }
               alt="company-logo"
               className="w-40 rounded-3xl border-8 border-gray-400"
             />
