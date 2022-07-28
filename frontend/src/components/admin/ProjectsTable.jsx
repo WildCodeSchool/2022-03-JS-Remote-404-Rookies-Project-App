@@ -46,7 +46,7 @@ function ProjectsTable({
     <div className="flex flex-col p-5" id="project-table">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
         <table className="w-full text-sm text-left table-auto">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-300 ">
             <tr>
               <th scope="col" className="px-6 py-3 w-1/10">
                 Id
@@ -83,10 +83,7 @@ function ProjectsTable({
           <tbody>
             {projects &&
               projects.map((p) => (
-                <tr
-                  key={p.id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-                >
+                <tr key={p.id} className="bg-white border-b  hover:bg-gray-100">
                   <td className="px-4 py-4">{p.id}</td>
                   <td className="px-4 py-4">{p.create_time}</td>
                   <td className="px-4 py-4">

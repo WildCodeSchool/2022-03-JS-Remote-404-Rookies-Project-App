@@ -69,7 +69,6 @@ export default function NewProjectDescriptionCompany({
           m-0
           focus:text-gray-700 focus:bg-white focus:ring-green-400 focus:outline-none"
               type="text"
-              placeholder="Projet étude de marché (Allemagne)"
               {...register("project_name")}
             />
           </div>
