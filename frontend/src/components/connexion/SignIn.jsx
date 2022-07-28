@@ -1,18 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import { notifySuccess, notifyError } from "../../services/toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import google from "../../assets/pictures/google-logo.png";
 import linkedin from "../../assets/pictures/linkedin-logo.png";
 
 import ConnexionSwitch from "./ConnexionSwitch";
 
+import ExportContextUser from "../../contexts/UserContext";
+
 function SignIn() {
   const navigate = useNavigate();
-  const [entity, setEntity] = useState("");
+  const { handleUser } = useContext(ExportContextUser.UserContext);
+  const [createFirstname, setFirstname] = useState();
+  const [entity, setEntity] = useState();
+  const [createLastname, setLastname] = useState();
+  const [createEmail, setEmail] = useState();
+  const [createPhone, setPhone] = useState();
+  const [createPassword, setPassword] = useState();
+
+  const onSubmit = () => {
+    if (
+      !entity ||
+      !createFirstname ||
+      !createLastname ||
+      !createPhone ||
+      !createEmail ||
+      !createPassword
+    ) {
+      notifyError("Des données sont manquantes");
+      return;
+    }
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/signin`, {
+        entity_category_id: entity,
+        firstname: createFirstname,
+        lastname: createLastname,
+        phone: createPhone,
+        email: createEmail,
+        password: createPassword,
+      })
+      .then((res) => {
+        handleUser(res.data);
+        notifySuccess("Connexion réussie, redirection en cours");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
+      })
+      .catch(() => {
+        notifyError("Echec lors de l'enregistrement");
+      });
+  };
 
   return (
     <div className="flex flex-col p-10 w-3/5 items-center h-screen">
       <ConnexionSwitch isMember align="self-start" linkto="/login" />
+      <ToastContainer />
       <div className="flex flex-col items-start">
         <h1 className="text-2xl font-bold mt-8 mb-5">
           Let&apos;s get you started
@@ -21,23 +67,23 @@ function SignIn() {
         <div className="flex mb-3">
           <button
             className={`${
-              entity === "entreprise"
+              entity === 1
                 ? "bg-green-400 text-white font-semibold"
                 : "text-gray-400 hover:bg-green-100"
             } p-2 w-32 border-2 rounded-md mr-4 text-semibold`}
             type="button"
-            onClick={() => setEntity("entreprise")}
+            onClick={() => setEntity(1)}
           >
             Entreprise
           </button>
           <button
             className={`${
-              entity === "Ecole"
+              entity === 2
                 ? "bg-green-400 text-white font-semibold"
                 : "text-gray-400 hover:bg-green-100"
             } p-2 w-32 border-2 rounded-md mr-4 text-semibold`}
             type="button"
-            onClick={() => setEntity("Ecole")}
+            onClick={() => setEntity(2)}
           >
             Ecole
           </button>
@@ -65,18 +111,16 @@ function SignIn() {
           Continuez avec
         </h3>
 
-        <form
-          className="flex flex-col basis-1/2 items-start w-full"
-          onSubmit={() => navigate("/dashboard", { replace: true })}
-        >
+        <form className="flex flex-col basis-1/2 items-start w-full">
           <div className="flex">
             <label className="text-lg mr-2" htmlFor="last-name">
               Nom *
               <input
                 className="ml-2 border rounded-md text-sm py-1 px-2"
                 type="text"
-                name="last-name"
+                name="lastname"
                 placeholder="Doe"
+                onChange={(event) => setFirstname(event.target.value)}
               />
             </label>
             <label className="text-lg" htmlFor="first-name">
@@ -84,8 +128,9 @@ function SignIn() {
               <input
                 className="ml-2 border rounded-md text-sm py-1 px-2"
                 type="text"
-                name="first-name"
+                name="firstname"
                 placeholder="John"
+                onChange={(event) => setLastname(event.target.value)}
               />
             </label>
           </div>
@@ -96,6 +141,7 @@ function SignIn() {
               type="text"
               name="mail"
               placeholder="yourname@email.com"
+              onChange={(event) => setEmail(event.target.value)}
             />
           </label>
           <label className="text-lg mt-3" htmlFor="phone">
@@ -105,6 +151,7 @@ function SignIn() {
               type="tel"
               name="phone"
               placeholder="+33 612345678"
+              onChange={(event) => setPhone(event.target.value)}
             />
           </label>
 
@@ -115,6 +162,7 @@ function SignIn() {
               type="password"
               name="password"
               placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+              onChange={(event) => setPassword(event.target.value)}
             />
           </label>
           <p className="text-gray-400 text-xs mt-1">
@@ -123,8 +171,9 @@ function SignIn() {
           </p>
           <input
             className="my-6 w-2/3 self-center bg-green-400 hover:bg-emerald-700 cursor-pointer text-white font-semibold py-1 rounded"
-            type="submit"
+            type="button"
             value="Créer mon compte"
+            onClick={onSubmit}
           />
         </form>
         <p className="text-gray-500 text-xs mb-4">

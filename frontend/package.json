@@ -13,9 +13,11 @@
     "@hookform/resolvers": "^2.9.1",
     "axios": "^0.27.2",
     "react": "^17.0.2",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.32.1",
     "react-router-dom": "^6.3.0",
+    "react-toastify": "^9.0.5",
     "template-fullstack": "file:..",
     "yup": "^0.32.11"
   },

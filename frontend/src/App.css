@@ -10,6 +10,9 @@
   box-sizing: border-box;
   font-family: "poppins";
 }
+app {
+  width: 100vw;
+}
 
 :root {
   --title-font: "Poppins", sans-serif;
@@ -45,5 +48,27 @@ a {
   list-style-type: none;
   text-decoration: none;
 }
-
 /* VARIABLES GLOBALES */
+
+.banneerbg {
+  background-image: url(./assets/pictures/BG.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+#avatar {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#cardprofilepicture {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#cardprofilepicturecompany {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}

@@ -1,37 +1,38 @@
 import React from "react";
-import axios from "axios";
 
 import ProjectSelected from "./ProjectSelected";
 import MatchesInProject from "./MatchesInProject";
 
-function SelectProject() {
-  const [project, setProject] = React.useState();
-  const [selected, setSelected] = React.useState();
+function SelectProject({ selected, setSelected, project, user }) {
   const handleChange = (value) => {
     const projectSelected = project.find((e) => e.id === value);
     setSelected(projectSelected);
   };
-  React.useEffect(() => {
-    axios
-      .get("http://localhost:3000/src/assets/dataset/company_projects.json")
-      .then((res) => setProject(res.data))
-      .catch((err) => console.warn(err));
-  }, []);
 
   return (
     <div className="blocproject">
-      <select className="menu1" onChange={(e) => handleChange(e.target.value)}>
-        <option className="title1">Choisissez un projet</option>
+      <select
+        className="menu1 font-bold"
+        onChange={(e) => handleChange(e.target.value)}
+      >
+        <option className="title1 font-bold">Choisissez un projet</option>
         {project &&
-          project.map((e, id, index) => (
-            <option
-              value={e.id}
-              key={index}
-            >{`${e.id}-${e.project_name}`}</option>
+          user.company_id &&
+          project.map((e, index) => (
+            <option value={e.id} key={e.id}>{`${index + 1} - ${
+              e.project_name
+            }`}</option>
+          ))}
+        {project &&
+          user.school_id &&
+          project.map((e, index) => (
+            <option value={e.id} key={e.id}>{`${index + 1} - ${
+              e.course
+            }`}</option>
           ))}
       </select>
-      {selected && <ProjectSelected project={selected} />}
-      {selected && <MatchesInProject project={selected} />}
+      {selected && <ProjectSelected project={selected} user={user} />}
+      {selected && <MatchesInProject project={selected} user={user} />}
     </div>
   );
 }

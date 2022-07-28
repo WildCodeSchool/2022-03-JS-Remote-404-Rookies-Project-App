@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
 import ExportContextUser from "../../contexts/UserContext";
 
 import plusLogo from "../../assets/pictures/add.png";
@@ -14,23 +15,42 @@ function MyProjects() {
   const [filtered, setFiltered] = useState(true);
   const entity = user.entity_category_id && "/submission";
 
+  const getProjects = () => {
+    if (user.company_id) {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/company-projects/company/${
+            user.company_id
+          }`
+        )
+        .then((res) => setProjects(res.data))
+        .catch((err) => console.warn(err));
+    } else if (user.school_id) {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/school-ressources/school/${
+            user.school_id
+          }`
+        )
+        .then((res) => setProjects(res.data))
+        .catch((err) => console.warn(err));
+    }
+  };
+
   const handleFilter = (status) => {
     setFiltered(!status);
     if (status)
-      setProjects(projects.filter((project) => project.users_id === user.id));
-    else
-      axios
-        .get("http://localhost:3000/src/assets/dataset/company_projects.json")
-        .then((res) => setProjects(res.data))
-        .catch((err) => console.warn(err));
+      setProjects(
+        projects.filter(
+          (project) => parseInt(user.id, 10) === project.profiles_id
+        )
+      );
+    else getProjects();
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/src/assets/dataset/company_projects.json")
-      .then((res) => setProjects(res.data))
-      .catch((err) => console.warn(err));
-  }, []);
+    getProjects();
+  }, [user]);
 
   return (
     <div className="mx-10 my-5 h-full rounded-2xl shadow-md border">
@@ -67,8 +87,7 @@ function MyProjects() {
           )}
         </div>
         <p className="text-xs text-gray-400 absolute bottom-0 m-10">
-          Showing {projects && projects.length} from{" "}
-          {projects && projects.length} data
+          {projects && projects.length} projets trouvés
         </p>
       </div>
     </div>

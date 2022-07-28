@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 import ExportContextUser from "../contexts/UserContext";
+import ExportContextProject from "../contexts/ProjectContext";
 import NavigationForm from "../components/forms/NavigationForm";
 
 import "../styles/NavbarForm.css";
@@ -12,15 +14,15 @@ import keyDates from "../assets/pictures/keyDates.png";
 import entreprise from "../assets/pictures/entreprise.png";
 import apercuform from "../assets/pictures/apercuform.png";
 
-import NewProjectOrganisationSchool from "../components/forms/NewProjectOrganisationSchool";
-import NewProjectDescriptionSchool from "../components/forms/NewProjectDescriptionSchool";
-import NewProjectDomainSchool from "../components/forms/NewProjectDomainSchool";
-import NewProjectDatesClésSchool from "../components/forms/NewProjectDatesClésSchool";
-import NewProjectProfileEcoleSchool from "../components/forms/NewProjectProfileEcoleSchool";
-import NewProjectTypeCompany from "../components/forms/NewProjectTypeCompany";
-import NewProjectDescriptionCompany from "../components/forms/NewProjectDescriptionCompany";
-import NewProjectDomainCompany from "../components/forms/NewProjectDomainCompany";
-import NewProjectConsultingCompany from "../components/forms/NewProjectConsultingCompany";
+import NewProjectOrganisationSchool from "../components/forms/SchoolForm/NewProjectOrganisationSchool";
+import NewProjectDescriptionSchool from "../components/forms/SchoolForm/NewProjectDescriptionSchool";
+import NewProjectDomainSchool from "../components/forms/SchoolForm/NewProjectDomainSchool";
+import NewProjectDatesClésSchool from "../components/forms/SchoolForm/NewProjectDatesClésSchool";
+import NewProjectProfileEcoleSchool from "../components/forms/SchoolForm/NewProjectProfileEcoleSchool";
+import NewProjectTypeCompany from "../components/forms/CompanyForm/NewProjectTypeCompany";
+import NewProjectDescriptionCompany from "../components/forms/CompanyForm/NewProjectDescriptionCompany";
+import NewProjectDomainCompany from "../components/forms/CompanyForm/NewProjectDomainCompany";
+import NewProjectConsultingCompany from "../components/forms/CompanyForm/NewProjectConsultingCompany";
 import NewProjectPreview from "../components/forms/NewProjectPreview";
 
 const steptypes = [
@@ -42,14 +44,33 @@ function Submission() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const { user } = useContext(ExportContextUser.UserContext);
+  const { handleProject } = useContext(ExportContextProject.ProjectContext);
 
   const navData = steptypes.filter((el) => el.type === user.entity_category_id);
+
+  window.onbeforeunload = () => {
+    return "Are you sure you want to leave ?";
+  };
+
+  useEffect(() => {
+    if (user.company_id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/companies/${user.company_id}`)
+        .then((res) => handleProject(res.data))
+        .catch((err) => console.warn(err));
+    } else if (user.school_id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/schools/${user.school_id}`)
+        .then((res) => handleProject(res.data))
+        .catch((err) => console.warn(err));
+    }
+  }, []);
 
   const handleNextStep = (step) => {
     if (step === "Return") setCurrentStep(currentStep - 1);
     setTimeout(() => {
       if (step === "Next") setCurrentStep(currentStep + 1);
-    }, 500);
+    }, 200);
   };
 
   const getForm = () => {
@@ -141,11 +162,13 @@ function Submission() {
   };
 
   return (
-    <div className="company-NavBar-form">
-      <hr className="progressbar" />
-      <NavigationForm navData={navData} currentStep={currentStep} />
+    <div className="company-NavBar-form w-screen overflow-x-hidden overflow-y-hidden">
+      <div className="bg-gray-100 m-8 rounded-lg">
+        <hr className="progressbar" />
+        <NavigationForm navData={navData} currentStep={currentStep} />
 
-      <div className="layout-wrapper">{getForm()}</div>
+        <div className="rounded-b-lg">{getForm()}</div>
+      </div>
     </div>
   );
 }

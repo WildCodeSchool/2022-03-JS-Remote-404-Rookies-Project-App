@@ -3,7 +3,7 @@ import StepForm from "./StepForm";
 
 function NavigationForm({ navData, currentStep }) {
   return (
-    <div className="stepWrapper">
+    <div className="stepWrapper w-full">
       {navData.map((item, index) => (
         <StepForm
           key={item.label}
